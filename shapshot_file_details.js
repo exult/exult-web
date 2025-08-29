@@ -99,4 +99,8 @@ var static_snapshot_file_details = {
    'content-length': '213031',
    'last-modified': 'Fri, 22 Jul 2016 15:17:25 GMT',
   },
+  'https://exult.sourceforge.io/snapshots/JDHarding-UltimaVII.zip':  {
+  'content-length': '75255084',
+   'last-modified': 'Fri, 30 Aug 2025 14:00:00 GMT',
+  },
 };
