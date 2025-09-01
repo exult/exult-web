@@ -1,7 +1,7 @@
 Exult Studio Documentation
 last changed: 20 February 2021 (GMT)
 
-The latest version of this document can be found at https://exult.info/studio.php
+The latest version of this document can be found at https://exult.info/studio.html
 
 
 1. Introduction

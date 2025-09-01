@@ -1,7 +1,7 @@
 Exult Documentation
 last changed: 16 April 2025 (GMT)
 
-The latest version of this document can be found at https://exult.info/docs.php
+The latest version of this document can be found at https://exult.info/docs.html
 
 
 1. Introduction
