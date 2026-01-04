@@ -465,6 +465,7 @@ $relation_data = array(
 			"give_last_created",
 			"remove_item",
 			"create_barge_object",
+			"create_new_egg",
 		),
 		"create_new_object2"			=>	array(
 			"clone",
@@ -579,6 +580,15 @@ $relation_data = array(
 			"get_cont_items",
 			"remove_cont_items",
 			"remove_from_area",
+		),
+		"create_new_egg"					=>	array(
+			"create_new_object",
+			"create_new_object2",
+			"set_last_created",
+			"update_last_created",
+			"give_last_created",
+			"create_barge_object",
+			"create_new_egg",
 		),
 	),
 	"OBJECTS"		=>	array(

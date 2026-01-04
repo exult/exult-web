@@ -10,7 +10,7 @@ add_keylist(
 		inline_code("sched"),
 		"An integer specifying the new schedule. Must be an integer in the 0-31 range, such as those returned by the " . inline_code("get_schedule_type") . " intrinsic.",
 		inline_code("loc"),
-		"A (x, y) location, specifying the location of the new schedule.",
+		"A (x, y, z) location, specifying the location of the new schedule. Value of z is optional, defaults to 0.",
 	),
 	4
 );

@@ -1,5 +1,5 @@
 <?php
 right_align(
-	code_block("object UI_create_new_object2(int shape, int pos[])", true, false, 0, false),
+	code_block("object UI_create_new_object2(int shape, int pos[], [int frame])", true, false, 0, false),
 	$siexultimg
 );

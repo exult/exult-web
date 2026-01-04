@@ -7,6 +7,9 @@ add_keylist(
 		"The shape in 'SHAPES.VGA' of the new object. If this is a monster shape, the object is created with all equipment specified by the shape's equipment entry.",
 		inline_code("pos"),
 		"The location where the new object is to be placed.",
+		inline_code("frame"),
+		"Optional. The frame number for the object. If omitted, uses the shape's default frame.
+",
 	),
 	4
 );

@@ -1,0 +1,5 @@
+<?php
+right_align(
+    code_block("object UI_create_new_egg(int type, int pos[], int criteria, int probability, int distance, int flags, int data[])", true, false, 0, false),
+    $exultimg
+);

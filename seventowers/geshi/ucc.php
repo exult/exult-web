@@ -247,6 +247,8 @@ $language_data = array(
 			'count_objects',
 			'UI_create_barge_object',
 			'create_barge_object',
+			'UI_create_new_egg',
+			'create_new_egg',
 			'UI_create_new_object2',
 			'create_new_object2',
 			'UI_create_new_object',
