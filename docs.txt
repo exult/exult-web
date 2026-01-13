@@ -1,5 +1,5 @@
 Exult Documentation
-last changed: 16 April 2025 (GMT)
+last changed: 13 January 2026 (GMT)
 
 The latest version of this document can be found at https://exult.info/docs.html
 
@@ -88,7 +88,7 @@ The latest version of this document can be found at https://exult.info/docs.html
 10.6. Installing sfx, digital music, MT32 ROMs and SoundFonts
 10.7. Android controls
 10.8. Android automatic saves
-10.9. Android File Storage
+10.9. Android File Storage and Savegames
 
 11. The exult.cfg file
 11.1. Settings in exult.cfg
@@ -115,14 +115,15 @@ The latest version of this document can be found at https://exult.info/docs.html
 13.2. Contacting us
 
 14. Changes to the Documentation
-14.1. - 16 April 2025
-14.2. - 20 March 2025
-14.3. - 19 January 2025
-14.4. - 06 January 2025
-14.5. - 03 July 2024
-14.6. - 25 April 2024
-14.7. - 23 April 2024
-14.8. older changes
+14.1. - 13 January 2026
+14.2. - 16 April 2025
+14.3. - 20 March 2025
+14.4. - 19 January 2025
+14.5. - 06 January 2025
+14.6. - 03 July 2024
+14.7. - 25 April 2024
+14.8. - 23 April 2024
+14.9. older changes
 
 
 --------------------------------------------------------------------------------
@@ -181,6 +182,8 @@ We are using many terms in this documentation, the FAQ and other documentation f
 * Run exult and enjoy the game :-)
 
 Word of advice: Don't mix the files from BG and SI.
+The installation instructions for iOS and Android are in their own sections:
+ 9.2. Installing Exult on your iPhone/iPad and 10.2. Installing Exult on your Android .
 
 
 2.2. Location of exult.cfg
@@ -417,8 +420,12 @@ When you have enabled digital music and and another midi driver you can set both
  Hard will neither allow the player to control charmed party members, including the Avatar, nor access the inventory of a charmed party member. But you can still manipulate objects that are not in the charmed party members possessions even if the Avatar is the one who is charmed. Charmed party members will continue to attack, even if the player ends combat.
 * Combat Difficulty
  Ranges from Easiest (-3) to Hardest (3). It affects the chance of a hit, and the HP that is lost if a hit occurs.
+* Enhancements
+ Enables or disables some enhancements over the original game. Currently it adds some more light sources (laboratory burner, stove, heated sword blanks and more) and that ringing a store bell makes the NPC tending the store come up to the Avatar.
 * Cheats
  Enables or disables all the cheats that we implemented in Exult. See 6.3. Cheat keys what those cheats are.
+* Feeding
+ Only available with enabled cheats it allows to disable need for feeding the party completely or setting it to automatically feed with food in the party.
 
 
 
@@ -445,6 +452,8 @@ When you have enabled digital music and and another midi driver you can set both
  only available in Black Gate and only if you have Serpent Isle installed as well. Enables or disable Paperdolls (inventory screen) in the style of Serpent Isle.
 * Use extended SI intro
  To fit the intro of SI onto the constraints of floppy disks, it was cut and made much simpler than originally envisioned by Denis Loubet. We have restored the intro and made it possible to watch it.
+* Language
+ We added the possibility to translate Exult to another language and this sets it for all of Exult and the game messages.
 
 
 
@@ -464,11 +473,11 @@ When you have enabled digital music and and another midi driver you can set both
 * Fullscreen Fast Mouse
  makes the mouse cursor move faster in full screen modes. Enable or disable it.
 * Item helper menu
- Enabling this will pop up a menu on screen of objects you can click on and once you select one, it gives you further options on how to interact with the object. Only on iOS enabled by default.
+ Enabling this will pop up a menu on screen of objects you can click on and once you select one, it gives you further options on how to interact with the object. Only on iOS and android enabled by default.
 * D-Pad screen location
- On iOS we display a virtual D-Pad to move the Avatar with your finger (thumb). This toggles and selects the side of the screen this D-Pad is displayed on. For now this is only enabled on iOS
+ On iOS we display a virtual D-Pad to move the Avatar with your finger (thumb). This toggles and selects the side of the screen this D-Pad is displayed on. For now this is only enabled on iOS and Android.
 * Pathfind with Long touch
- When you click or touch for a little while the Avatar will move to this location if it's possible to move there. By default only enabled on iOS.
+ When you click or touch for a little while the Avatar will move to this location if it's possible to move there. By default only enabled on iOS and Android..
 
 
 
@@ -847,6 +856,7 @@ s : Show save/load box
 Ctrl-Alt-s : Screenshot
 t : Target, instead of double clicking, shows a cursor and pauses the game until you click on something
 v : About screen
+Shift-v : Shows the volume mixer
 w : Use watch, shows the time if you got a watch
 Alt-x : Exit game
 z : Show stats
@@ -899,6 +909,7 @@ Alt-1 : Test music, SFX, speech
 Ctrl-Alt-g : Grab NPC for cheat screen
 Ctrl-Alt-p : Pick pocket cheat, when enabled double-clicking on a NPC displays the actors inventory
 Ctrl-n : NPC number, When enabled, clicking an a NPC will display their number instead of their name. Useful for the cheat screen.
+Ctrl-Alt-b : Show 3D bounding boxes around all shapes. The shortcut cycles through various box colors.
 
 
 6.4. Map Editing keys
@@ -906,7 +917,7 @@ Ctrl-n : NPC number, When enabled, clicking an a NPC will display their number i
 With the ongoing development of Exult a lot of keys were added that are mainly useful for map editing with Exult Studio. Hit 'shift-h' to see the map edit keys help screen.
 
 Map edit commands
-Del : Delete selection
+Ctrl-Del : Delete selection
 Ctrl-Arrow keys : move selection (x, y coordinates)
 Ctrl-Page keys : move selection (z coordinates)
 Ctrl-c : Copy selected object
@@ -916,6 +927,8 @@ Shift-F3 : write Minimap
 Shift-h : List map edit keys
 Alt-l : Decrement skiplift
 Ctrl-Alt-m : Toggle Map editor
+Ctrl-KP+/- : Cycles through frames of selected shape(s).
+Ctrl-KP* : Rotates the frame of selected shape(s).
 
 
 
@@ -1174,9 +1187,10 @@ Once you have successfully installed the game data, you are free to delete the .
 
 10.5. Installing mods on Android
 
-Currently we only offer a way to install five mods on Android: the BG Keyring, SI Fixes, SourceForge Island, Ultima VI Remake and Glimmerscape.
+Currently we offer a way to install five mods on Android: the BG Keyring, SI Fixes, SourceForge Island, Ultima VI Remake and Glimmerscape.
 To install these mods, download the zip file of the mod you want to install from our download page.
  In the Exultlauncher, select the Mods tab and tap to the left on the corresponding checkmark. This will open a file browser which you can use to select the archive you downloaded, and the installer will take care of extracting the required data files and installing them in the correct places.
+You can also install other mods than the above by running Install Custom Mod in the Exultlauncher's Mods tab. Be aware that a custom mod cannot be uninstalled by the launcher.
 
 
 10.6. Installing sfx, digital music, MT32 ROMs and SoundFonts
@@ -1185,8 +1199,8 @@ To install the optional sfx and digital music, please download the 'Zipped all-i
  In the Exultlauncher, select the Audio tab, tap on Zipped all-in-one audio pack checkmark. This will open a file browser which you can use to select the archive you downloaded, and the installer will take care of extracting the required data files and installing them in the correct places.
 For the MT32 emulation of the music you need the MT32 ROMs and both ROMs need their filenames to be uppercase. Once you have the zipped ROMs on your android device, tap the Zipped MT32 ROMs checkbox on the left, select the zip in the file browser, and the files will be installed.
  Keep in mind that the MT32 ROM files are copyrighted and thus we are not offering a download. You need to dump the ROMs yourself to legally use these.
-For MIDI music playback on android, we are using FluidSynth. This needs a SoundFont in SF2 format which has to be named "default.sf2" (all in lower case) and in a zip file. Once you have the zipped SoundFont on your Android device, tap the Zipped FluidSynth SoundFont checkbox on the left, select the zip in the file browser, and the files will be installed.
-
+For MIDI music playback on android, we are using FluidSynth. This needs a SoundFont in SF2 or DLS format in a zip file. Once you have the zipped SoundFont on your Android device, tap the Zipped FluidSynth SoundFont checkbox on the left, select the zip in the file browser, and the files will be installed.
+ In the Audio settings of Exult you can select FluidSynth as MIDI device and in its advanced settings choose the soundfont you installed.
 
 
 10.7. Android controls
@@ -1203,11 +1217,12 @@ There is also a helper menu when you click near objects in the games, which can 
 As with the iOS port Exult autosaves when it is no longer the focused app on Android.
 
 
-10.9. Android File Storage
+10.9. Android File Storage and Savegames
 
 For now Exult uses the Internal File Storage of Android, which brings with it an important limitation:
- When you uninstall Exult, all your savegames and settings will be deleted as well. Be aware of this and backup your savegames before uninstalling. There are several ways to do this, depending on your device and desktop Operating System.
- We hope to make this better in the future.
+ It's not accessible from the Android's file manager, other apps or externally connected devices.
+ And when you uninstall Exult, all your savegames and settings will be deleted as well. Be aware of this and backup your savegames before uninstalling.
+ To help you with this, we added an option in the Exultlauncher that allows you to export/import your savegames to and from a zip in your download folder. From your download folder you can manage and backup the zip as you do with other files on your device.
 
 
 
@@ -1276,6 +1291,10 @@ Note: the settings in exult.cfg are the same on all operating systems (except wh
         optional_path/patch
 				**optional. See 8.4.
         </patch>
+        <language>
+        english
+				**Exult tries to detect the language of a game automatically but you can force it here.
+        </language>
       </blackgate>
       <serpentisle>
         <path>
@@ -1317,6 +1336,10 @@ Note: the settings in exult.cfg are the same on all operating systems (except wh
         optional_path/patch
 				**optional. See 8.4.
         </patch>
+        <language>
+        english
+				**Exult tries to detect the language of a game automatically but you can force it here.
+        </language>
       </serpentisle>
     </game>
   </disk>
@@ -1385,10 +1408,6 @@ Note: the settings in exult.cfg are the same on all operating systems (except wh
 				**this skips the splash screen, the intro before you get to the
 				 game menu. Disabling it brings you straight to the game menu.
     </skip_splash>
-    <extended_intro>
-    yes
-				**view the extended intro of SI instead
-    </extended_intro>
     <formation>
     yes
 				**yes forces the party to walk in a formation similar to the original game.
@@ -1438,6 +1457,20 @@ Note: the settings in exult.cfg are the same on all operating systems (except wh
     yes
 				**The implementation of the extended intro is now default for an SI game.
     </extended_intro>
+    <feeding>
+    manual
+				**manual/automatic/disabled - controls how the feeding of the party members is handled,
+				only available with cheats enabled. When disabled the party no longer needs to be fed.
+    </feeding>
+    <enhancements>
+    yes
+				**Enables some enhancements over the original. Currently some extra light sources are added
+				and that ringing a store bell will temporarily make the owner step up to the Avatar.
+    </enhancements>
+    <language>
+    yes
+				**sets the language of Exult.
+    </language>
   </gameplay>
   <audio>
     <enabled>
@@ -1817,6 +1850,20 @@ Note: the settings in exult.cfg are the same on all operating systems (except wh
 				no shows those buttons greyed out.
     </hide_missing_items>
   </shortcutbar>
+  <touch>
+    <item_menu>
+    no
+				**Enables the item menu - see 3.9..
+    </item_menu>
+    <dpad_location>
+    right
+				**no/left/right - side of the dpad on touch devices.
+    </dpad_location>
+    <touch_pathfind>
+    yes
+				**long touch makes the Avatar pathfind to this spot.
+    </touch_pathfind>
+  </touch>
   <debug>
     <trace>
       <usecode>
@@ -2204,7 +2251,17 @@ You can contact the Exult team through our Github Discussions page.
 --------------------------------------------------------------------------------
 
 14. Changes to the Documentation
-14.1. - 16 April 2025
+14.1. - 13 January 2026
+
+* 3.7. Game Engine Enhancements and feeding added.
+* 3.8. Game Display Language option added.
+* 6. Movement and Keys Some new keyboard shortcuts.
+* 10. Android Guide Savegame export/import, custom mods and Fluidsynth changes.
+* 11.1. Settings in exult.cfg More cfg settings added.
+
+
+
+14.2. - 16 April 2025
 
 * 3.5. Advanced Audio Settings added.
 * 4.2. MIDI Music FluidLite can be used.
@@ -2212,7 +2269,7 @@ You can contact the Exult team through our Github Discussions page.
 
 
 
-14.2. - 20 March 2025
+14.3. - 20 March 2025
 
 * 2.2. Location of exult.cfg Flatpak cfg path.
 * 2.4. Default game folders on Linux Flatpak default paths.
@@ -2221,20 +2278,20 @@ You can contact the Exult team through our Github Discussions page.
 
 
 
-14.3. - 19 January 2025
+14.4. - 19 January 2025
 
 * 4. Audio added more information on MIDI drivers.
 * 10.3. The Exult Launcher on Android added to explain ways to toggle autolaunch.
 
 
 
-14.4. - 06 January 2025
+14.5. - 06 January 2025
 
 * 10. Android Guide added.
 
 
 
-14.5. - 03 July 2024
+14.6. - 03 July 2024
 
 * 3.4. Audio Options settings changed and Volume Mixer was added.
 * 3.6. Volume Mixer macOS no longer uses the Console.app to show stdout.
@@ -2244,7 +2301,7 @@ You can contact the Exult team through our Github Discussions page.
 
 
 
-14.6. - 25 April 2024
+14.7. - 25 April 2024
 
 * Replaced *nix with Linux as people are mostly looking for Linux and might get confused.
 * Removed documentation for unsupported Windows versions.
@@ -2254,7 +2311,7 @@ You can contact the Exult team through our Github Discussions page.
 
 
 
-14.7. - 23 April 2024
+14.8. - 23 April 2024
 
 * 2.5. Command line options Added the shortcut to starting the Serpent Isle beta.
 * 4.13. Linux and Audio Alsa port magic by Dragon Baroque.
@@ -2266,7 +2323,7 @@ You can contact the Exult team through our Github Discussions page.
 
 
 
-14.8. older changes
+14.9. older changes
 
 For older changes of the documentation, please see its git history.
 
