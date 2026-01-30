@@ -42,7 +42,7 @@
 <h1>Exult - Documentation
 								</h1>
 <p>last changed:
-									13 January 2026 (GMT)</p>
+									30 January 2026 (GMT)</p>
 <hr>
 <p> The latest version of this document can be found
 									<a href="https://exult.info/docs.html">here</a></p>
@@ -59,7 +59,7 @@
 <p><a href="#The-exult.cfg-file">11. The exult.cfg file</a><br><a href="#exult_config">11.1. Settings in exult.cfg</a><br><a href="#path_config">11.2. Path-Settings</a><br><a href="#path_config_nt5">11.3. Path-Settings for Windows</a><br><a href="#path_config_osx">11.4. Path-Settings for macOS</a><br><a href="#path_config_nix">11.5. Path-Settings for Linux/Unix systems</a><br><a href="#advanced_config">11.6. Advanced Configuration: Using both the original and the Add-Ons</a><br></p>
 <p><a href="#Installing-the-original-Ultima-VII-games-for-use-with-Exult">12. Installing the original Ultima VII games for use with Exult</a><br><a href="#gog_windows">12.1. Using GOG.com's installer for Windows</a><br><a href="#gog_mac">12.2. Using GOG.com's installer for macOS</a><br><a href="#cdrom_install">12.3. Installing the CD-ROM versions of Ultima VII</a><br><a href="#dosbox_floppy">12.4. Installing the floppy disks of BG/SI using DOSBox</a><br><a href="#dosbox_addons">12.5. Installing the floppy disks of the Add-Ons FoV/SS using DOSBox</a><br><a href="#bg_manual">12.6. Manual installation of the BG floppy disks</a><br><a href="#si_manual">12.7. Manual installation of the SI floppy disks</a><br><a href="#win32_floppy">12.8. Installing the floppy disks of BG/SI on Windows</a><br><a href="#win32_addons">12.9. Installing the floppy disks of the Add-Ons FoV/SS on Windows</a><br><a href="#files_note">12.10. Exult only needs one folder</a><br></p>
 <p><a href="#Credits-and-Contact">13. Credits and Contact</a><br><a href="#thanks">13.1. Thanks</a><br><a href="#contact">13.2. Contacting us</a><br></p>
-<p><a href="#Changes-to-the-Documentation">14. Changes to the Documentation</a><br><a href="#13012026">14.1. - 13 January 2026</a><br><a href="#15042025">14.2. - 16 April 2025</a><br><a href="#20032025">14.3. - 20 March 2025</a><br><a href="#19012025">14.4. - 19 January 2025</a><br><a href="#06012025">14.5. - 06 January 2025</a><br><a href="#03072024">14.6. - 03 July 2024</a><br><a href="#25042024">14.7. - 25 April 2024</a><br><a href="#23042024">14.8. - 23 April 2024</a><br><a href="#older_changes">14.9. older changes</a><br></p>
+<p><a href="#Changes-to-the-Documentation">14. Changes to the Documentation</a><br><a href="#30012026">14.1. - 30 January 2026</a><br><a href="#13012026">14.2. - 13 January 2026</a><br><a href="#15042025">14.3. - 16 April 2025</a><br><a href="#20032025">14.4. - 20 March 2025</a><br><a href="#19012025">14.5. - 19 January 2025</a><br><a href="#06012025">14.6. - 06 January 2025</a><br><a href="#03072024">14.7. - 03 July 2024</a><br><a href="#25042024">14.8. - 25 April 2024</a><br><a href="#23042024">14.9. - 23 April 2024</a><br><a href="#older_changes">14.10. older changes</a><br></p>
 <hr class="full-width">
 <table class="full-width">
 <tr><th class="left-aligned"><a id="Introduction">1. Introduction</a></th></tr>
@@ -712,6 +712,14 @@
 <strong>Language</strong><br>
 						We added the possibility to translate <em>Exult</em> to another language and this sets
 						it for all of <em>Exult</em> and the game messages.</li>
+					<li>
+<strong>Built-in fonts</strong><br>
+						Built in fonts provide the original (fraktur like) fonts as well as a serif one that
+						some people prefer over the harder to read original.<br>
+						Additionally both fonts provide special characters needed for French, Spanish and
+						German for the above localization option.<br>
+						However the built in fonts clash with old unofficial translations of the games and
+						possibly other mods and patches. In this case disable the built-in fonts</li>
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
@@ -3247,6 +3255,14 @@
 							yes
 							</td></tr>
 <tr><td style="text-indent:32pt">&lt;/language&gt;</td></tr>
+<tr>
+<td style="text-indent:32pt">&lt;fonts&gt;</td>
+<td rowspan="3"><span class="non-selectable-comment">**original/serif/disabled. Choose the built-in fonts or disable it for unofficial translations.</span></td>
+</tr>
+<tr><td style="text-indent:32pt">
+							original
+							</td></tr>
+<tr><td style="text-indent:32pt">&lt;/fonts&gt;</td></tr>
 <tr><td style="text-indent:16pt">&lt;/gameplay&gt;</td></tr>
 <tr>
 <td style="text-indent:16pt">&lt;audio&gt;</td>
@@ -5178,7 +5194,17 @@
 <table class="full-width">
 <tr><th class="left-aligned"><a id="Changes-to-the-Documentation">14. Changes to the Documentation</a></th></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="13012026">14.1. - 13 January 2026</a></strong></td></tr>
+<tr><td><strong><a id="30012026">14.1. - 30 January 2026</a></strong></td></tr>
+<tr><td>
+				<ul>
+					<li>
+<a href="#game_display_gump">3.8. Game Display</a> built-in fonts added.</li>
+					<li>
+<a href="#exult_config">11.1. Settings in exult.cfg</a> built-in fonts added.</li>
+				</ul>
+			</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td><strong><a id="13012026">14.2. - 13 January 2026</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5194,7 +5220,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="15042025">14.2. - 16 April 2025</a></strong></td></tr>
+<tr><td><strong><a id="15042025">14.3. - 16 April 2025</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5206,7 +5232,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="20032025">14.3. - 20 March 2025</a></strong></td></tr>
+<tr><td><strong><a id="20032025">14.4. - 20 March 2025</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5220,7 +5246,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="19012025">14.4. - 19 January 2025</a></strong></td></tr>
+<tr><td><strong><a id="19012025">14.5. - 19 January 2025</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5230,7 +5256,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="06012025">14.5. - 06 January 2025</a></strong></td></tr>
+<tr><td><strong><a id="06012025">14.6. - 06 January 2025</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5238,7 +5264,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="03072024">14.6. - 03 July 2024</a></strong></td></tr>
+<tr><td><strong><a id="03072024">14.7. - 03 July 2024</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5254,7 +5280,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="25042024">14.7. - 25 April 2024</a></strong></td></tr>
+<tr><td><strong><a id="25042024">14.8. - 25 April 2024</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>Replaced *nix with Linux as people are mostly looking for Linux and might get confused.</li>
@@ -5267,7 +5293,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="23042024">14.8. - 23 April 2024</a></strong></td></tr>
+<tr><td><strong><a id="23042024">14.9. - 23 April 2024</a></strong></td></tr>
 <tr><td>
 				<ul>
 					<li>
@@ -5287,7 +5313,7 @@
 				</ul>
 			</td></tr>
 <tr><td>&nbsp;</td></tr>
-<tr><td><strong><a id="older_changes">14.9. older changes</a></strong></td></tr>
+<tr><td><strong><a id="older_changes">14.10. older changes</a></strong></td></tr>
 <tr><td>
 				<p>
 					For older changes of the documentation, please see its git history.
@@ -5305,7 +5331,7 @@
 									<a href="https://github.com/exult/exult/discussions">Contact us.</a></span></address></td></tr>
 </table></td></tr>
 <tr><td class="centered"><address><span style="font-size: smaller">Last modified:
-						13 January 2026 (GMT)</span></address></td></tr>
+						30 January 2026 (GMT)</span></address></td></tr>
 <tr><td class="centered"><div align="center"><!--#exec cgi="cgi-bin/vipcounter_xml.pl"--></div></td></tr>
 </table></div></body>
 </html>
