@@ -19,7 +19,7 @@ add_keylist(
 		inline_code("frame"),
 		"The initial frame in 'SPRITES.VGA' of the sprite. This is increased by one every tick, and may loop back to zero when it reaches the last frame (depending on the value of the 'reps' parameter).",
 		inline_code("reps"),
-		"Number of repetitions to execute. If zero, the sprite will be displayed for a tick and then go away. If positive, how many times the sprite frame will go through all of its frames. If negative, the sprite will go through all of its frames " . bold("once") . ".",
+		"Number of repetitions to execute. If zero, the sprite will be displayed for a tick and then go away. If positive, number of ticks that the sprite will be displayed. If " . inline_code("-1") . ", the sprite will go through all of its frames " . bold("once") . ". If " . inline_code("-2") . " the sprite will go through all of its frames until it goes out of screen. If " . inline_code("-3") . ", the sprite will go through all of its frames " . bold("once") . ", but in reverse order.",
 	),
 	4
 );
