@@ -1,0 +1,5 @@
+<?php
+right_align(
+    code_block("int UI_set_item_gump_position(object item, int x, int y)", true, false, 0, false),
+    $exultimg
+);
