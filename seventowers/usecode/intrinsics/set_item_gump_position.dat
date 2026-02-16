@@ -1,0 +1,18 @@
+<?php
+text("Programmatically repositions an item within its container gump to specific coordinates. This allows usecode to arrange items in precise positions for rituals, puzzles, or custom container layouts.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("item"),
+		"The item object to reposition.",
+		inline_code("x"),
+		"The horizontal coordinate within the container's display area.",
+		inline_code("y"),
+		"The vertical coordinate within the container's display area.",
+	),
+	4
+);
+make_header("Return", 0);
+text("Returns " . inline_code("1") . " on success, " . inline_code("0") . " on failure. Failure occurs if the item is invalid, not in a container, the container gump is not open, or if negative coordinates are provided.");
+make_header("Notes", 0);
+text("Coordinates must be non-negative. The positioning is relative to the container's display area. After setting a position, the display is automatically refreshed to show the new arrangement.");

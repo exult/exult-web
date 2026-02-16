@@ -643,6 +643,14 @@ $relation_data = array(
 			"set_item_frame_rot",
 			"set_polymorph",
 		),
+		"get_item_gump_position"		=>	array(
+			"get_item_gump_position",
+			"set_item_gump_position",
+		),
+		"set_item_gump_position"		=>	array(
+			"get_item_gump_position",
+			"set_item_gump_position",
+		),
 		"get_item_quality"				=>	array(
 			"get_item_quality",
 			"set_item_quality",

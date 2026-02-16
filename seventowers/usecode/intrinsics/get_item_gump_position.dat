@@ -1,0 +1,14 @@
+<?php
+text("Returns the coordinates of an item within its currently open container gump. This allows usecode to inspect where items are positioned in the container's display area.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("item"),
+		"The item object whose position is desired.",
+	),
+	4
+);
+make_header("Return", 0);
+text("An array " . inline_code("[x, y]") . " containing the item's coordinates within the container gump if the item is valid, currently in a container, and the container gump is open. Returns an empty array otherwise.");
+make_header("Notes", 0);
+text("The returned coordinates are relative to the container's display area, not the screen. This intrinsic is useful for checking item placement in custom container systems or ritual-based gameplay mechanics.");
