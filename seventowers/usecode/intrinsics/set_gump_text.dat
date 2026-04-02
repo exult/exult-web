@@ -1,0 +1,18 @@
+<?php
+text("Sets the text content of a text field widget within a dynamic gump.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("item"),
+		"The object whose dynamic gump contains the text field.",
+		inline_code("field_id"),
+		"The numeric identifier of the text field widget to update.",
+		inline_code("text"),
+		"The string to display in the text field.",
+	),
+	4
+);
+make_header("Return", 0);
+text("Returns 1 on success, 0 on failure (e.g. if the gump is not found or the field does not exist).");
+make_header("Notes", 0);
+text("The gump is located by searching for the gump associated with " . inline_code("item") . ", with a fallback to " . inline_code("item") . "'s owner. Returns 0 if the text string is null.");

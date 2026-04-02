@@ -1,0 +1,5 @@
+<?php
+right_align(
+	code_block("int UI_set_gump_text_font(object item, int field_id, int font_num)\nint item->set_gump_text_font(int field_id, int font_num)", true, false, 0, false),
+	$exultimg
+);
