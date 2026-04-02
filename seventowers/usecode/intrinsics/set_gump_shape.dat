@@ -1,0 +1,20 @@
+<?php
+text("Sets the shape and frame of a shape widget within a dynamic gump.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("item"),
+		"The object whose dynamic gump contains the shape widget.",
+		inline_code("field_id"),
+		"The numeric identifier of the shape widget to update.",
+		inline_code("shape"),
+		"The shape number from shapes.vga to display.",
+		inline_code("frame"),
+		"The frame number of the shape to display.",
+	),
+	4
+);
+make_header("Return", 0);
+text("Returns 1 on success, 0 on failure (e.g. if the gump is not found or the field does not exist).");
+make_header("Notes", 0);
+text("The gump is located by searching for the gump associated with " . inline_code("item") . ", with a fallback to " . inline_code("item") . "'s owner.");

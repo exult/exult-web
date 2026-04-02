@@ -1,0 +1,5 @@
+<?php
+right_align(
+	code_block("int UI_set_slider_value(object item, int field_id, int value)\nint item->set_slider_value(int field_id, int value)", true, false, 0, false),
+	$exultimg
+);
