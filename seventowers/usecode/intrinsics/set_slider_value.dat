@@ -1,0 +1,18 @@
+<?php
+text("Sets the current value of a slider widget within a dynamic gump.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("item"),
+		"The object whose dynamic gump contains the slider widget.",
+		inline_code("field_id"),
+		"The numeric identifier of the slider widget to update.",
+		inline_code("value"),
+		"The value to set on the slider.",
+	),
+	4
+);
+make_header("Return", 0);
+text("Returns 1 on success, 0 on failure (e.g. if the gump is not found or the field does not exist).");
+make_header("Notes", 0);
+text("The value is clamped to the slider's configured minimum and maximum range.");

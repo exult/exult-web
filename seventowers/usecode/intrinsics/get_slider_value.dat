@@ -1,0 +1,14 @@
+<?php
+text("Returns the current value of a slider widget within a dynamic gump.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("item"),
+		"The object whose dynamic gump contains the slider widget.",
+		inline_code("field_id"),
+		"The numeric identifier of the slider widget to read.",
+	),
+	4
+);
+make_header("Return", 0);
+text("The current slider value, or 0 on failure (e.g. if the gump is not found or the field does not exist).");

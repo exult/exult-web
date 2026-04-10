@@ -1399,6 +1399,41 @@ $relation_data = array(
 		"play_scene"					=>	array(
 			"play_scene",
 		),
+		"get_slider_value"				=>	array(
+			"set_gump_text",
+			"set_gump_text_font",
+			"set_gump_shape",
+			"set_slider_value",
+			"get_slider_value",
+		),
+		"set_gump_shape"				=>	array(
+			"set_gump_text",
+			"set_gump_text_font",
+			"set_gump_shape",
+			"set_slider_value",
+			"get_slider_value",
+		),
+		"set_gump_text"					=>	array(
+			"set_gump_text",
+			"set_gump_text_font",
+			"set_gump_shape",
+			"set_slider_value",
+			"get_slider_value",
+		),
+		"set_gump_text_font"			=>	array(
+			"set_gump_text",
+			"set_gump_text_font",
+			"set_gump_shape",
+			"set_slider_value",
+			"get_slider_value",
+		),
+		"set_slider_value"				=>	array(
+			"set_gump_text",
+			"set_gump_text_font",
+			"set_gump_shape",
+			"set_slider_value",
+			"get_slider_value",
+		),
 	),
 	"MISCELLANEOUS"		=>	array(
 		"add_spell"						=>	array(

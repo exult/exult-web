@@ -1,0 +1,5 @@
+<?php
+right_align(
+	code_block("int UI_set_gump_shape(object item, int field_id, int shape, int frame)\nint item->set_gump_shape(int field_id, int shape, int frame)", true, false, 0, false),
+	$exultimg
+);
