@@ -599,6 +599,14 @@ $relation_data = array(
 			"set_item_frame",
 			"get_item_frame_rot",
 			"set_item_frame_rot",
+			"get_shape_flag",
+		),
+		"get_shape_flag"				=>	array(
+			"get_shape_flag",
+			"get_item_shape",
+			"get_item_flag",
+			"is_water",
+			"get_object_position",
 		),
 		"set_item_shape"				=>	array(
 			"get_item_shape",

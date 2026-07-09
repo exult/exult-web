@@ -1,0 +1,5 @@
+<?php
+right_align(
+	code_block("int UI_get_shape_flag(object target, int flag)\nint target->get_shape_flag(int flag)\nint UI_get_shape_flag(int shape, int flag)\nint UI_get_shape_flag(int target[2], int flag)\nint UI_get_shape_flag(int target[3], int flag)\nint UI_get_shape_flag(mixed target[4], int flag)", true, false, 0, false),
+	$exultimg
+);
