@@ -365,6 +365,8 @@ $language_data = array(
 			'get_readied',
 			'UI_get_schedule_type',
 			'get_schedule_type',
+			'UI_get_shape_flag',
+			'get_shape_flag',
 			'UI_get_skin_colour',
 			'get_skin_colour',
 			'UI_get_speech_track',

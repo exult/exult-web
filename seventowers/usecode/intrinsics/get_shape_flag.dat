@@ -1,0 +1,53 @@
+<?php
+text("Tests one of Exult's shape information flags for an object, shape number, or map tile.");
+make_header("Parameters", 0);
+add_keylist(
+	array(
+		inline_code("target"),
+		"The object, NPC, shape number, or tile position to inspect. Tile positions may be passed as " . inline_code("[x, y]") . ", " . inline_code("[x, y, z]") . ", or a " . inline_code("click_on_item") . "-style " . inline_code("[object, x, y, z]") . " array.",
+		inline_code("flag"),
+		"The shape flag ID to test. Values outside the valid range return " . inline_code("false") . ".",
+	),
+	4
+);
+make_header("Return", 0);
+text(inline_code("true") . " if the target's shape has the requested flag, or " . inline_code("false") . " if it does not, the target is invalid, or the flag ID is out of range.");
+make_header("Flag IDs", 0);
+table(
+	array(
+		array("ID", "Flag"),
+		array("0", "SFX"),
+		array("1", "strange movement"),
+		array("2", "contact effect"),
+		array("3", "water"),
+		array("4", "fire field"),
+		array("5", "sleep field"),
+		array("6", "poison field"),
+		array("7", "caltrops field"),
+		array("8", "campfire field"),
+		array("9", "any field type"),
+		array("10", "animated"),
+		array("11", "solid"),
+		array("12", "transparent"),
+		array("13", "translucent"),
+		array("14", "occludes"),
+		array("15", "light source"),
+		array("16", "x obstacle"),
+		array("17", "y obstacle"),
+		array("18", "door"),
+		array("19", "barge part"),
+		array("20", "container locked"),
+		array("21", "extradimensional storage"),
+		array("22", "quantity frames"),
+		array("23", "usecode events"),
+		array("24", "explosive"),
+		array("25", "on fire"),
+		array("26", "lightweight"),
+		array("27", "body"),
+		array("28", "jawbone"),
+		array("29", "mirror"),
+		array("30", "spell"),
+	)
+);
+make_header("Notes", 0);
+text("When " . inline_code("target") . " is a tile position, Exult checks the flat at that tile. A four-element array first tries the object in element 0; if that is not a valid item, it checks the flat at elements 1 and 2.");
