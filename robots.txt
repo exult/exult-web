@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /exultlog.php
+Disallow: /exultlogfull.php
+Disallow: /forum/search.php
