@@ -4,7 +4,7 @@ make_header("Parameters", 0);
 add_keylist(
 	array(
 		inline_code("target"),
-		"The object, NPC, shape number, or tile position to inspect. Tile positions may be passed as " . inline_code("[x, y]") . ", " . inline_code("[x, y, z]") . ", or a " . inline_code("click_on_item") . "-style " . inline_code("[object, x, y, z]") . " array.",
+		"The object, NPC, shape number, or tile position to inspect. Tile positions may be passed as " . inline_code("[x, y]") . ", " . inline_code("[x, y, z]") . ", or a " . inline_code("click_on_item") . "-style " . inline_code("[object, x, y, z]") . " array. Coordinate targets check both the flat tile and any non-flat object whose footprint covers that tile coordinate.",
 		inline_code("flag"),
 		"The shape flag ID to test. Values outside the valid range return " . inline_code("false") . ".",
 	),
@@ -50,4 +50,11 @@ table(
 	)
 );
 make_header("Notes", 0);
-text("When " . inline_code("target") . " is a tile position, Exult checks the flat at that tile. A four-element array first tries the object in element 0; if that is not a valid item, it checks the flat at elements 1 and 2.");
+text(
+	array(
+		"When " . inline_code("target") . " is a tile position, Exult checks the flat at that tile and also checks object shapes occupying the tile. For " . inline_code("[x, y, z]") . " targets, the " . inline_code("z") . " value is used when matching object footprints; flat tile checks use the " . inline_code("x") . " and " . inline_code("y") . " coordinates.",
+		"A four-element array first tries the object in element 0. If that is not a valid item, Exult falls back to elements 1, 2, and 3 as " . inline_code("x") . ", " . inline_code("y") . ", and " . inline_code("z") . " and performs the same flat-tile and object-footprint checks.",
+		"This lets scripts test semantic shape flags such as " . inline_code("on fire") . ", " . inline_code("water") . ", " . inline_code("solid") . ", or " . inline_code("contact effect") . " at a map coordinate without maintaining hard-coded shape number lists.",
+	),
+	0
+);
