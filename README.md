@@ -18,11 +18,12 @@ Quick and dirty guide to our Web-Git
     ```
     rsync -az --delete \
       --exclude=.git/ \
+      --filter='P */' \
       --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \
       -e "ssh -o BatchMode=yes -o PasswordAuthentication=no -i ~/.ssh/id_ed25519" \
       ./ USER@web.sourceforge.net:/home/project-web/exult/htdocs/
     ```
 
-This updates `/home/project-web/exult/htdocs` with the latest Git version, deletes removed files, and sets the correct permissions during upload.
+This updates `/home/project-web/exult/htdocs` with the latest Git version, deletes removed files while preserving destination-only subdirectories, and sets the correct permissions during upload.
 
 # **Please do not edit the webspace directly.**

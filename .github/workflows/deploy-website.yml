@@ -29,6 +29,7 @@ jobs:
           for ii in $(seq 1 5); do
             rsync -az --delete \
               --exclude=.git/ \
+              --filter='P */' \
               --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \
               -e "ssh -o BatchMode=yes -o PasswordAuthentication=no -i ~/.ssh/id_ed25519" \
               $GITHUB_WORKSPACE/exult-web-master/ \
