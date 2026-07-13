@@ -9,35 +9,20 @@ Quick and dirty guide to our Web-Git
 
 - commit changes to Git
 
-- in a terminal shell, download a snapshot of the current website with the following command:
+- in a terminal shell, regenerate the snapshot download metadata:
     ```
-    wget https://github.com/exult/exult-web/archive/master.zip
-    ```
-
-- transfer the file over to Exult web space with
-    ```
-    scp master.zip USER@web.sourceforge.net:/home/project-web/exult
+    sh ./gen-snapshot-file-details.sh
     ```
 
-- [create interactive shell session](https://sourceforge.net/p/forge/documentation/Shell%20Service/):
+- sync the checked out website to Exult web space with
     ```
-    ssh -t USER,exult@shell.sourceforge.net create
-    ```
-
-- change dir to our webspace:
-    ```
-    cd /home/project-web/exult
-    ````
-
-- update the webspace with:
-    ```
-    ./update.sh
+    rsync -az --delete \
+      --exclude=.git/ \
+      --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \
+      -e "ssh -o BatchMode=yes -o PasswordAuthentication=no -i ~/.ssh/id_ed25519" \
+      ./ USER@web.sourceforge.net:/home/project-web/exult/htdocs/
     ```
 
-This script updates `/home/project-web/exult/htdocs` with latest Git version, and sets up the correct permissions for all files.
-
-For efficiency reasons, htdocs is a symbolic link to exult-web-master directory.
-
-If you need to modify the `update.sh` script, modify it in git and it will copy itself over.
+This updates `/home/project-web/exult/htdocs` with the latest Git version, deletes removed files, and sets the correct permissions during upload.
 
 # **Please do not edit the webspace directly.**
