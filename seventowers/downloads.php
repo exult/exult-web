@@ -29,7 +29,8 @@
 		),
 	);
 
-	if (is_array($argv))
+	$PARAMETERS = array();
+	if (PHP_SAPI === 'cli' && isset($argv) && is_array($argv))
 		parse_str(implode('&', array_slice($argv, 1)), $PARAMETERS);
 
 	if (!isset($PARAMETERS["section"]))

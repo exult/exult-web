@@ -6,7 +6,9 @@
 $TITLE_IMAGE = "uccreftitle.png";
 $HEADLINE = "UCC Reference";
 
-if (isset($_REQUEST["DATAFILE"])) {
+$DATAFILE = "";
+$valid_datafile = !isset($_REQUEST["DATAFILE"]) || is_string($_REQUEST["DATAFILE"]);
+if (isset($_REQUEST["DATAFILE"]) && $valid_datafile) {
 	$DATAFILE = $_REQUEST["DATAFILE"];
 }
 
@@ -14,6 +16,11 @@ if (isset($_REQUEST["DATAFILE"])) {
 if (isset($_REQUEST["TYPE"]) && is_numeric($_REQUEST["TYPE"])) {
 	$TYPE = intval($_REQUEST["TYPE"]);
 } else {
+	$TYPE = 5;
+}
+
+// Only these reference categories have data files.
+if (!in_array($TYPE, array(3, 5, 6, 50), true)) {
 	$TYPE = 5;
 }
 
@@ -27,20 +34,12 @@ $htmlmode = true;
 $reference_mode = true;
 
 switch ($TYPE) {
-	case 0:
-		break;
-	case 1:
-		break;
-	case 2:
-		break;
 	case 3:
 		$data = "scriptop/$DATAFILE";
 		$head = "Script Commands";
 		$relations = "script commands";
 		$relation_data = 0;
 		include_once "usecode/reference/opcode_relations.dat";
-		break;
-	case 4:
 		break;
 	case 6:
 		$DATAFILE = preg_replace("/^#/", "", $DATAFILE);
@@ -73,9 +72,11 @@ switch ($TYPE) {
 		break;
 }
 
-if (!file_exists("usecode/$data.dat")) {
+// A reference name is a single basename, never a path or a stream URL.
+if (!$valid_datafile || !preg_match('/\A[A-Za-z0-9_-]+\z/', $DATAFILE) || !is_file("usecode/$data.dat")) {
 	make_header("Error: File Not Found");
-	$tpl->assign("TEXT", "File \"usecode/$data.dat\" was not found on the server.<br/>Please avoid using direct links to this website unless from a bookmarked page.");
+	$display_path = htmlspecialchars("usecode/$data.dat", ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
+	$tpl->assign("TEXT", "File \"$display_path\" was not found on the server.<br/>Please avoid using direct links to this website unless from a bookmarked page.");
 	$tpl->parse("CONTENT", ".any");
 } else {
 	$ucc = add_tip("UCC", "Usecode C");

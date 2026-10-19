@@ -12,7 +12,8 @@ $HEADLINE = "Usecode document";
 
 include_once "outmode.inc";
 
-if (is_array($argv)) {
+$PARAMETERS = array();
+if (PHP_SAPI === 'cli' && isset($argv) && is_array($argv)) {
 	parse_str(implode('&', array_slice($argv, 1)), $PARAMETERS);
 }
 
@@ -33,9 +34,10 @@ if (!isset($PARAMETERS["TYPE"])) {
 }
 
 // Silently correct errors.
-$img_regexp = "/^[A-Za-z0-9_-]+\.png$/";
+$img_regexp = '/\A[A-Za-z0-9_-]+\.png\z/';
 if (
 	isset($_REQUEST["TITLE_IMAGE"])
+	&& is_string($_REQUEST["TITLE_IMAGE"])
 	&& preg_match($img_regexp, $_REQUEST["TITLE_IMAGE"])
 ) {
 	$TITLE_IMAGE = $_REQUEST["TITLE_IMAGE"];
@@ -44,9 +46,10 @@ if (
 }
 
 // Silently correct errors.
-$dat_regexp = "/^[A-Za-z0-9_-]+\.dat$/";
+$dat_regexp = '/\A[A-Za-z0-9_-]+\.dat\z/';
 if (
 	isset($_REQUEST["DATAFILE"])
+	&& is_string($_REQUEST["DATAFILE"])
 	&& preg_match($dat_regexp, $_REQUEST["DATAFILE"])
 ) {
 	$DATAFILE = $_REQUEST["DATAFILE"];
@@ -55,7 +58,7 @@ if (
 }
 
 // Silently correct errors.
-if (isset($_REQUEST["OUTPUT"])) {
+if (isset($_REQUEST["OUTPUT"]) && is_string($_REQUEST["OUTPUT"])) {
 	$OUTPUT = $_REQUEST["OUTPUT"];
 } else {
 	$OUTPUT = $PARAMETERS["OUTPUT"];
