@@ -50,6 +50,7 @@
 
 *.bat		text
 *.sh		text
+gen-snapshot-file-details.sh text eol=lf
 
 *.cfg		text
 *.txt		text

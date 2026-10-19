@@ -29,6 +29,7 @@ jobs:
           for ii in $(seq 1 5); do
             rsync -az --delete \
               --exclude=.git/ \
+              --exclude=tests/ \
               --exclude=/seventowers/tests/ \
               --filter='P */' \
               --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \

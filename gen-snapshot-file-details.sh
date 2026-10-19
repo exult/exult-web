@@ -17,10 +17,23 @@
  #  along with this program; if not, write to the Free Software
  #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  
-echo "var static_snapshot_file_details = {" |tee shapshot_file_details.js
-grep -o "https://exult.sourceforge.io/snapshots/[^\"]*" download.html | while read p; do
-  echo "  '$p':  {"|tee -a shapshot_file_details.js
-  curl --silent --show-error --head "$p"  | sed -r -n "s/(content-length|last-modified): +([^\r]+)\r?$/   '\1': '\2',/p" | tee -a shapshot_file_details.js
-  echo "  }," | tee -a shapshot_file_details.js
-done
-echo "};" |tee -a shapshot_file_details.js
+{
+  printf 'var static_snapshot_file_details = {\n'
+  grep -o "https://exult.sourceforge.io/snapshots/[^\"]*" download.html | while IFS= read -r p; do
+    # Headers are external data. Serialize both keys and values as JSON rather
+    # than interpolating them into JavaScript string literals.
+    curl --silent --show-error --head "$p" | python3 -c '
+import json
+import sys
+
+headers = {}
+for line in sys.stdin:
+    name, separator, value = line.partition(":")
+    name = name.lower()
+    if separator and name in ("content-length", "last-modified"):
+        headers[name] = value.strip()
+print("  " + json.dumps(sys.argv[1]) + ": " + json.dumps(headers) + ",")
+' "$p"
+  done
+  printf '};\n'
+} | tee shapshot_file_details.js
