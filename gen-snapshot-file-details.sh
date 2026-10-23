@@ -17,9 +17,16 @@
  #  along with this program; if not, write to the Free Software
  #  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  
+if [ "$#" -eq 0 ]; then
+  set -- download.html
+  if [ -d dist/seventowers ]; then
+    set -- "$@" dist/seventowers/*.html
+  fi
+fi
+
 {
   printf 'var static_snapshot_file_details = {\n'
-  grep -o "https://exult.sourceforge.io/snapshots/[^\"]*" download.html | while IFS= read -r p; do
+  grep -h -o "https://exult.sourceforge.io/snapshots/[^\"]*" "$@" | sort -u | while IFS= read -r p; do
     # Headers are external data. Serialize both keys and values as JSON rather
     # than interpolating them into JavaScript string literals.
     curl --silent --show-error --head "$p" | python3 -c '

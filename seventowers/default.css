@@ -50,6 +50,51 @@ body {
 	line-height: 1.4em;
 }
 
+/* Static documentation and download tables. */
+pre.usecode {
+	white-space: pre;
+	overflow-x: auto;
+	padding: 1em;
+	background: #fff;
+	color: #24292e;
+	text-align: left;
+	line-height: 1.5;
+}
+
+code.usecode {
+	font-family: monospace;
+	white-space: pre-wrap;
+}
+
+code.usecode a {
+	border: 0;
+	padding: 0;
+	text-decoration: underline;
+	color: inherit;
+}
+
+main table {
+	border-collapse: collapse;
+	text-align: left;
+	margin: 1em 0;
+}
+
+main th, main td {
+	border: 1px solid #888;
+	padding: 0.5em;
+	vertical-align: top;
+}
+
+.size-column, .datetime-column {
+	white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+	body { padding: 0.5em; text-align: left; }
+	ul.navbar { position: static; width: auto; }
+	main { overflow-x: auto; }
+}
+
 h1 {
 	display: block;
 	font-family: times, serif;
