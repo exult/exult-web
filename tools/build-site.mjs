@@ -53,7 +53,7 @@ function page(title, banner, content, active = '', submenu = '') {
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <nav aria-label="Main"><ul class="navbar">${nav.map(([url,text,icon]) => `<li>${url === active ? `<span class="navbar" aria-current="page">` : `<a href="${url}.html">`}<img src="images/${icon}.png" alt="">&nbsp;&nbsp;${text}${url === active ? '</span>' : '</a>'}</li>`).join('')}</ul></nav>
+  <nav aria-label="Main"><ul class="navbar">${nav.map(([url,text,icon]) => `<li>${url === active ? `<span class="navbar" aria-current="page">` : `<a href="${url}.html">`}<img src="images/${icon}.png" alt=""><span class="nav-label">${text}</span>${url === active ? '</span>' : '</a>'}</li>`).join('')}</ul></nav>
   <header>
   <input type="checkbox" id="readable-titles" class="font-toggle">
   <label for="readable-titles" class="font-toggle-label">Use readable titles</label>
@@ -168,7 +168,7 @@ export async function build(output = path.join(root,'dist')) {
     for(const [current,name] of downloadNames[section].entries()) {
       const content = section === 2 ? panels[0] : `<div class="section-tabs"><div class="section-options" role="radiogroup" aria-label="${esc(data.banner)} sections">${data.heads.map((head,i)=>{
         const id = `tab-${downloadNames[section][i]}`;
-        return `<input class="tab-option" type="radio" name="download-section" id="${id}" aria-controls="${id}-panel"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt="">${esc(head)}</label>`;
+        return `<input class="tab-option" type="radio" name="download-section" id="${id}" aria-controls="${id}-panel"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt=""><span class="nav-label">${esc(head)}</span></label>`;
       }).join('')}</div>${panels.map((panel,i)=>{
         const id = `tab-${downloadNames[section][i]}`;
         return `<section class="tab-panel" id="${id}-panel" aria-labelledby="${id}-label" tabindex="0">${panel}</section>`;

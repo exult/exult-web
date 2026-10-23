@@ -43,6 +43,8 @@ a:hover.target {
 
 html {
 	font-size: 125%;
+	--link-hover-background: #ffff80;
+	--link-hover-color: #aa0000;
 }
 
 body {
@@ -82,8 +84,13 @@ a:focus-visible,
 	outline-offset: 0;
 }
 
-[aria-current="page"] {
-	text-decoration: underline double;
+.nav-label {
+	text-decoration: underline;
+}
+
+[aria-current="page"] .nav-label,
+.tab-option:checked + .tab-label .nav-label {
+	text-decoration-style: double;
 }
 
 /* Static documentation and download tables. */
@@ -230,16 +237,15 @@ main th, main td {
 }
 
 .tab-label:hover {
-	background: #ffff80;
-	color: #a00;
-	border-color: #a00;
+	background: var(--link-hover-background);
+	color: var(--link-hover-color);
+	border-color: var(--link-hover-color);
 }
 
 .tab-option:checked + .tab-label {
 	background: #3f3f3f;
 	color: #d8ac20;
 	border-color: #d8ac20;
-	text-decoration: underline double;
 	cursor: default;
 	pointer-events: none;
 }
@@ -458,9 +464,12 @@ ul.navbar {
 }
 
 ul.navbar a {
-	display: block;
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
 	padding: 0.1em;
 	width: 13em;
+	text-decoration: none;
 }
 
 ul.navbar li {
@@ -472,9 +481,12 @@ span.navbar {
 	border-right-width: 0.5em;
 	border-right-style: solid;
 	vertical-align: middle;
-	display: table-cell;
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.1em;
 	font-weight: bolder;
-	width: 13.2em;
+	width: 13em;
 }
 
 @media (max-width: 900px) {
@@ -725,13 +737,6 @@ a:visited.offsite {
 	color: #003388;
 }
 
-a:hover,
-a:hover.offsite {
-	border-right-color: #AA0000;
-	background-color: #FFFF80;
-	color: #AA0000;
-}
-
 ul.box a:hover,
 ul.box a:hover.offsite,
 span.navbar {
@@ -917,13 +922,6 @@ ul.navbar {
 		color: rgb(100, 172, 232);
 	}
 
-	a:hover,
-	a:hover.offsite {
-		border-right-color: #742323;
-		background-color: #D8AC20;
-		color: #742323;
-	}
-
 	ul.box a:hover,
 	ul.box a:hover.offsite,
 	span.navbar {
@@ -934,6 +932,8 @@ ul.navbar {
 
 	html,
 	body {
+		--link-hover-background: #d8ac20;
+		--link-hover-color: #742323;
 		background-color: rgb(24, 26, 27);
 		color: rgb(209, 203, 199);
 	}
@@ -1087,6 +1087,14 @@ ul.navbar {
 	.ucc .me3 {
 		color: #82AAFF;
 	}
+}
+
+/* Apply after both theme palettes so :link/:visited cannot override hover. */
+a:hover,
+a:hover.offsite {
+	border-right-color: var(--link-hover-color);
+	background-color: var(--link-hover-background);
+	color: var(--link-hover-color);
 }
 
 /* Respect the reader's high-contrast palette in both light and dark themes. */

@@ -84,6 +84,23 @@ try {
           await page.locator('#readable-titles').uncheck();
         }
         if(name === 'keyring') {
+          if(width === 1280) {
+            const mainLink = page.locator('nav a').first();
+            const sectionLink = page.locator('.tab-label').first();
+            const palette = element => {
+              const style = getComputedStyle(element);
+              return [style.color,style.backgroundColor,style.borderRightColor];
+            };
+            await mainLink.hover();
+            const mainColors = await mainLink.evaluate(palette);
+            await sectionLink.hover();
+            assert.deepEqual(await sectionLink.evaluate(palette),mainColors,'Both navigation bars must use the same hover palette');
+            for(const item of [mainLink,sectionLink]) {
+              assert.equal(await item.locator('.nav-label').evaluate(label=>getComputedStyle(label).textDecorationLine),'underline');
+            }
+            const scan = await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa','best-practice']).analyze();
+            report.push({name,colorScheme,width,state:'section-hover',violations:scan.violations,incomplete:scan.incomplete});
+          }
           const choices = page.getByRole('radiogroup');
           assert.equal(await choices.getByRole('radio').count(),4);
           assert.equal(await choices.locator('.tab-panel').count(),0,'Section content must follow the complete group of choices');
