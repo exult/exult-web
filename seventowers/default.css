@@ -49,7 +49,8 @@ html {
 body {
 	font-family: helvetica, sans-serif;
 	font-size: 1rem;
-	padding-left: 15em;
+	margin: 0;
+	padding: 10px 10px 10px calc(15em + 10px);
 	text-align: justify;
 	line-height: 1.4em;
 }
@@ -462,7 +463,7 @@ span.navbar {
 }
 
 @media (max-width: 700px) {
-	body { padding: 0.5em; text-align: left; }
+	body { padding: 10px; text-align: left; }
 	ul.navbar { position: static; width: auto; }
 	main { overflow-x: auto; }
 }
