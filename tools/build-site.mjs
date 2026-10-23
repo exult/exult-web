@@ -89,22 +89,29 @@ function downloadContent(data, section, current) {
   let body = `<h2>${desc.NAME}</h2>${desc.SHOWICON ? `<img class="logoimg" src="images/${desc.ICON}.png" alt="">` : ''}${paragraphs(desc.TEXT)}`;
   body += `<aside class="box"><h3>${notice.TITLE}</h3>${paragraphs(notice.TEXT)}</aside>`;
   if(section === 1) body += '<p><a href="reference-index.html">Browse intrinsic, script command, and compiler directive reference pages</a></p>';
-  const entries = [];
   if(section === 2) {
-    for(const entry of data.files.flat()) entries.push({url:`${entry.DIR}/${entry.NAME}.${entry.EXT}`, title:entry.TITLE, icons:entry.ICONS, blurb:entry.BLURBNFO.join(', ')});
-  } else {
-    for(const [filename, entry] of Object.entries(data.catalog)) {
-      if(current && current !== entry.PAGE) continue;
-      const icon = data.icons[entry.PAGE];
-      if(filename.endsWith('.md')) {
-        const name = filename.slice(0,-3);
-        entries.push({url:`${name}.html`, title:entry.TITLE, icons:[icon], blurb:`Markdown version: <a href="${name}.md">view source</a>, <a href="${name}.md" download>save to disk</a>. <a href="docs/${name}.naturaldocs.txt" download>Natural Docs source</a>.`});
-      } else {
-        // Snapshot archives may be fetched before building, or already present locally.
-        const directories = ['../snapshots','files'].filter(dir=>fs.existsSync(path.join(site,dir,filename)));
-        // SourceForge keeps snapshot archives separately from the Git checkout.
-        for(const dir of directories.length ? directories : ['../snapshots']) entries.push({url:dir === '../snapshots' ? `https://exult.sourceforge.io/snapshots/${filename}` : `${dir}/${filename}`,title:entry.TITLE,icons:[icon],blurb:entry.README || ''});
-      }
+    return body + '<div class="icon-gallery">' + data.files.flat().map(entry => {
+      const url = `${entry.DIR}/${entry.NAME}.${entry.EXT}`;
+      const previews = entry.ICONS.map(icon => {
+        const dimensions = icon.slice(icon.lastIndexOf('-')+1);
+        return `<a class="icon-preview" href="images/${icon}.png" download><span class="icon-preview-image"><img src="images/${icon}.png" alt="${esc(entry.NAME)} ${esc(dimensions)} preview"></span><span>${esc(dimensions)}</span></a>`;
+      }).join('');
+      const stat = fs.statSync(path.join(site,url));
+      return `<section class="icon-download"><div class="icon-previews">${previews}</div><p><a href="${url}" download>${esc(entry.TITLE)}</a></p><p class="icon-file-info">${Math.ceil(stat.size/1024)} KiB · ${stat.mtime.toISOString().slice(0,10)}</p></section>`;
+    }).join('') + '</div>';
+  }
+  const entries = [];
+  for(const [filename, entry] of Object.entries(data.catalog)) {
+    if(current && current !== entry.PAGE) continue;
+    const icon = data.icons[entry.PAGE];
+    if(filename.endsWith('.md')) {
+      const name = filename.slice(0,-3);
+      entries.push({url:`${name}.html`, title:entry.TITLE, icons:[icon], blurb:`Markdown version: <a href="${name}.md">view source</a>, <a href="${name}.md" download>save to disk</a>. <a href="docs/${name}.naturaldocs.txt" download>Natural Docs source</a>.`});
+    } else {
+      // Snapshot archives may be fetched before building, or already present locally.
+      const directories = ['../snapshots','files'].filter(dir=>fs.existsSync(path.join(site,dir,filename)));
+      // SourceForge keeps snapshot archives separately from the Git checkout.
+      for(const dir of directories.length ? directories : ['../snapshots']) entries.push({url:dir === '../snapshots' ? `https://exult.sourceforge.io/snapshots/${filename}` : `${dir}/${filename}`,title:entry.TITLE,icons:[icon],blurb:entry.README || ''});
     }
   }
   body += '<table id="download_links"><thead><tr><th scope="col">Download</th><th scope="col">Size</th><th scope="col">Last modified</th></tr></thead><tbody>';

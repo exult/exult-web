@@ -116,6 +116,47 @@ main th, main td {
 	margin-top: 0.3em;
 }
 
+.icon-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+	gap: 1em;
+	margin: 1em 0;
+}
+
+.icon-download {
+	border: 1px solid #888;
+	padding: 1em;
+	text-align: center;
+}
+
+.icon-previews {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.75em;
+}
+
+.icon-gallery a.icon-preview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3em;
+	border: 0;
+	background: none;
+}
+
+.icon-preview-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+}
+
+.icon-file-info {
+	font-size: 0.85em;
+	margin-bottom: 0;
+}
+
 @font-face {
 	font-family: "UnifrakturCook";
 	src: url("fonts/UnifrakturCook-Bold.ttf") format("truetype");
