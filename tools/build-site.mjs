@@ -114,13 +114,13 @@ function downloadContent(data, section, current) {
       for(const dir of directories.length ? directories : ['../snapshots']) entries.push({url:dir === '../snapshots' ? `https://exult.sourceforge.io/snapshots/${filename}` : `${dir}/${filename}`,title:entry.TITLE,icons:[icon],blurb:entry.README || ''});
     }
   }
-  body += '<table id="download_links"><thead><tr><th scope="col">Download</th><th scope="col">Size</th><th scope="col">Last modified</th></tr></thead><tbody>';
+  body += `<table class="download-links" id="download-links-${section}-${current}"><thead><tr><th scope="col">Download</th><th scope="col">Size</th><th scope="col">Last modified</th></tr></thead><tbody>`;
   for(const entry of entries) {
     const local = path.join(site,entry.url);
     const stat = fs.existsSync(local) ? fs.statSync(local) : null;
     body += `<tr><td class="link-column"><div class="download-entry"><div class="download-icons">${entry.icons.map(i=>`<img src="images/${i}.png" alt="">`).join('')}</div><div class="download-copy"><a href="${entry.url}">${entry.title}</a>${entry.blurb ? `<div class="download-details">${entry.blurb}</div>` : ''}</div></div></td><td class="size-column">${stat ? Math.ceil(stat.size/1024)+' KiB' : ''}</td><td class="datetime-column">${stat ? stat.mtime.toISOString().slice(0,16).replace('T',' ')+' UTC' : ''}</td></tr>`;
   }
-  return body + '</tbody></table><script src="../shapshot_file_details.js"></script><script src="../download.js"></script>';
+  return body + '</tbody></table>';
 }
 
 export async function build(output = path.join(root,'dist')) {
@@ -142,9 +142,13 @@ export async function build(output = path.join(root,'dist')) {
   }
   for(const section of [0,1,2]) {
     const data = json(`content/downloads-${section}.json`);
+    const panels = data.heads.map((_,i)=>downloadContent(data,section,i));
     for(const [current,name] of downloadNames[section].entries()) {
-      const submenu = `<nav aria-label="Section" class="subsections">${data.heads.map((head,i)=>`<a href="${downloadNames[section][i]}.html"${i===current ? ' aria-current="page"' : ''}>${head}</a>`).join(' | ')}</nav>`;
-      write(name+'.html',page(data.heads[current],data.banner,downloadContent(data,section,current),downloadNames[section][0],submenu));
+      const content = section === 2 ? panels[0] : `<div class="section-tabs" role="radiogroup" aria-label="${esc(data.banner)} sections">${data.heads.map((head,i)=>{
+        const id = `tab-${downloadNames[section][i]}`;
+        return `<input class="tab-option" type="radio" name="download-section" id="${id}"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}">${esc(head)}</label><section class="tab-panel" aria-labelledby="${id}-label">${panels[i]}</section>`;
+      }).join('')}</div><script src="../shapshot_file_details.js"></script><script src="../download.js"></script>`;
+      write(name+'.html',page(data.heads[current],data.banner,content,downloadNames[section][0]));
     }
   }
   const docs = await createDocumentation(path.join(site,'usecode'));

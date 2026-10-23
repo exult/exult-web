@@ -131,10 +131,13 @@ function TryUpdateSnapshotRow(release, row) {
 }
 function TryUpdateRows(Snapshot)
 {
-        var table = document.getElementById("download_links");
-        // Iterate over table rows. Using standard for loop for compatibility with older browsers that don't allow iterating HTMLColleection Objects
-        for (var index = 0; index < table.rows.length; index++) {
-            TryUpdateSnapshotRow(Snapshot, table.rows.item(index));
+        var tables = document.querySelectorAll('#download_links, .download-links');
+        // Include tables in inactive panels so their metadata is ready when selected.
+        for (var tableIndex = 0; tableIndex < tables.length; tableIndex++) {
+            var table = tables.item(tableIndex);
+            for (var index = 0; index < table.rows.length; index++) {
+                TryUpdateSnapshotRow(Snapshot, table.rows.item(index));
+            }
         }
 
 }

@@ -157,6 +157,71 @@ main th, main td {
 	margin-bottom: 0;
 }
 
+.section-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em;
+	--tab-background: #dfdfdf;
+	--tab-color: #005533;
+	--tab-border: #00aa33;
+}
+
+.tab-option {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	overflow: hidden;
+}
+
+.tab-label {
+	padding: 0.1em 0.25em;
+	border-right: 0.5em solid var(--tab-border);
+	background: var(--tab-background);
+	color: var(--tab-color);
+	cursor: pointer;
+}
+
+.tab-label:hover {
+	background: #ffff80;
+	color: #a00;
+	border-color: #a00;
+}
+
+.tab-option:checked + .tab-label {
+	background: #3f3f3f;
+	color: #d8ac20;
+	border-color: #d8ac20;
+	font-weight: bold;
+	cursor: default;
+	pointer-events: none;
+}
+
+.tab-option:focus-visible + .tab-label {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.tab-panel {
+	display: none;
+	order: 1;
+	flex-basis: 100%;
+	min-width: 0;
+	overflow-x: auto;
+}
+
+.tab-option:checked + .tab-label + .tab-panel {
+	display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+	.section-tabs {
+		--tab-background: rgb(54, 56, 57);
+		--tab-color: rgb(20, 184, 69);
+		--tab-border: rgb(20, 184, 69);
+	}
+}
+
 @font-face {
 	font-family: "UnifrakturCook";
 	src: url("fonts/UnifrakturCook-Bold.ttf") format("truetype");

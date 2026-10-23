@@ -87,6 +87,22 @@ test('downloads use the main Exult metadata updater and retain remote archives',
   assert(read('reference.html').includes('exult_intrinsics.md'));
 });
 
+test('download sections share four panels and section URLs select the matching tab',()=>{
+  for(const names of [['exultmods','keyring','sifixes','avatarpack'],['usecode','tutorials','reference','highlighters']]) {
+    for(const name of names) {
+      const html=read(name+'.html');
+      assert.equal([...html.matchAll(/class="tab-option"/g)].length,4);
+      assert.equal([...html.matchAll(/class="tab-panel"/g)].length,4);
+      assert.equal([...html.matchAll(/ checked>/g)].length,1);
+      assert(html.includes(`id="tab-${name}" checked>`));
+      assert.equal([...html.matchAll(/src="\.\.\/download.js"/g)].length,1);
+      const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+      assert.equal(new Set(ids).size,ids.length,'Duplicate IDs in '+name);
+    }
+  }
+  assert(!read('ultimaicons.html').includes('class="tab-option"'));
+});
+
 test('Markdown exports expand includes and preserve code, tables, links and images',()=>{
   const names=['exult_intrinsics','ucc_scripting','ucc_tutorial','ucc_reference'];
   for(const name of names) {

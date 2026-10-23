@@ -36,6 +36,8 @@ Page banners use actual heading text with the self-hosted UnifrakturCook Bold fo
 
 The “Use readable titles” checkbox above each banner switches the heading to a plain sans-serif font without decorative effects. It uses native HTML controls and CSS, works with the keyboard, and needs no JavaScript. The setting applies to the current page; it is not stored across navigation.
 
+The Exult Mods and Usecode C pages each combine their four sections into CSS-only tabs styled like the site's links. Native radio controls support keyboard selection, and the selected tab uses the same gold treatment as the active main navigation item. The existing section URLs open the same tabbed content with the corresponding section selected. Download metadata is refreshed for all panels, including those initially hidden.
+
 Syntax highlighting uses Shiki and the vendored `seventowers/usecode.tmLanguage.json`, copied from [Exult's VS Code extension](https://github.com/exult/vscode-usecode-syntax) version 0.1.7. Its GPL-2.0-or-later license is in `seventowers/GRAMMAR-LICENSE`. To refresh the grammar, copy `syntaxes/usecode.tmLanguage.json` from that repository, update this version note, and run `npm test`. Highlighted intrinsic names link to their reference pages; strings and comments are excluded. Light and dark colors follow the site's existing system-theme preference.
 
 ## Download metadata
