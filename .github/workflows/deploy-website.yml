@@ -36,6 +36,19 @@ jobs:
       - name: Validate generated HTML
         working-directory: exult-web-master
         run: npm run validate:html
+      - name: Install accessibility test browser
+        working-directory: exult-web-master
+        run: npx playwright install --with-deps chromium
+      - name: Check Seven Towers accessibility in light and dark themes
+        working-directory: exult-web-master
+        run: npm run check:a11y
+      - name: Save accessibility report and previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: exult-web-master/node_modules/.cache/accessibility/
+          if-no-files-found: ignore
       - name: Refresh snapshot metadata
         if: github.event_name != 'pull_request'
         working-directory: exult-web-master
