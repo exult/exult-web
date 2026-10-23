@@ -1,6 +1,7 @@
 a {
 	padding: 0.1em;
 	text-decoration: none;
+	font-weight: bolder;
 }
 
 a:link,
@@ -19,14 +20,12 @@ a:hover,
 a:hover.offsite {
 	border-right-width: 0.5em;
 	border-right-style: solid;
-	font-weight: bolder;
 }
 
 ul.box a:hover,
 ul.box a:hover.offsite {
 	border-right-width: 0.5em;
 	border-right-style: solid;
-	font-weight: bolder;
 }
 
 a.offsite img+img {
@@ -181,6 +180,7 @@ main th, main td {
 
 .tab-label {
 	display: inline-flex;
+	font-weight: bold;
 	align-items: center;
 	gap: 0.4em;
 	padding: 0.2em 0.35em;
@@ -206,7 +206,6 @@ main th, main td {
 	background: #3f3f3f;
 	color: #d8ac20;
 	border-color: #d8ac20;
-	font-weight: bold;
 	cursor: default;
 	pointer-events: none;
 }
