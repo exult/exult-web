@@ -105,7 +105,7 @@ function downloadContent(data, section, current) {
       const url = `${entry.DIR}/${entry.NAME}.${entry.EXT}`;
       const previews = entry.ICONS.map(icon => {
         const dimensions = icon.slice(icon.lastIndexOf('-')+1);
-        return `<a class="icon-preview" href="images/${icon}.png" download><span class="icon-preview-image"><img src="images/${icon}.png" alt="${esc(entry.NAME)} ${esc(dimensions)} preview"></span><span>${esc(dimensions)}</span></a>`;
+        return `<div class="icon-preview"><span class="icon-preview-image"><img src="images/${icon}.png" alt="${esc(entry.NAME)} ${esc(dimensions)} preview"></span><a href="images/${icon}.png" download>${esc(dimensions)}</a></div>`;
       }).join('');
       const stat = fs.statSync(path.join(site,url));
       return `<section class="icon-download"><div class="icon-previews">${previews}</div><p><a href="${url}" download>${esc(entry.TITLE)}</a></p><p class="icon-file-info">${Math.ceil(stat.size/1024)} KiB · ${stat.mtime.toISOString().slice(0,10)}</p></section>`;
