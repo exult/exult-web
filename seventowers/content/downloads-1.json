@@ -21,10 +21,9 @@
       ]
     },
     {
-      "NAME": "About the Usecode C highlighters",
+      "NAME": "Exult Usecode Syntax for Visual Studio Code",
       "TEXT": [
-        "This section houses syntax highlighters for Usecode C. These are for specific text editors, and are meant to aid in writing usecode. Their main virtue is keeping stupid syntax errors away.",
-        "There are two syntax highlighter definitions here: one for a specific Windows text editor called <a href=\"http://www.context.cx\" class=\"offsite\">ConTEXT&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>, and the other for a whole class of text editors for *nix systems - basically, any editor or IDE in those systems that uses <a href=\"http://projects.gnome.org/gtksourceview/\" class=\"offsite\">GtkSourceView&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> to highlight code will automatically use the highlighter for usecode files if you follow the enclosed installation instructions."
+        "Exult Usecode Syntax provides syntax highlighting for Usecode C, extracted usecode, and usecode assembly in Visual Studio Code. Browse the extension on the Visual Studio Marketplace, open it in VS Code to install it, or visit its source repository on GitHub."
       ]
     }
   ],
@@ -49,13 +48,20 @@
       "PAGE": 1,
       "TITLE": "Usecode C scripting tutorial"
     },
-    "ucc-context.zip": {
+    "vscode-usecode-syntax": {
       "PAGE": 3,
-      "TITLE": "Usecode C syntax highlighter for ConTEXT"
-    },
-    "ucc-gtksourceview.tar.gz": {
-      "PAGE": 3,
-      "TITLE": "Usecode C syntax highlighters for GtkSourceView"
+      "TITLE": "Exult Usecode Syntax on the Visual Studio Marketplace",
+      "URL": "https://marketplace.visualstudio.com/items?itemName=Exult.usecode-syntax",
+      "LINKS": [
+        {
+          "TITLE": "Install in VS Code",
+          "URL": "vscode:extension/Exult.usecode-syntax"
+        },
+        {
+          "TITLE": "Source on GitHub",
+          "URL": "https://github.com/exult/vscode-usecode-syntax"
+        }
+      ]
     }
   },
   "heads": [

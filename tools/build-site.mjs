@@ -104,7 +104,9 @@ function downloadContent(data, section, current) {
   for(const [filename, entry] of Object.entries(data.catalog)) {
     if(current && current !== entry.PAGE) continue;
     const icon = data.icons[entry.PAGE];
-    if(filename.endsWith('.md')) {
+    if(entry.URL) {
+      entries.push({url:entry.URL,title:entry.TITLE,icons:[icon],external:true,blurb:(entry.LINKS || []).map(link=>`<a class="offsite" href="${esc(link.URL)}">${esc(link.TITLE)}</a>`).join(' | ')});
+    } else if(filename.endsWith('.md')) {
       const name = filename.slice(0,-3);
       entries.push({url:`${name}.html`, title:entry.TITLE, icons:[icon], blurb:`Markdown version: <a href="${name}.md">view source</a>, <a href="${name}.md" download>save to disk</a>. <a href="docs/${name}.naturaldocs.txt" download>Natural Docs source</a>.`});
     } else {
@@ -118,7 +120,7 @@ function downloadContent(data, section, current) {
   for(const entry of entries) {
     const local = path.join(site,entry.url);
     const stat = fs.existsSync(local) ? fs.statSync(local) : null;
-    body += `<tr><td class="link-column"><div class="download-entry"><div class="download-icons">${entry.icons.map(i=>`<img src="images/${i}.png" alt="">`).join('')}</div><div class="download-copy"><a href="${entry.url}">${entry.title}</a>${entry.blurb ? `<div class="download-details">${entry.blurb}</div>` : ''}</div></div></td><td class="size-column">${stat ? Math.ceil(stat.size/1024)+' KiB' : ''}</td><td class="datetime-column">${stat ? stat.mtime.toISOString().slice(0,16).replace('T',' ')+' UTC' : ''}</td></tr>`;
+    body += `<tr><td class="link-column"><div class="download-entry"><div class="download-icons">${entry.icons.map(i=>`<img src="images/${i}.png" alt="">`).join('')}</div><div class="download-copy"><a${entry.external ? ' class="offsite"' : ''} href="${entry.url}">${entry.title}</a>${entry.blurb ? `<div class="download-details">${entry.blurb}</div>` : ''}</div></div></td><td class="size-column">${stat ? Math.ceil(stat.size/1024)+' KiB' : ''}</td><td class="datetime-column">${stat ? stat.mtime.toISOString().slice(0,16).replace('T',' ')+' UTC' : ''}</td></tr>`;
   }
   return body + '</tbody></table>';
 }
