@@ -111,7 +111,7 @@ function downloadContent(data, section, current) {
   for(const entry of entries) {
     const local = path.join(site,entry.url);
     const stat = fs.existsSync(local) ? fs.statSync(local) : null;
-    body += `<tr><td class="link-column"><a href="${entry.url}">${entry.title}</a><div>${entry.icons.map(i=>`<img src="images/${i}.png" alt="">`).join('')}</div>${entry.blurb}</td><td class="size-column">${stat ? Math.ceil(stat.size/1024)+' KiB' : ''}</td><td class="datetime-column">${stat ? stat.mtime.toISOString().slice(0,16).replace('T',' ')+' UTC' : ''}</td></tr>`;
+    body += `<tr><td class="link-column"><div class="download-entry"><div class="download-icons">${entry.icons.map(i=>`<img src="images/${i}.png" alt="">`).join('')}</div><div class="download-copy"><a href="${entry.url}">${entry.title}</a>${entry.blurb ? `<div class="download-details">${entry.blurb}</div>` : ''}</div></div></td><td class="size-column">${stat ? Math.ceil(stat.size/1024)+' KiB' : ''}</td><td class="datetime-column">${stat ? stat.mtime.toISOString().slice(0,16).replace('T',' ')+' UTC' : ''}</td></tr>`;
   }
   return body + '</tbody></table><script src="../shapshot_file_details.js"></script><script src="../download.js"></script>';
 }

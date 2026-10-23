@@ -93,7 +93,7 @@ function TryUpdateSnapshotRowWithHTTPHEAD(datetime_cell, size_cell, link_elem)
 // Update a download link row
 // Only updates the row if it has the 
 // datetime, size and link columns
-// The link column must contain a single A tag with a url that starts with https://exult.sourceforge.io/snapshots/
+// The first link in the link column must have a url that starts with https://exult.sourceforge.io/snapshots/
 // It matches the download filename with an Asset in the GitHub Release. If there is a match it fills in the DateTime cell
 // Changes the download url to the asset's download url on github and Updates the Size cell 
 function TryUpdateSnapshotRow(release, row) {
@@ -110,10 +110,10 @@ function TryUpdateSnapshotRow(release, row) {
             size_cell = child;
         }
         else if (!link_elem && child.classList.contains("link-column")) {
-            link_elem = child.firstElementChild;
-            // If the first child isn't an anchor tag or not link to a snapshot file
+            link_elem = child.querySelector('a');
+            // If there is no link, or it isn't a link to a snapshot file,
             // Don't do anything as the row is not in the correct format
-            if (link_elem.tagName !== 'A' || link_elem.href.substring(0, 39) !== 'https://exult.sourceforge.io/snapshots/')
+            if (!link_elem || link_elem.href.substring(0, 39) !== 'https://exult.sourceforge.io/snapshots/')
                 return;
         }
     }

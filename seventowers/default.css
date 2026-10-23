@@ -94,6 +94,28 @@ main th, main td {
 	white-space: nowrap;
 }
 
+.download-entry {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75em;
+}
+
+.download-icons {
+	display: flex;
+	flex: 0 0 48px;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25em;
+}
+
+.download-copy {
+	min-width: 0;
+}
+
+.download-details {
+	margin-top: 0.3em;
+}
+
 @font-face {
 	font-family: "UnifrakturCook";
 	src: url("fonts/UnifrakturCook-Bold.ttf") format("truetype");
