@@ -175,11 +175,20 @@ main th, main td {
 }
 
 .tab-label {
-	padding: 0.1em 0.25em;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.2em 0.35em;
 	border-right: 0.5em solid var(--tab-border);
 	background: var(--tab-background);
 	color: var(--tab-color);
 	cursor: pointer;
+}
+
+.tab-label img {
+	width: 32px;
+	height: 32px;
+	object-fit: contain;
 }
 
 .tab-label:hover {

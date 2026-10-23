@@ -86,7 +86,7 @@ function downloadContent(data, section, current) {
   const desc = data.descriptions[current];
   const notice = Array.isArray(data.notice) ? data.notice[current] : data.notice;
   const paragraphs = list => list.map(p=>`<p>${p}</p>`).join('\n');
-  let body = `<h2>${desc.NAME}</h2>${desc.SHOWICON ? `<img class="logoimg" src="images/${desc.ICON}.png" alt="">` : ''}${paragraphs(desc.TEXT)}`;
+  let body = `<h2>${desc.NAME}</h2>${paragraphs(desc.TEXT)}`;
   body += `<aside class="box"><h3>${notice.TITLE}</h3>${paragraphs(notice.TEXT)}</aside>`;
   if(section === 1) body += '<p><a href="reference-index.html">Browse intrinsic, script command, and compiler directive reference pages</a></p>';
   if(section === 2) {
@@ -146,7 +146,7 @@ export async function build(output = path.join(root,'dist')) {
     for(const [current,name] of downloadNames[section].entries()) {
       const content = section === 2 ? panels[0] : `<div class="section-tabs" role="radiogroup" aria-label="${esc(data.banner)} sections">${data.heads.map((head,i)=>{
         const id = `tab-${downloadNames[section][i]}`;
-        return `<input class="tab-option" type="radio" name="download-section" id="${id}"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}">${esc(head)}</label><section class="tab-panel" aria-labelledby="${id}-label">${panels[i]}</section>`;
+        return `<input class="tab-option" type="radio" name="download-section" id="${id}"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt="">${esc(head)}</label><section class="tab-panel" aria-labelledby="${id}-label">${panels[i]}</section>`;
       }).join('')}</div><script src="../shapshot_file_details.js"></script><script src="../download.js"></script>`;
       write(name+'.html',page(data.heads[current],data.banner,content,downloadNames[section][0]));
     }
