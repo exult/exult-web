@@ -1,4 +1,0 @@
-<?php
-text("Gets the game minutes.");
-make_header("Return", 0);
-text("The current game minute (0-59).");

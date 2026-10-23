@@ -1,2 +1,0 @@
-<?php
-code_block("UI_item_say(object obj, string bark)\nobj->item_say(string bark)");

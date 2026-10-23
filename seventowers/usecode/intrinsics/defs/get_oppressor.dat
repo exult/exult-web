@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("actor UI_get_oppressor(actor npc)\nactor npc->get_oppressor()", true, false, 0, false),
-	$siexultimg
-);

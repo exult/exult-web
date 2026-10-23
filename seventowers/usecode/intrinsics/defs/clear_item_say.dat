@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_clear_item_say(object obj)\nobj->clear_item_say()", true, false, 0, false),
-	$siexultimg
-);

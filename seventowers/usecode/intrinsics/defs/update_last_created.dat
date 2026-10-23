@@ -1,2 +1,0 @@
-<?php
-code_block("bool UI_update_last_created(int pos[])");

@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_execute_usecode_array(object obj, int script[])\nint obj->execute_usecode_array(int script[])");

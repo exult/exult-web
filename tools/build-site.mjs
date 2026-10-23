@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createDocumentation, escapeHtml as esc} from './usecode.mjs';
+import {legacyRedirects} from './legacy-redirects.mjs';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = path.join(root, 'seventowers');
@@ -92,8 +93,8 @@ function downloadContent(data, section, current) {
     for(const [filename, entry] of Object.entries(data.catalog)) {
       if(current && current !== entry.PAGE) continue;
       const icon = data.icons[entry.PAGE];
-      if(filename.endsWith('.dat')) {
-        const name = filename.slice(0,-4);
+      if(filename.endsWith('.md')) {
+        const name = filename.slice(0,-3);
         entries.push({url:`${name}.html`, title:entry.TITLE, icons:[icon], blurb:`Text-only version: <a href="docs/${name}.txt">view online</a>, <a href="docs/${name}.txt" download>save to disk</a>. <a href="docs/${name}.naturaldocs.txt" download>Natural Docs source</a>.`});
       } else {
         // Snapshot archives may be fetched before building, or already present locally.
@@ -121,9 +122,13 @@ export async function build(output = path.join(root,'dist')) {
   copyPublic(output);
   const destination = path.join(output,'seventowers');
   const write = (name, value) => fs.writeFileSync(path.join(destination,name),value);
+  const references = Object.fromEntries(['intrinsics','scriptop','directives','reference'].map(category=>[category,fs.readdirSync(path.join(site,'usecode',category)).filter(f=>f.endsWith('.md')).map(f=>f.slice(0,-3))]));
+  write('.htaccess',legacyRedirects(references));
   for(const name of ['index','links','news','news-archive','404']) {
     const info = json(`content/${name}.json`);
-    write(`${name}.html`,page(info.headline,info.image,read(`content/${name}.html`),name));
+    const html = page(info.headline,info.image,read(`content/${name}.html`),name);
+    write(`${name}.html`,html);
+    if(name === '404') write('404.shtml',html.replace('<head>','<head>\n  <base href="/seventowers/">'));
   }
   for(const section of [0,1,2]) {
     const data = json(`content/downloads-${section}.json`);

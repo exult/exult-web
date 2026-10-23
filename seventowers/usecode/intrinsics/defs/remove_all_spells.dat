@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_remove_all_spells(object obj)\nobj->remove_all_spells()", true, false, 0, false),
-	$siexultimg
-);

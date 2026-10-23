@@ -1,3 +1,0 @@
-<?php
-code_block("#game \"blackgate\"\n#game \"serpentisle\"");
-text("Tells $ucc to use the intrinsic table for the specified game. This should be specified in your code as early as possible, preferrably before any function or class definitions. You should use this directive only once; problems " . bold("will") . " happen if you disregard this advice.");

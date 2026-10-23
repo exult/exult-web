@@ -1,2 +1,0 @@
-<?php
-code_block("UI_set_item_shape(object obj, int shape)\nobj->set_item_shape(int shape)");

@@ -1,2 +1,0 @@
-<?php
-text("Clears all current conversation options and restores the stored conversation options, if any. The restored dialog options are those stored by the " . italic("last") . " call to " . inline_code("UI_push_answers") . " intrinsic.");

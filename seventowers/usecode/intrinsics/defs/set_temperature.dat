@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_temperature(actor npc, int temp)\nnpc->set_temperature(int temp)", true, false, 0, false),
-	$siexultimg
-);

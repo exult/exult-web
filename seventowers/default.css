@@ -66,6 +66,11 @@ code.usecode {
 	white-space: pre-wrap;
 }
 
+@media (prefers-color-scheme: dark) {
+	pre.usecode { background: #0d1117; color: #c9d1d9; }
+	.usecode span { color: var(--shiki-dark) !important; }
+}
+
 code.usecode a {
 	border: 0;
 	padding: 0;

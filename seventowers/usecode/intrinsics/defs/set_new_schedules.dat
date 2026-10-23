@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_new_schedules(actor npc, int time, int sched, int loc[2])\nUI_set_new_schedules(actor npc, int time[n], int sched[n], int loc[2n])\nnpc->set_new_schedules(int time, int sched, int loc[2])\nnpc->set_new_schedules(int time[n], int sched[n], int loc[2n])", true, false, 0, false),
-	$siexultimg
-);

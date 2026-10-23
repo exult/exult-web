@@ -1,3 +1,0 @@
-<?php
-code_block("#line num\n#line num name\n# num\n# num name");
-text("Sets the current line number/location name. 'num' is any integer, while 'name' is a double-quoted string literal. $ucc will use the number and name you specify should any compilation errors occur.");

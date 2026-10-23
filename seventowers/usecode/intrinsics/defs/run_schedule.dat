@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_run_schedule(actor npc)\nnpc->run_schedule()", true, false, 0, false),
-	$siexultimg
-);

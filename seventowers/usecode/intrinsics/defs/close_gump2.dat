@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_close_gump2(object obj)\nobj->close_gump2()", true, false, 0, false),
-	$exultimg
-);

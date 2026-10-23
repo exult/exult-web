@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("bool UI_approach_avatar(actor npc)\nbool npc->approach_avatar()\nbool UI_approach_avatar(actor npc, int unk1, int unk2)\nbool npc->approach_avatar(int unk1, int unk2)", true, false, 0, false),
-	$siexultimg
-);

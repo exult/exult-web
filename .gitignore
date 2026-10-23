@@ -1,7 +1,7 @@
 *~
 node_modules/
 /dist/
-/.migration/
+__pycache__/
 
 # /snapshots/
 /snapshots/*.zip

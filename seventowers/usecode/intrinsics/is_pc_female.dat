@@ -1,4 +1,0 @@
-<?php
-text("Determines the avatar's gender.");
-make_header("Return", 0);
-text("$true if the avatar is a woman, $false otherwise.");

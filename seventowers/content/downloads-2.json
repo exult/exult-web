@@ -6,7 +6,7 @@
       "SHOWICON": false,
       "ICON": "",
       "TEXT": [
-        "These are my Ultima-related icons. If you have any\r\nideas for new Ultima icons or for improving those already here, please feel free\r\nto contact me."
+        "These are my Ultima-related icons. If you have any ideas for new Ultima icons or for improving those already here, please feel free to contact me."
       ]
     }
   ],
@@ -14,7 +14,7 @@
     {
       "TITLE": "Important Notice",
       "TEXT": [
-        "All of these icons are licensed under the <a href=\"http://www.fsf.org/licensing/licenses/lgpl.html\" class=\"offsite\">GNU Lesser General Public License&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>. A few of the\r\nicons are derived from the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> icon or from the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> Studio icon.\r\nThere icons are licensed under the <a href=\"http://www.fsf.org/licensing/licenses/gpl.html\" class=\"offsite\">GNU General Public License&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> instead."
+        "All of these icons are licensed under the <a href=\"http://www.fsf.org/licensing/licenses/lgpl.html\" class=\"offsite\">GNU Lesser General Public License&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>. A few of the icons are derived from the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> icon or from the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> Studio icon. There icons are licensed under the <a href=\"http://www.fsf.org/licensing/licenses/gpl.html\" class=\"offsite\">GNU General Public License&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> instead."
       ]
     }
   ],
@@ -483,14 +483,6 @@
   "icons": [
     "icons"
   ],
-  "catalog": {
-    "DAT": "ultimaicons.dat",
-    "IMG": "ultimaicons.png",
-    "HEADS": [
-      "Ultima Icons"
-    ]
-  },
-  "extensions": [],
   "heads": [
     "Ultima Icons"
   ]

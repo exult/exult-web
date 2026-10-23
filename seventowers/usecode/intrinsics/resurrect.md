@@ -12,4 +12,4 @@ Zero if the supplied object was not the body of an NPC, otherwise an object refe
 
 ### Script Commands
 
-There is also a script command with the same name and with a similar function. See '[resurrect](ucc_ref.php?TYPE=3&amp;DATAFILE=resurrect)' for more information.
+There is also a script command with the same name and with a similar function. See '[resurrect](reference-scriptop-resurrect.html)' for more information.

@@ -1,2 +1,0 @@
-<?php
-code_block("UI_move_object(object obj, int pos[], bool flag)\nobj->move_object(int pos[], bool flag)");

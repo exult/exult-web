@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_polymorph(actor npc, int shape)\nnpc->set_polymorph(int shape)", true, false, 0, false),
-	$siexultimg
-);

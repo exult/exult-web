@@ -1,9 +1,0 @@
-<?php
-	make_section("Document Not Found");
-	add_text("The document you requested was not found on the server.");
-	add_text("If you followed a link from within the website, please contact
-the webmaster using the e-mail form to notify the error.");
-	add_text("If you followed a link from an external website, please contact
-that site's webmaster to notify the error.");
-	close_section();
-?>

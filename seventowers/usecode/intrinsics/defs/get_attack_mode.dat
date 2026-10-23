@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("int UI_get_attack_mode(actor npc)\nint npc->get_attack_mode()", true, false, 0, false),
-	$siexultimg
-);

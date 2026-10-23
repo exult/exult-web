@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("bool UI_start_blocking_speech(int track)", true, false, 0, false),
-	$bgexultimg
-);

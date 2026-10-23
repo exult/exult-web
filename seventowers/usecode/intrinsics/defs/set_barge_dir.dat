@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_barge_dir(object obj, int dir)\nobj->set_barge_dir(int dir)", true, false, 0, false),
-	$siexultimg
-);

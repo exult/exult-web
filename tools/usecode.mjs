@@ -17,7 +17,7 @@ export function expandIncludes(source, root, stack = []) {
 export async function createDocumentation(root) {
   const grammar = JSON.parse(fs.readFileSync(path.join(root, '../usecode.tmLanguage.json'), 'utf8'));
   grammar.name = 'usecode';
-  const highlighter = await createHighlighter({langs: [grammar], themes: ['github-light']});
+  const highlighter = await createHighlighter({langs: [grammar], themes: ['github-light','github-dark']});
   const intrinsics = new Set(fs.readdirSync(path.join(root, 'intrinsics')).filter(f => f.endsWith('.md')).map(f => f.slice(0, -3)));
   const directives = new Set(fs.readdirSync(path.join(root, 'directives')).map(f => f.slice(0, -3)));
   const commands = new Set(fs.readdirSync(path.join(root, 'scriptop')).map(f => f.slice(0, -3)));
@@ -32,7 +32,7 @@ export async function createDocumentation(root) {
   function highlight(code, block = true, links = true) {
     const key = JSON.stringify([code,block,links]);
     if(cache.has(key)) return cache.get(key);
-    const {tokens} = highlighter.codeToTokens(code, {lang:'usecode', theme:'github-light', includeExplanation:true});
+    const {tokens} = highlighter.codeToTokens(code, {lang:'usecode', themes:{light:'github-light',dark:'github-dark'}, includeExplanation:true});
     const content = tokens.map(line => '<span class="line">' + line.map(token => {
       let text = escapeHtml(token.content);
       // Scope checks keep words inside strings and comments from becoming links.
@@ -41,7 +41,8 @@ export async function createDocumentation(root) {
         const scopes = token.explanation?.flatMap(part=>part.scopes.map(scope=>scope.scopeName)) || [];
         if (url && !scopes.some(scope=>/^(comment|string)\./.test(scope))) text = `<a href="${url}">${text}</a>`;
       }
-      return `<span style="color:${token.color}">${text}</span>`;
+      const style = Object.entries(token.htmlStyle).map(([name,value])=>`${name}:${value}`).join(';');
+      return `<span style="${style}">${text}</span>`;
     }).join('') + '</span>').join('\n');
     const result = block ? `<pre class="usecode"><code>${content}</code></pre>\n` : `<code class="usecode">${content}</code>`;
     cache.set(key,result);
@@ -65,6 +66,16 @@ export async function createDocumentation(root) {
 }
 
 const decode = s => s.replace(/&(?:amp|lt|gt|quot|apos|nbsp|#124);/g, c => ({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'",'&nbsp;':' ','&#124;':'|'}[c]));
+function wrapText(text, width = 80) {
+  return text.split('\n').map(paragraph => {
+    const lines = [''];
+    for(const word of paragraph.split(/\s+/)) {
+      if(lines.at(-1).length + word.length + 1 > width && lines.at(-1)) lines.push(word);
+      else lines[lines.length-1] += (lines.at(-1) ? ' ' : '') + word;
+    }
+    return lines.join('\n');
+  }).join('\n');
+}
 function inlineText(tokens = []) {
   return tokens.map(t => {
     if (t.type === 'image') return t.content;
@@ -88,8 +99,8 @@ export function renderText(tokens, naturalDocs = false) {
       case 'inline': {
         const text = inlineText(t.children);
         if (cell) row.push(text);
-        else if (heading) line(naturalDocs ? `${heading <= 2 ? 'Title' : heading === 3 ? 'Function' : 'Section'}: ${text}\n\n` : `${text}\n${(heading <= 2 ? '=' : '-').repeat(Math.min(80, text.length))}\n\n`);
-        else line(text);
+        else if (heading) line(naturalDocs ? `${heading <= 2 ? 'Title: ' : heading === 3 ? 'Function: ' : ''}${text}${heading > 3 ? ':' : ''}\n\n` : `${text}\n${(heading <= 2 ? '=' : '-').repeat(Math.min(80, text.length))}\n\n`);
+        else line(wrapText(text, naturalDocs ? 77 : 80));
         break;
       }
       case 'paragraph_close': if (!cell) line('\n\n'); break;
@@ -104,6 +115,10 @@ export function renderText(tokens, naturalDocs = false) {
       case 'td_close': case 'th_close': cell = false; break;
       case 'tr_close': rows.push(row); break;
       case 'table_close': {
+        if(naturalDocs) {
+          for(const r of rows.slice(1)) line(r.join(' - ')+'\n');
+          line('\n'); rows = null; break;
+        }
         const widths = rows[0].map((_, i) => Math.min(45, Math.max(...rows.map(r => (r[i] || '').length))));
         for(const r of rows) line(r.map((s,i) => i === r.length-1 ? s : s.padEnd(widths[i])).join(' | ')+'\n');
         line('\n'); rows = null; break;

@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_get_npc_object(int npc)\nint npc->get_npc_object()\nint[] UI_get_npc_object(int npc[])");

@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_infravision(actor npc, bool onoff)\nnpc->infravision(bool onoff)", true, false, 0, false),
-	$siexultimg
-);

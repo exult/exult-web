@@ -1,3 +1,0 @@
-<?php
-code_block("continue");
-text("Immediately executes a second script command. It is described in the $exult source as 'keep going without painting'; this apparently does not happen.");

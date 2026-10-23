@@ -1,2 +1,0 @@
-<?php
-code_block("UI_set_item_flag(object obj, int flag)\nobj->set_item_flag(int flag)");

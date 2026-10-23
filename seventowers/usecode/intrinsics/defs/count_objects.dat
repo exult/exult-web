@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_count_objects(object obj, int shape, int qual, int frame)\nint obj->count_objects(int shape, int qual, int frame)");

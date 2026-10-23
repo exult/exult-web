@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("string UI_printf(string out[])", true, false, 0, false),
-	$exultimg
-);

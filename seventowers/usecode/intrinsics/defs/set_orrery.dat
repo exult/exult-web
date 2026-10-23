@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_orrery(int pos[3], int state)", true, false, 0, false),
-	$bgimg
-);

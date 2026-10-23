@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_end_conversation()", true, false, 0, false),
-	$siimg
-);

@@ -6,7 +6,7 @@
       "SHOWICON": false,
       "ICON": "",
       "TEXT": [
-        "Usecode C is a scripting language created by the\r\n<a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> team which can be compiled to usecode. It allows the creation of\r\nusecode patches for the Ultima VII games, thus allowing changes to the behavior\r\nof objects, the addition of new dialogs and new cutscenes."
+        "Usecode C is a scripting language created by the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> team which can be compiled to usecode. It allows the creation of usecode patches for the Ultima VII games, thus allowing changes to the behavior of objects, the addition of new dialogs and new cutscenes."
       ]
     },
     {
@@ -14,8 +14,8 @@
       "SHOWICON": false,
       "ICON": "",
       "TEXT": [
-        "The Usecode C tutorials in this page are meant to help\r\nnew usecoders to make sense of Usecode C. They are meant to be a complete\r\nintroduction to the language. They most liikely are not, and I welcome any\r\nsuggestions on how to improve them.",
-        "I also intend to place these documents in the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>\r\nsource code and documentation; if they are not there yet, I am getting there\r\nsoon (although complaining might prove effective :-)."
+        "The Usecode C tutorials in this page are meant to help new usecoders to make sense of Usecode C. They are meant to be a complete introduction to the language. They most liikely are not, and I welcome any suggestions on how to improve them.",
+        "I also intend to place these documents in the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> source code and documentation; if they are not there yet, I am getting there soon (although complaining might prove effective :-)."
       ]
     },
     {
@@ -23,8 +23,8 @@
       "SHOWICON": false,
       "ICON": "",
       "TEXT": [
-        "This section is intended to provide extensive\r\ndocumentation about the Usecode C language. It is meant to be throughout, and it\r\ncan be quite dry at places. These documents are not meant for the newbie,\r\nalthough they will surely help.",
-        "I also intend to place these documents in the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>\r\nsource code and documentation; if they are not there yet, I am getting there\r\nsoon (although complaining might prove effective :-)."
+        "This section is intended to provide extensive documentation about the Usecode C language. It is meant to be throughout, and it can be quite dry at places. These documents are not meant for the newbie, although they will surely help.",
+        "I also intend to place these documents in the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> source code and documentation; if they are not there yet, I am getting there soon (although complaining might prove effective :-)."
       ]
     },
     {
@@ -32,15 +32,15 @@
       "SHOWICON": false,
       "ICON": "",
       "TEXT": [
-        "This section houses syntax highlighters for Usecode C.\r\nThese are for specific text editors, and are meant to aid in writing usecode.\r\nTheir main virtue is keeping stupid syntax errors away.",
-        "There are two syntax highlighter definitions here: one\r\nfor a specific Windows text editor called <a href=\"http://www.context.cx\" class=\"offsite\">ConTEXT&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>, and the other for a whole class of text editors\r\nfor *nix systems - basically, any editor or IDE in those systems that uses <a href=\"http://projects.gnome.org/gtksourceview/\" class=\"offsite\">GtkSourceView&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> to highlight code will automatically use the highlighter for usecode files\r\nif you follow the enclosed installation instructions."
+        "This section houses syntax highlighters for Usecode C. These are for specific text editors, and are meant to aid in writing usecode. Their main virtue is keeping stupid syntax errors away.",
+        "There are two syntax highlighter definitions here: one for a specific Windows text editor called <a href=\"http://www.context.cx\" class=\"offsite\">ConTEXT&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>, and the other for a whole class of text editors for *nix systems - basically, any editor or IDE in those systems that uses <a href=\"http://projects.gnome.org/gtksourceview/\" class=\"offsite\">GtkSourceView&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> to highlight code will automatically use the highlighter for usecode files if you follow the enclosed installation instructions."
       ]
     }
   ],
   "notice": {
     "TITLE": "Important Notice",
     "TEXT": [
-      "In order to be able to use new usecode in the Ultima VII\r\ngames, you must first compile the usecode using the Usecode C Compiler (ucc).\r\nYou can obtain a Windows binary of the compiler in the following link: <a href=\"http://exult.info/snapshots/ExultTools.exe\" class=\"offsite\">Exult Win32 Tools snapshot&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>.\r\nIf you wisely don't use Windows, you will have to compile your own binary."
+      "In order to be able to use new usecode in the Ultima VII games, you must first compile the usecode using the Usecode C Compiler (ucc). You can obtain a Windows binary of the compiler in the following link: <a href=\"http://exult.info/snapshots/ExultTools.exe\" class=\"offsite\">Exult Win32 Tools snapshot&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>. If you wisely don't use Windows, you will have to compile your own binary."
     ]
   },
   "icons": [
@@ -50,11 +50,11 @@
     "ucchighlighter"
   ],
   "catalog": {
-    "exult_intrinsics.dat": {
+    "exult_intrinsics.md": {
       "PAGE": 2,
       "TITLE": "Exult intrinsic reference"
     },
-    "ucc_scripting.dat": {
+    "ucc_scripting.md": {
       "PAGE": 1,
       "TITLE": "Usecode C scripting tutorial"
     },
@@ -67,10 +67,6 @@
       "TITLE": "Usecode C syntax highlighters for GtkSourceView"
     }
   },
-  "extensions": [
-    "zip",
-    "tar.gz"
-  ],
   "heads": [
     "Usecode C",
     "Tutorials",

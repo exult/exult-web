@@ -1,4 +1,0 @@
-<?php
-text("Gets an object reference to the avatar.");
-make_header("Return", 0);
-text("The Avatar's object reference.");

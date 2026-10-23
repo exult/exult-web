@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_create_barge_object(int width, int height, int dir)", true, false, 0, false),
-	$exultimg
-);

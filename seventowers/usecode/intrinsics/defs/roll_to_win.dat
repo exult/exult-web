@@ -1,2 +1,0 @@
-<?php
-code_block("bool UI_roll_to_win(int att, int def)");

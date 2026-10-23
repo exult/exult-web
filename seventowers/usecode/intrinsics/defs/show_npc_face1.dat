@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_show_npc_face1(int face, int face)\nUI_show_npc_face1(actor face, int face)\nnpc->show_npc_face1(int face)", true, false, 0, false),
-	$siexultimg
-);

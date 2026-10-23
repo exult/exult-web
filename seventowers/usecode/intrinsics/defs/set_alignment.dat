@@ -1,2 +1,0 @@
-<?php
-code_block("UI_set_alignment(actor npc, int align)\nnpc->set_alignment(int align)");

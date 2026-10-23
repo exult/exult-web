@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_teleport_to_saved_pos(object obj, bool flag)\nobj->teleport_to_saved_pos(bool flag)", true, false, 0, false),
-	$siexultimg
-);

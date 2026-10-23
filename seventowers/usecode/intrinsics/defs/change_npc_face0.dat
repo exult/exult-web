@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_change_npc_face0(int frame)", true, false, 0, false),
-	$siexultimg
-);

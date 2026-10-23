@@ -6,7 +6,7 @@
       "SHOWICON": false,
       "ICON": "",
       "TEXT": [
-        "<a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> is an open-source reimplementation (with\r\nmany improvements!) of the Ultima VII game engine that allows Ultima fans to play\r\nthe game using modern hardware and operating systems."
+        "<a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> is an open-source reimplementation (with many improvements!) of the Ultima VII game engine that allows Ultima fans to play the game using modern hardware and operating systems."
       ]
     },
     {
@@ -14,8 +14,8 @@
       "SHOWICON": true,
       "ICON": "keyring",
       "TEXT": [
-        "The Black Gate Keyring mod started out with the intent to add\r\nthe Serpent Isle: Silver Seed keyring to an Ultima VII: The Black Gate game.\r\nBut simply adding the keyring without any sort of quest was out of the\r\nquestion; so I added a quest to gain the keyring. Then came the shrines and\r\nthe Codex. And so on.",
-        "The result is this massive -- and still in progress --\r\nset of modifications to the Ultima VII: The Black Gate game. You can read more\r\nabout the mod in the <a href=\"https://raw.githubusercontent.com/exult/exult/master/content/bgkeyring/Readme.txt\" class=\"offsite\">readme.txt&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> file that is included in the download below."
+        "The Black Gate Keyring mod started out with the intent to add the Serpent Isle: Silver Seed keyring to an Ultima VII: The Black Gate game. But simply adding the keyring without any sort of quest was out of the question; so I added a quest to gain the keyring. Then came the shrines and the Codex. And so on.",
+        "The result is this massive -- and still in progress -- set of modifications to the Ultima VII: The Black Gate game. You can read more about the mod in the <a href=\"https://raw.githubusercontent.com/exult/exult/master/content/bgkeyring/Readme.txt\" class=\"offsite\">readme.txt&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> file that is included in the download below."
       ]
     },
     {
@@ -23,8 +23,8 @@
       "SHOWICON": true,
       "ICON": "sifixes",
       "TEXT": [
-        "The Serpent Isle Fixes Mod is meant to correct several plot\r\nbugs present in the original Serpent Isle and Serpent Isle: Silver Seed games.\r\nFixes include the healing of Cantra, the infamous pillars in Serpent's Fang Keep\r\nwhich teleported you to the Test of Purity and many, many others.",
-        "What exactly is fixed by this mod is described in the\r\n<a href=\"https://raw.githubusercontent.com/exult/exult/master/content/sifixes/Readme.txt\" class=\"offsite\">readme.txt&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> file that is included in the download below."
+        "The Serpent Isle Fixes Mod is meant to correct several plot bugs present in the original Serpent Isle and Serpent Isle: Silver Seed games. Fixes include the healing of Cantra, the infamous pillars in Serpent's Fang Keep which teleported you to the Test of Purity and many, many others.",
+        "What exactly is fixed by this mod is described in the <a href=\"https://raw.githubusercontent.com/exult/exult/master/content/sifixes/Readme.txt\" class=\"offsite\">readme.txt&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> file that is included in the download below."
       ]
     },
     {
@@ -32,8 +32,8 @@
       "SHOWICON": true,
       "ICON": "avatarpack",
       "TEXT": [
-        "This mod is all about new avatars. There are 12 new\r\nportraits all told, all in the SI style, which REPLACE the old portraits. The\r\nportraits come in male and female pairs; there are portraits for brunette avatars,\r\nblonde avatars, black-haired avatars, redheaded avatars, asian avatars and black\r\navatars, all with matching paperdolls and sprites -- and gumps for paperdoll-less BG.",
-        "All the portraits are based on real people -- you can\r\nsee the full list in the included 'Who_is_who.txt' file."
+        "This mod is all about new avatars. There are 12 new portraits all told, all in the SI style, which REPLACE the old portraits. The portraits come in male and female pairs; there are portraits for brunette avatars, blonde avatars, black-haired avatars, redheaded avatars, asian avatars and black avatars, all with matching paperdolls and sprites -- and gumps for paperdoll-less BG.",
+        "All the portraits are based on real people -- you can see the full list in the included 'Who_is_who.txt' file."
       ]
     }
   ],
@@ -41,31 +41,31 @@
     {
       "TITLE": "Important Notice",
       "TEXT": [
-        "While this page contains direct links to the downloads\r\nthemselves, it is important for first-time users to read each modification's\r\nhomepage for compatibility information as well as to learn what each one does."
+        "While this page contains direct links to the downloads themselves, it is important for first-time users to read each modification's homepage for compatibility information as well as to learn what each one does."
       ]
     },
     {
       "TITLE": "Important Notices",
       "TEXT": [
-        "The Black Gate Keyring mod has been tested only <span style=\"font-weight: bold;\" >with</span> the\r\nForge of Virtue add-on installed. I cannot guarantee that it will work without\r\nthe add-on, and it likely will <span style=\"font-weight: bold;\" >not</span>. You have been warned.",
-        "Also important is that it is guaranteed to work only if\r\nyou use <span style=\"font-weight: bold;\" >the</span> latest snapshots of <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>.",
-        "Last but not least, this is an ALPHA version. While it\r\nhas proven stable enough in my (compulsive) tests, I cannot guarantee that it\r\nwill work as intended for you."
+        "The Black Gate Keyring mod has been tested only <span style=\"font-weight: bold;\" >with</span> the Forge of Virtue add-on installed. I cannot guarantee that it will work without the add-on, and it likely will <span style=\"font-weight: bold;\" >not</span>. You have been warned.",
+        "Also important is that it is guaranteed to work only if you use <span style=\"font-weight: bold;\" >the</span> latest snapshots of <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>.",
+        "Last but not least, this is an ALPHA version. While it has proven stable enough in my (compulsive) tests, I cannot guarantee that it will work as intended for you."
       ]
     },
     {
       "TITLE": "Important Notices",
       "TEXT": [
-        "The Serpent Isle Fixes Mod has been tested only <span style=\"font-weight: bold;\" >with</span> the\r\nSilver Seed add-on installed. I see no reason why it would not work without the\r\nadd-on, but I cannot guarantee that it will work if it is not installed.",
-        "Also important is that it is guaranteed to work only if\r\nyou use <span style=\"font-weight: bold;\" >the</span> latest snapshots of <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>.",
-        "Last but not least, this is an ALPHA version. While it\r\nhas proven stable enough in my (compulsive) tests, I cannot guarantee that it\r\nwill work as intended for you."
+        "The Serpent Isle Fixes Mod has been tested only <span style=\"font-weight: bold;\" >with</span> the Silver Seed add-on installed. I see no reason why it would not work without the add-on, but I cannot guarantee that it will work if it is not installed.",
+        "Also important is that it is guaranteed to work only if you use <span style=\"font-weight: bold;\" >the</span> latest snapshots of <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>.",
+        "Last but not least, this is an ALPHA version. While it has proven stable enough in my (compulsive) tests, I cannot guarantee that it will work as intended for you."
       ]
     },
     {
       "TITLE": "Important Notices",
       "TEXT": [
-        "You do <span style=\"font-weight: bold;\" >not</span> need to download this mod if you want\r\nthe new avatars in the <a href=\"downloads.php?section=0&amp;page=1\">Black Gate Keyring</a> mod - just download the newest version\r\nof the <a href=\"downloads.php?section=0&amp;page=1\">Black Gate Keyring</a> mod and you're set!",
-        "This mod is fully compatible with (but not included in)\r\nthe <a href=\"downloads.php?section=0&amp;page=2\">Serpent Isle Fixes</a>. See the included <a href=\"docs/avatarpack_readme.txt\">readme.txt</a> file for the (rather simple)\r\ninstallation instructions.",
-        "It is important to state that this mod is guaranteed to\r\nwork only if you use <span style=\"font-weight: bold;\" >the</span> latest snapshots of <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>."
+        "You do <span style=\"font-weight: bold;\" >not</span> need to download this mod if you want the new avatars in the <a href=\"keyring.html\">Black Gate Keyring</a> mod - just download the newest version of the <a href=\"keyring.html\">Black Gate Keyring</a> mod and you're set!",
+        "This mod is fully compatible with (but not included in) the <a href=\"sifixes.html\">Serpent Isle Fixes</a>. See the included <a href=\"docs/avatarpack_readme.txt\">readme.txt</a> file for the (rather simple) installation instructions.",
+        "It is important to state that this mod is guaranteed to work only if you use <span style=\"font-weight: bold;\" >the</span> latest snapshots of <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>."
       ]
     }
   ],
@@ -92,9 +92,6 @@
       "README": "<a href=\"docs/avatarpack_readme.txt\">readme.txt</a>"
     }
   },
-  "extensions": [
-    "zip"
-  ],
   "heads": [
     "Exult Mods",
     "Black Gate Keyring",
