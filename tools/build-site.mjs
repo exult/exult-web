@@ -50,6 +50,8 @@ function page(title, banner, content, active = '', submenu = '') {
   <link rel="icon" href="images/home.png" type="image/png">
 </head>
 <body>
+  <input type="checkbox" id="readable-titles" class="font-toggle">
+  <label for="readable-titles" class="font-toggle-label">Use readable titles</label>
   <h1 id="top" class="page-title"><span class="title-text">${esc(banner)}</span></h1>
   <nav aria-label="Main"><ul class="navbar">${nav.map(([url,text,icon]) => `<li>${url === active ? `<span class="navbar" aria-current="page">` : `<a href="${url}.html">`}<img src="images/${icon}.png" alt="">&nbsp;&nbsp;${text}${url === active ? '</span>' : '</a>'}</li>`).join('')}</ul></nav>
   ${submenu}

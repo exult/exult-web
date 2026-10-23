@@ -34,6 +34,8 @@ Generated Markdown uses HTML `<code>` elements for inline code starting with `-`
 
 Page banners use actual heading text with the self-hosted UnifrakturCook Bold font and a CSS gold gradient with edge highlights to approximate the original beveled images. The unmodified font, SIL Open Font License, and pinned upstream source URL are in `seventowers/fonts/`. Font loading requires no third-party requests. The original title PNGs remain available as visual references.
 
+The “Use readable titles” checkbox above each banner switches the heading to a plain sans-serif font without decorative effects. It uses native HTML controls and CSS, works with the keyboard, and needs no JavaScript. The setting applies to the current page; it is not stored across navigation.
+
 Syntax highlighting uses Shiki and the vendored `seventowers/usecode.tmLanguage.json`, copied from [Exult's VS Code extension](https://github.com/exult/vscode-usecode-syntax) version 0.1.7. Its GPL-2.0-or-later license is in `seventowers/GRAMMAR-LICENSE`. To refresh the grammar, copy `syntaxes/usecode.tmLanguage.json` from that repository, update this version note, and run `npm test`. Highlighted intrinsic names link to their reference pages; strings and comments are excluded. Light and dark colors follow the site's existing system-theme preference.
 
 ## Download metadata

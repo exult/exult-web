@@ -131,8 +131,40 @@ h1.page-title {
 	}
 }
 
+.font-toggle {
+	width: 1.1em;
+	height: 1.1em;
+	vertical-align: middle;
+	accent-color: #d8ac20;
+}
+
+.font-toggle-label {
+	display: inline-block;
+	padding: 0.25em;
+	margin-bottom: 0.4em;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+.font-toggle:focus-visible + .font-toggle-label {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+#readable-titles:checked ~ .page-title {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#readable-titles:checked ~ .page-title .title-text {
+	background: none;
+	color: #d8ac20;
+	text-shadow: none;
+	filter: none;
+}
+
 @media (forced-colors: active) {
-	.title-text {
+	.title-text,
+	#readable-titles:checked ~ .page-title .title-text {
 		background: none;
 		color: CanvasText;
 		text-shadow: none;
