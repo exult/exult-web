@@ -1,0 +1,1499 @@
+{
+  "groups": {
+    "RANDOM": [
+      "Random Number Intrinsics",
+      "These intrinsics are all related to random numbers and their generation."
+    ],
+    "SCRIPTING": [
+      "Scripting Intrinsics",
+      "These intrinsics are used to animate characters from usecode. Some of these are deprecated by script blocks, but all others are still useful at times."
+    ],
+    "DIALOG": [
+      "Conversation Intrinsics",
+      "These intrinsics are used to display faces for conversations, storing and recalling answers, etc."
+    ],
+    "SOUND": [
+      "Sound Intrinsics",
+      "All intrinsics in this section relate to playing sound effects, music or speech."
+    ],
+    "SEARCH": [
+      "Searching and Counting Intrinsics",
+      "These intrinsics allow you to find and count objects, whether they are in a container or in the game world."
+    ],
+    "PLACEMENT": [
+      "Placement Intrinsics",
+      "With these intrinsics, you can create, move or delete objects or NPCs, whether they are in the game world or in a container."
+    ],
+    "OBJECTS": [
+      "Object Intrinsics",
+      "These intrinsics are used to get or set properties of an object, such as quantity, quality or current frame."
+    ],
+    "NPCs": [
+      "NPC Intrinsics",
+      "These intrinsics allow you to get or set NPC-specific properties of a NPC, such as schedules, alignment or stats."
+    ],
+    "PARTY": [
+      "Party Intrinsics",
+      "These intrinsics relate to obtaining or modifying the list of party members."
+    ],
+    "AVATAR": [
+      "Avatar Intrinsics",
+      "All intrinsics in this section are about obtaining or modifying properties specific to the Avatar."
+    ],
+    "WEATHER": [
+      "Weather/Time Intrinsics",
+      "These intrinsics allow you to check or alter the weather, the game clock and usecode timers."
+    ],
+    "INTERFACE": [
+      "User Interface Intrinsics",
+      "With these intrinsics, you can ask the user for input or display feedback for his actions."
+    ],
+    "DISPLAY": [
+      "Display Intrinsics",
+      "All intrinsics in this section are related to showing things to the player, be they other portions of the game map or objects from 'SPRITES.VGA'."
+    ],
+    "MISCELLANEOUS": [
+      "Other Intrinsics",
+      "All intrinsics that did not fit in the previous categories."
+    ]
+  },
+  "relations": {
+    "RANDOM": {
+      "get_random": [
+        "get_random",
+        "die_roll",
+        "roll_to_win"
+      ],
+      "die_roll": [
+        "get_random",
+        "die_roll",
+        "roll_to_win"
+      ],
+      "roll_to_win": [
+        "get_random",
+        "die_roll",
+        "roll_to_win"
+      ]
+    },
+    "SCRIPTING": {
+      "execute_usecode_array": [
+        "execute_usecode_array",
+        "delayed_execute_usecode_array",
+        "halt_scheduled",
+        "begin_casting_mode",
+        "set_to_attack",
+        "telekenesis"
+      ],
+      "delayed_execute_usecode_array": [
+        "execute_usecode_array",
+        "delayed_execute_usecode_array",
+        "halt_scheduled",
+        "begin_casting_mode",
+        "set_to_attack",
+        "telekenesis"
+      ],
+      "in_usecode": [
+        "in_usecode",
+        "get_usecode_fun",
+        "set_usecode_fun"
+      ],
+      "halt_scheduled": [
+        "execute_usecode_array",
+        "delayed_execute_usecode_array",
+        "halt_scheduled",
+        "begin_casting_mode",
+        "set_to_attack",
+        "telekenesis"
+      ],
+      "begin_casting_mode": [
+        "execute_usecode_array",
+        "delayed_execute_usecode_array",
+        "halt_scheduled",
+        "begin_casting_mode",
+        "set_to_attack",
+        "telekenesis"
+      ],
+      "set_to_attack": [
+        "execute_usecode_array",
+        "delayed_execute_usecode_array",
+        "halt_scheduled",
+        "begin_casting_mode",
+        "set_to_attack",
+        "telekenesis",
+        "attack_object",
+        "fire_projectile"
+      ],
+      "path_run_usecode": [
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_dest_reachable",
+        "can_avatar_reach_pos",
+        "in_usecode_path"
+      ],
+      "si_path_run_usecode": [
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_dest_reachable",
+        "can_avatar_reach_pos",
+        "in_usecode_path"
+      ],
+      "set_path_failure": [
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_dest_reachable",
+        "can_avatar_reach_pos",
+        "in_usecode_path"
+      ],
+      "in_usecode_path": [
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_dest_reachable",
+        "can_avatar_reach_pos",
+        "in_usecode_path"
+      ],
+      "telekenesis": [
+        "execute_usecode_array",
+        "delayed_execute_usecode_array",
+        "halt_scheduled",
+        "begin_casting_mode",
+        "set_to_attack",
+        "telekenesis"
+      ]
+    },
+    "DIALOG": {
+      "show_npc_face": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "show_npc_face0": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "show_npc_face1": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "remove_npc_face": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "remove_npc_face0": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "remove_npc_face1": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "reset_conv_face": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "set_conversation_slot": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "change_npc_face0": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "change_npc_face1": [
+        "show_npc_face",
+        "show_npc_face0",
+        "show_npc_face1",
+        "remove_npc_face",
+        "remove_npc_face0",
+        "remove_npc_face1",
+        "reset_conv_face",
+        "set_conversation_slot",
+        "change_npc_face0",
+        "change_npc_face1"
+      ],
+      "init_conversation": [
+        "init_conversation",
+        "end_conversation"
+      ],
+      "end_conversation": [
+        "init_conversation",
+        "end_conversation"
+      ],
+      "add_answer": [
+        "add_answer",
+        "remove_answer",
+        "push_answers",
+        "pop_answers",
+        "clear_answers"
+      ],
+      "remove_answer": [
+        "add_answer",
+        "remove_answer",
+        "push_answers",
+        "pop_answers",
+        "clear_answers"
+      ],
+      "push_answers": [
+        "add_answer",
+        "remove_answer",
+        "push_answers",
+        "pop_answers",
+        "clear_answers"
+      ],
+      "pop_answers": [
+        "add_answer",
+        "remove_answer",
+        "push_answers",
+        "pop_answers",
+        "clear_answers"
+      ],
+      "clear_answers": [
+        "add_answer",
+        "remove_answer",
+        "push_answers",
+        "pop_answers",
+        "clear_answers"
+      ],
+      "select_from_menu": [
+        "select_from_menu",
+        "select_from_menu2"
+      ],
+      "select_from_menu2": [
+        "select_from_menu",
+        "select_from_menu2"
+      ]
+    },
+    "SOUND": {
+      "play_sound_effect": [
+        "play_sound_effect",
+        "play_sound_effect2"
+      ],
+      "play_sound_effect2": [
+        "play_sound_effect",
+        "play_sound_effect2"
+      ],
+      "play_music": [
+        "play_music",
+        "get_music_track"
+      ],
+      "get_music_track": [
+        "play_music",
+        "get_music_track"
+      ],
+      "start_speech": [
+        "start_speech",
+        "start_blocking_speech",
+        "get_speech_track"
+      ],
+      "start_blocking_speech": [
+        "start_speech",
+        "start_blocking_speech",
+        "get_speech_track"
+      ],
+      "get_speech_track": [
+        "start_speech",
+        "start_blocking_speech",
+        "get_speech_track"
+      ]
+    },
+    "SEARCH": {
+      "find_nearest": [
+        "find_nearest",
+        "find_object",
+        "find_nearby",
+        "find_nearby_avatar"
+      ],
+      "find_object": [
+        "find_nearest",
+        "find_object",
+        "find_nearby",
+        "find_nearby_avatar"
+      ],
+      "find_nearby": [
+        "find_nearest",
+        "find_object",
+        "find_nearby",
+        "find_nearby_avatar"
+      ],
+      "find_nearby_avatar": [
+        "find_nearest",
+        "find_object",
+        "find_nearby",
+        "find_nearby_avatar"
+      ],
+      "npc_nearby": [
+        "npc_nearby",
+        "npc_nearby2"
+      ],
+      "npc_nearby2": [
+        "npc_nearby",
+        "npc_nearby2"
+      ],
+      "count_objects": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ],
+      "get_cont_items": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ]
+    },
+    "PLACEMENT": {
+      "is_not_blocked": [
+        "is_dest_reachable",
+        "can_avatar_reach_pos"
+      ],
+      "add_party_items": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ],
+      "remove_party_items": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ],
+      "summon": [
+        "clone",
+        "summon",
+        "create_new_object2",
+        "remove_item"
+      ],
+      "clone": [
+        "clone",
+        "summon",
+        "create_new_object2",
+        "remove_item"
+      ],
+      "create_new_object": [
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object",
+        "create_new_egg"
+      ],
+      "create_new_object2": [
+        "clone",
+        "summon",
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object"
+      ],
+      "create_barge_object": [
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object"
+      ],
+      "set_last_created": [
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object"
+      ],
+      "update_last_created": [
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object"
+      ],
+      "give_last_created": [
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object"
+      ],
+      "get_object_position": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "move_object": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "get_distance": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "find_direction": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "add_cont_items": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ],
+      "remove_cont_items": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ],
+      "remove_from_area": [
+        "count_objects",
+        "add_party_items",
+        "remove_party_items",
+        "add_cont_items",
+        "get_cont_items",
+        "remove_cont_items",
+        "remove_from_area"
+      ],
+      "create_new_egg": [
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "create_barge_object",
+        "create_new_egg"
+      ]
+    },
+    "OBJECTS": {
+      "get_item_shape": [
+        "get_item_shape",
+        "set_item_shape",
+        "get_item_frame",
+        "set_item_frame",
+        "get_item_frame_rot",
+        "set_item_frame_rot",
+        "get_shape_flag"
+      ],
+      "get_shape_flag": [
+        "get_shape_flag",
+        "get_item_shape",
+        "get_item_flag",
+        "is_water",
+        "get_object_position"
+      ],
+      "set_item_shape": [
+        "get_item_shape",
+        "set_item_shape",
+        "get_item_frame",
+        "set_item_frame",
+        "get_item_frame_rot",
+        "set_item_frame_rot",
+        "set_polymorph"
+      ],
+      "get_item_frame": [
+        "get_item_shape",
+        "set_item_shape",
+        "get_item_frame",
+        "set_item_frame",
+        "get_item_frame_rot",
+        "set_item_frame_rot"
+      ],
+      "set_item_frame": [
+        "get_item_shape",
+        "set_item_shape",
+        "get_item_frame",
+        "set_item_frame",
+        "get_item_frame_rot",
+        "set_item_frame_rot",
+        "set_polymorph"
+      ],
+      "get_item_frame_rot": [
+        "get_item_shape",
+        "set_item_shape",
+        "get_item_frame",
+        "set_item_frame",
+        "get_item_frame_rot",
+        "set_item_frame_rot"
+      ],
+      "set_item_frame_rot": [
+        "get_item_shape",
+        "set_item_shape",
+        "get_item_frame",
+        "set_item_frame",
+        "get_item_frame_rot",
+        "set_item_frame_rot",
+        "set_polymorph"
+      ],
+      "get_item_gump_position": [
+        "get_item_gump_position",
+        "set_item_gump_position"
+      ],
+      "set_item_gump_position": [
+        "get_item_gump_position",
+        "set_item_gump_position"
+      ],
+      "get_item_quality": [
+        "get_item_quality",
+        "set_item_quality",
+        "get_item_quantity",
+        "set_item_quantity"
+      ],
+      "set_item_quality": [
+        "get_item_quality",
+        "set_item_quality",
+        "get_item_quantity",
+        "set_item_quantity"
+      ],
+      "get_item_quantity": [
+        "get_item_quality",
+        "set_item_quality",
+        "get_item_quantity",
+        "set_item_quantity"
+      ],
+      "set_item_quantity": [
+        "get_item_quality",
+        "set_item_quality",
+        "get_item_quantity",
+        "set_item_quantity"
+      ],
+      "get_lift": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "set_lift": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "get_item_flag": [
+        "get_item_flag",
+        "set_item_flag",
+        "clear_item_flag"
+      ],
+      "set_item_flag": [
+        "get_item_flag",
+        "set_item_flag",
+        "clear_item_flag"
+      ],
+      "clear_item_flag": [
+        "get_item_flag",
+        "set_item_flag",
+        "clear_item_flag"
+      ],
+      "get_barge": [
+        "get_barge",
+        "set_barge_dir",
+        "on_barge",
+        "create_barge_object"
+      ],
+      "set_barge_dir": [
+        "get_barge",
+        "set_barge_dir",
+        "on_barge",
+        "create_barge_object"
+      ],
+      "on_barge": [
+        "get_barge",
+        "set_barge_dir",
+        "on_barge",
+        "create_barge_object"
+      ],
+      "get_container": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "remove_item": [
+        "clone",
+        "summon",
+        "create_new_object",
+        "create_new_object2",
+        "set_last_created",
+        "update_last_created",
+        "give_last_created",
+        "remove_item",
+        "create_barge_object"
+      ],
+      "get_usecode_fun": [
+        "in_usecode",
+        "get_usecode_fun",
+        "set_usecode_fun"
+      ],
+      "set_usecode_fun": [
+        "in_usecode",
+        "get_usecode_fun",
+        "set_usecode_fun"
+      ],
+      "get_map_num": [
+        "get_object_position",
+        "move_object",
+        "get_distance",
+        "find_direction",
+        "get_lift",
+        "set_lift",
+        "get_container",
+        "get_map_num"
+      ],
+      "get_item_weight": [],
+      "is_on_keyring": [
+        "is_on_keyring",
+        "add_to_keyring",
+        "remove_from_keyring"
+      ],
+      "add_to_keyring": [
+        "is_on_keyring",
+        "add_to_keyring",
+        "remove_from_keyring"
+      ],
+      "remove_from_keyring": [
+        "is_on_keyring",
+        "add_to_keyring",
+        "remove_from_keyring"
+      ],
+      "apply_damage": [
+        "apply_damage",
+        "reduce_health",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc",
+        "attack_object",
+        "fire_projectile"
+      ],
+      "reduce_health": [
+        "apply_damage",
+        "reduce_health",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc",
+        "attack_object",
+        "fire_projectile"
+      ],
+      "attack_object": [
+        "apply_damage",
+        "reduce_health",
+        "attack_object",
+        "fire_projectile",
+        "set_to_attack"
+      ],
+      "fire_projectile": [
+        "apply_damage",
+        "reduce_health",
+        "attack_object",
+        "fire_projectile",
+        "set_to_attack"
+      ]
+    },
+    "NPCs": {
+      "get_npc_object": [
+        "get_npc_object",
+        "get_npc_number",
+        "get_avatar_ref",
+        "is_npc",
+        "get_npc_id",
+        "set_npc_id"
+      ],
+      "get_schedule_type": [
+        "get_schedule_type",
+        "set_schedule_type",
+        "modify_schedule",
+        "set_new_schedules",
+        "run_schedule",
+        "revert_schedule"
+      ],
+      "set_schedule_type": [
+        "get_schedule_type",
+        "set_schedule_type",
+        "modify_schedule",
+        "set_new_schedules",
+        "run_schedule",
+        "revert_schedule"
+      ],
+      "modify_schedule": [
+        "get_schedule_type",
+        "set_schedule_type",
+        "modify_schedule",
+        "set_new_schedules",
+        "run_schedule",
+        "revert_schedule"
+      ],
+      "set_new_schedules": [
+        "get_schedule_type",
+        "set_schedule_type",
+        "modify_schedule",
+        "set_new_schedules",
+        "run_schedule",
+        "revert_schedule"
+      ],
+      "run_schedule": [
+        "get_schedule_type",
+        "set_schedule_type",
+        "modify_schedule",
+        "set_new_schedules",
+        "run_schedule",
+        "revert_schedule"
+      ],
+      "revert_schedule": [
+        "get_schedule_type",
+        "set_schedule_type",
+        "modify_schedule",
+        "set_new_schedules",
+        "run_schedule",
+        "revert_schedule"
+      ],
+      "get_npc_prop": [
+        "get_npc_prop",
+        "set_npc_prop"
+      ],
+      "set_npc_prop": [
+        "get_npc_prop",
+        "set_npc_prop"
+      ],
+      "get_npc_name": [
+        "get_npc_name",
+        "set_npc_name"
+      ],
+      "set_npc_name": [
+        "get_npc_name",
+        "set_npc_name"
+      ],
+      "is_npc": [
+        "get_npc_object",
+        "get_npc_number",
+        "get_avatar_ref",
+        "is_npc",
+        "get_npc_id",
+        "set_npc_id"
+      ],
+      "is_dead": [
+        "is_dead",
+        "get_body_npc",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc"
+      ],
+      "get_npc_number": [
+        "get_npc_object",
+        "get_npc_number",
+        "get_avatar_ref",
+        "is_npc",
+        "get_npc_id",
+        "set_npc_id"
+      ],
+      "get_alignment": [
+        "get_alignment",
+        "set_alignment"
+      ],
+      "set_alignment": [
+        "get_alignment",
+        "set_alignment"
+      ],
+      "remove_npc": [
+        "is_dead",
+        "remove_npc",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc"
+      ],
+      "kill_npc": [
+        "apply_damage",
+        "reduce_health",
+        "is_dead",
+        "get_body_npc",
+        "remove_npc",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc"
+      ],
+      "get_attack_mode": [
+        "get_attack_mode",
+        "set_attack_mode"
+      ],
+      "set_attack_mode": [
+        "get_attack_mode",
+        "set_attack_mode"
+      ],
+      "get_npc_id": [
+        "get_npc_object",
+        "get_npc_number",
+        "get_avatar_ref",
+        "is_npc",
+        "get_npc_id",
+        "set_npc_id"
+      ],
+      "set_npc_id": [
+        "get_npc_object",
+        "get_npc_number",
+        "get_avatar_ref",
+        "is_npc",
+        "get_npc_id",
+        "set_npc_id"
+      ],
+      "get_oppressor": [
+        "get_oppressor",
+        "set_oppressor",
+        "set_opponent"
+      ],
+      "set_oppressor": [
+        "get_oppressor",
+        "set_oppressor",
+        "set_opponent"
+      ],
+      "get_readied": [
+        "get_readied",
+        "is_readied",
+        "get_weapon"
+      ],
+      "is_readied": [
+        "get_readied",
+        "is_readied",
+        "get_weapon"
+      ],
+      "get_weapon": [
+        "get_readied",
+        "is_readied",
+        "get_weapon"
+      ],
+      "set_opponent": [
+        "get_oppressor",
+        "set_oppressor",
+        "set_opponent"
+      ],
+      "sit_down": [],
+      "get_body_npc": [
+        "is_dead",
+        "get_body_npc",
+        "remove_npc",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc"
+      ],
+      "resurrect": [
+        "apply_damage",
+        "reduce_health",
+        "is_dead",
+        "get_body_npc",
+        "remove_npc",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc"
+      ],
+      "resurrect_npc": [
+        "apply_damage",
+        "reduce_health",
+        "is_dead",
+        "get_body_npc",
+        "remove_npc",
+        "kill_npc",
+        "resurrect",
+        "resurrect_npc"
+      ],
+      "set_polymorph": [
+        "set_item_shape",
+        "set_item_frame",
+        "set_item_frame_rot",
+        "set_polymorph"
+      ],
+      "get_temperature": [
+        "get_temperature",
+        "set_temperature",
+        "get_temperature_zone",
+        "get_npc_warmth"
+      ],
+      "set_temperature": [
+        "get_temperature",
+        "set_temperature",
+        "get_temperature_zone",
+        "get_npc_warmth"
+      ],
+      "get_temperature_zone": [
+        "get_temperature",
+        "set_temperature",
+        "get_temperature_zone",
+        "get_npc_warmth"
+      ],
+      "get_npc_warmth": [
+        "get_temperature",
+        "set_temperature",
+        "get_temperature_zone",
+        "get_npc_warmth"
+      ]
+    },
+    "PARTY": {
+      "get_party_list": [
+        "add_to_party",
+        "get_party_list",
+        "get_dead_party",
+        "remove_from_party"
+      ],
+      "add_to_party": [
+        "add_to_party",
+        "get_party_list",
+        "get_dead_party",
+        "remove_from_party"
+      ],
+      "remove_from_party": [
+        "add_to_party",
+        "get_party_list",
+        "get_dead_party",
+        "remove_from_party"
+      ],
+      "get_dead_party": [
+        "add_to_party",
+        "get_party_list",
+        "get_dead_party",
+        "remove_from_party"
+      ]
+    },
+    "AVATAR": {
+      "get_avatar_ref": [
+        "get_npc_object",
+        "get_npc_number",
+        "get_avatar_ref",
+        "is_npc",
+        "get_npc_id",
+        "set_npc_id"
+      ],
+      "in_combat": [
+        "in_combat",
+        "is_pc_inside"
+      ],
+      "is_pc_female": [
+        "is_pc_female",
+        "get_skin_colour"
+      ],
+      "get_skin_colour": [
+        "is_pc_female",
+        "get_skin_colour"
+      ],
+      "is_pc_inside": [
+        "in_combat",
+        "is_pc_inside"
+      ],
+      "wearing_fellowship": [],
+      "approach_avatar": [],
+      "call_guards": [
+        "call_guards",
+        "attack_avatar",
+        "stop_arresting"
+      ],
+      "attack_avatar": [
+        "call_guards",
+        "attack_avatar",
+        "stop_arresting"
+      ],
+      "stop_arresting": [
+        "call_guards",
+        "attack_avatar",
+        "stop_arresting"
+      ],
+      "save_pos": [
+        "save_pos",
+        "teleport_to_saved_pos"
+      ],
+      "teleport_to_saved_pos": [
+        "save_pos",
+        "teleport_to_saved_pos"
+      ]
+    },
+    "WEATHER": {
+      "get_timer": [
+        "get_timer",
+        "set_timer"
+      ],
+      "set_timer": [
+        "get_timer",
+        "set_timer"
+      ],
+      "game_day": [
+        "game_day",
+        "game_hour",
+        "game_minute",
+        "part_of_day",
+        "advance_time"
+      ],
+      "game_hour": [
+        "game_day",
+        "game_hour",
+        "game_minute",
+        "part_of_day",
+        "advance_time"
+      ],
+      "game_minute": [
+        "game_day",
+        "game_hour",
+        "game_minute",
+        "part_of_day",
+        "advance_time"
+      ],
+      "part_of_day": [
+        "game_day",
+        "game_hour",
+        "game_minute",
+        "part_of_day",
+        "advance_time"
+      ],
+      "nap_time": [
+        "fade_palette_sleep"
+      ],
+      "advance_time": [
+        "game_day",
+        "game_hour",
+        "game_minute",
+        "part_of_day",
+        "advance_time"
+      ],
+      "stop_time": [],
+      "get_weather": [
+        "get_weather",
+        "set_weather"
+      ],
+      "set_weather": [
+        "get_weather",
+        "set_weather"
+      ]
+    },
+    "INTERFACE": {
+      "click_on_item": [
+        "click_on_item",
+        "set_intercept_item"
+      ],
+      "set_intercept_item": [
+        "click_on_item",
+        "set_intercept_item"
+      ],
+      "input_numeric_value": [],
+      "mouse_exists": [],
+      "flash_mouse": [],
+      "ambient_light": [
+        "ambient_light",
+        "cause_light",
+        "infravision",
+        "set_light"
+      ],
+      "cause_light": [
+        "ambient_light",
+        "cause_light",
+        "infravision",
+        "set_light"
+      ],
+      "infravision": [
+        "ambient_light",
+        "cause_light",
+        "infravision",
+        "set_light"
+      ],
+      "set_light": [
+        "ambient_light",
+        "cause_light",
+        "infravision",
+        "set_light"
+      ],
+      "earthquake": [
+        "earthquake",
+        "armageddon",
+        "lightning"
+      ],
+      "armageddon": [
+        "earthquake",
+        "armageddon",
+        "restart_game",
+        "run_endgame"
+      ],
+      "restart_game": [
+        "armageddon",
+        "restart_game",
+        "run_endgame"
+      ],
+      "run_endgame": [
+        "armageddon",
+        "restart_game",
+        "run_endgame"
+      ],
+      "error_message": [
+        "error_message",
+        "printf"
+      ],
+      "printf": [
+        "error_message",
+        "printf"
+      ]
+    },
+    "DISPLAY": {
+      "center_view": [
+        "center_view",
+        "display_area",
+        "set_camera",
+        "view_tile",
+        "wizard_eye"
+      ],
+      "display_area": [
+        "center_view",
+        "display_area",
+        "set_camera",
+        "view_tile",
+        "wizard_eye"
+      ],
+      "set_camera": [
+        "center_view",
+        "display_area",
+        "set_camera",
+        "view_tile",
+        "wizard_eye"
+      ],
+      "view_tile": [
+        "center_view",
+        "display_area",
+        "set_camera",
+        "view_tile",
+        "wizard_eye"
+      ],
+      "wizard_eye": [
+        "center_view",
+        "display_area",
+        "set_camera",
+        "view_tile",
+        "wizard_eye"
+      ],
+      "fade_palette": [
+        "fade_palette",
+        "fade_palette_sleep",
+        "set_time_palette"
+      ],
+      "fade_palette_sleep": [
+        "fade_palette",
+        "fade_palette_sleep",
+        "nap_time",
+        "set_time_palette"
+      ],
+      "set_time_palette": [
+        "fade_palette",
+        "fade_palette_sleep",
+        "set_time_palette"
+      ],
+      "item_say": [
+        "item_say",
+        "clear_item_say"
+      ],
+      "clear_item_say": [
+        "item_say",
+        "clear_item_say"
+      ],
+      "display_runes": [
+        "book_mode",
+        "book_mode_ex",
+        "display_runes",
+        "in_gump_mode"
+      ],
+      "book_mode": [
+        "book_mode",
+        "book_mode_ex",
+        "display_runes",
+        "in_gump_mode"
+      ],
+      "book_mode_ex": [
+        "book_mode",
+        "book_mode_ex",
+        "display_runes",
+        "in_gump_mode"
+      ],
+      "close_gumps": [
+        "close_gumps",
+        "close_gumps2",
+        "close_gump",
+        "close_gump2",
+        "in_gump_mode"
+      ],
+      "close_gumps2": [
+        "close_gumps",
+        "close_gumps2",
+        "close_gump",
+        "close_gump2",
+        "in_gump_mode"
+      ],
+      "close_gump": [
+        "close_gumps",
+        "close_gumps2",
+        "close_gump",
+        "close_gump2",
+        "in_gump_mode"
+      ],
+      "close_gump2": [
+        "close_gumps",
+        "close_gumps2",
+        "close_gump",
+        "close_gump2",
+        "in_gump_mode"
+      ],
+      "in_gump_mode": [
+        "close_gumps",
+        "close_gumps2",
+        "close_gump",
+        "close_gump2",
+        "in_gump_mode"
+      ],
+      "display_map": [
+        "display_map",
+        "si_display_map",
+        "display_map_ex",
+        "in_gump_mode"
+      ],
+      "si_display_map": [
+        "display_map",
+        "si_display_map",
+        "display_map_ex",
+        "in_gump_mode"
+      ],
+      "display_map_ex": [
+        "display_map",
+        "si_display_map",
+        "display_map_ex",
+        "in_gump_mode"
+      ],
+      "lightning": [
+        "earthquake",
+        "lightning"
+      ],
+      "sprite_effect": [
+        "sprite_effect",
+        "obj_sprite_effect"
+      ],
+      "obj_sprite_effect": [
+        "sprite_effect",
+        "obj_sprite_effect"
+      ],
+      "play_scene": [
+        "play_scene"
+      ],
+      "get_slider_value": [
+        "set_gump_text",
+        "set_gump_text_font",
+        "set_gump_shape",
+        "set_slider_value",
+        "get_slider_value"
+      ],
+      "set_gump_shape": [
+        "set_gump_text",
+        "set_gump_text_font",
+        "set_gump_shape",
+        "set_slider_value",
+        "get_slider_value"
+      ],
+      "set_gump_text": [
+        "set_gump_text",
+        "set_gump_text_font",
+        "set_gump_shape",
+        "set_slider_value",
+        "get_slider_value"
+      ],
+      "set_gump_text_font": [
+        "set_gump_text",
+        "set_gump_text_font",
+        "set_gump_shape",
+        "set_slider_value",
+        "get_slider_value"
+      ],
+      "set_slider_value": [
+        "set_gump_text",
+        "set_gump_text_font",
+        "set_gump_shape",
+        "set_slider_value",
+        "get_slider_value"
+      ]
+    },
+    "MISCELLANEOUS": {
+      "add_spell": [
+        "add_spell",
+        "has_spell",
+        "remove_spell",
+        "remove_all_spells"
+      ],
+      "has_spell": [
+        "add_spell",
+        "has_spell",
+        "remove_spell",
+        "remove_all_spells"
+      ],
+      "remove_spell": [
+        "add_spell",
+        "has_spell",
+        "remove_spell",
+        "remove_all_spells"
+      ],
+      "remove_all_spells": [
+        "add_spell",
+        "has_spell",
+        "remove_spell",
+        "remove_all_spells"
+      ],
+      "get_array_size": [],
+      "mark_virtue_stone": [
+        "mark_virtue_stone",
+        "recall_virtue_stone"
+      ],
+      "recall_virtue_stone": [
+        "mark_virtue_stone",
+        "recall_virtue_stone"
+      ],
+      "set_orrery": [],
+      "is_water": [],
+      "a_or_an": [],
+      "is_dest_reachable": [
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_not_blocked",
+        "can_avatar_reach_pos"
+      ],
+      "can_avatar_reach_pos": [
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_not_blocked",
+        "can_avatar_reach_pos"
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "SCRIPTING": {
+    "actor frame": [
+      "actor frame",
+      "face",
+      "frame",
+      "next frame",
+      "previous frame",
+      "step"
+    ],
+    "attack": [],
+    "call": [],
+    "continue": [],
+    "cycle": [
+      "cycle",
+      "next frame",
+      "previous frame"
+    ],
+    "descent": [
+      "descent",
+      "rise"
+    ],
+    "face": [
+      "actor frame",
+      "face",
+      "frame",
+      "next frame",
+      "previous frame",
+      "step"
+    ],
+    "finish": [],
+    "frame": [
+      "actor frame",
+      "face",
+      "frame",
+      "next frame",
+      "previous frame",
+      "step"
+    ],
+    "hatch": [
+      "hatch",
+      "setegg"
+    ],
+    "hit": [
+      "hit",
+      "resurrect"
+    ],
+    "minutes": [
+      "wait"
+    ],
+    "hours": [
+      "wait"
+    ],
+    "music": [
+      "music",
+      "sfx",
+      "speech"
+    ],
+    "next frame": [
+      "actor frame",
+      "cycle",
+      "face",
+      "frame",
+      "next frame",
+      "previous frame",
+      "step"
+    ],
+    "nohalt": [],
+    "nop": [
+      "nop",
+      "nop2",
+      "wait"
+    ],
+    "nop2": [
+      "nop",
+      "nop2",
+      "wait"
+    ],
+    "previous frame": [
+      "actor frame",
+      "cycle",
+      "face",
+      "frame",
+      "next frame",
+      "previous frame",
+      "step"
+    ],
+    "remove": [],
+    "reset": [
+      "reset",
+      "repeat"
+    ],
+    "repeat": [
+      "reset",
+      "repeat"
+    ],
+    "resurrect": [
+      "hit",
+      "resurrect"
+    ],
+    "rise": [
+      "descent",
+      "rise"
+    ],
+    "weather": [],
+    "say": [],
+    "setegg": [
+      "hatch",
+      "setegg"
+    ],
+    "sfx": [
+      "music",
+      "sfx",
+      "speech"
+    ],
+    "speech": [
+      "music",
+      "sfx",
+      "speech"
+    ],
+    "step": [
+      "actor frame",
+      "face",
+      "frame",
+      "next frame",
+      "previous frame",
+      "step"
+    ],
+    "wait": [
+      "wait",
+      "nop",
+      "nop2"
+    ]
+  }
+}
