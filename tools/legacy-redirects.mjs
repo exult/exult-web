@@ -10,7 +10,7 @@ export function legacyRedirects(references) {
   downloads.forEach((names,section)=>names.forEach((name,page)=>rule('downloads',[parameter('section',section,section===0),parameter('page',page,page===0)],name+'.html')));
   for(const name of ['exult_intrinsics','ucc_scripting','ucc_tutorial','ucc_reference']) {
     const condition=parameter('DATAFILE',`${name}\\.dat`,name==='exult_intrinsics');
-    rule('code',[condition,parameter('OUTPUT','text')],`docs/${name}.txt`);
+    rule('code',[condition,parameter('OUTPUT','text')],`${name}.md`);
     rule('code',[condition,parameter('OUTPUT','naturaldocs')],`docs/${name}.naturaldocs.txt`);
     rule('code',[condition],name+'.html');
   }

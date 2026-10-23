@@ -15,7 +15,7 @@ test('legacy routes become explicit static files, regardless of parameter order'
   assert.equal(staticUrl('downloads.php?page=2&amp;section=0'),'sifixes.html');
   assert.equal(staticUrl('ucc_ref.php?DATAFILE=UI_resurrect&TYPE=5'),'reference-intrinsics-resurrect.html');
   assert.equal(staticUrl('ucc_ref.php?TYPE=6'),'reference-directives-line.html');
-  assert.equal(staticUrl('code.php?OUTPUT=text&DATAFILE=ucc_scripting.dat'),'docs/ucc_scripting.txt');
+  assert.equal(staticUrl('code.php?OUTPUT=text&DATAFILE=ucc_scripting.dat'),'ucc_scripting.md');
   assert.equal(staticUrl('http://exult.info/seventowers/downloads.php?section=0&page=3'),'/seventowers/avatarpack.html');
   assert.equal(staticUrl('news.php?showall=1'),'news-archive.html');
   assert.equal(staticUrl('https://example.com/index.php'),'https://example.com/index.php');
@@ -41,23 +41,28 @@ test('publication contains no PHP, data sources, tests or build dependencies',()
   assert(!fs.existsSync(path.join(output,'tools')));
   assert(!fs.existsSync(path.join(output,'node_modules')));
   assert(!fs.existsSync(path.join(output,'seventowers/content')));
-  for(const f of walk(output)) assert.doesNotMatch(f,/\.(?:php\d?|inc|dat|md)$/);
+  const exports = new Set(['exult_intrinsics.md','ucc_scripting.md','ucc_tutorial.md','ucc_reference.md'].map(name=>path.join(output,'seventowers',name)));
+  for(const f of walk(output)) {
+    assert.doesNotMatch(f,/\.(?:php\d?|inc|dat)$/);
+    if(f.endsWith('.md')) assert(exports.has(f),`Unexpected Markdown source published: ${f}`);
+  }
 });
 
 test('all intrinsic pages and prototypes contribute to the combined exports',()=>{
   const source=path.join(root,'seventowers/usecode/intrinsics');
   const html=read('exult_intrinsics.html');
-  const text=read('docs/exult_intrinsics.txt');
+  const markdown=read('exult_intrinsics.md');
   const nd=read('docs/exult_intrinsics.naturaldocs.txt');
   for(const f of fs.readdirSync(source).filter(f=>f.endsWith('.md'))) {
     const name=f.slice(0,-3);
     assert(read(`reference-intrinsics-${name}.html`).includes('UI_'+name));
     assert(html.includes(`id="${name}"`),name);
-    assert(text.includes('UI_'+name),name);
+    assert(markdown.includes('### UI_'+name),name);
     assert(nd.includes('// Function: UI_'+name),name);
   }
-  assert.doesNotMatch(text,/<span|<a |```|\{\{/);
-  assert(text.includes('obj->'));
+  assert.doesNotMatch(markdown,/<span|\{\{/);
+  assert(markdown.includes('```usecode\n'));
+  assert(markdown.includes('obj->'));
   assert(nd.includes('Peter M Dodge'));
 });
 
@@ -66,7 +71,25 @@ test('downloads use the main Exult metadata updater and retain remote archives',
   assert(html.includes('https://exult.sourceforge.io/snapshots/Keyring.zip'));
   for(const cls of ['link-column','size-column','datetime-column']) assert(html.includes(cls));
   assert(html.includes('../download.js'));
-  assert(read('reference.html').includes('docs/exult_intrinsics.txt'));
+  assert(read('reference.html').includes('exult_intrinsics.md'));
+});
+
+test('Markdown exports expand includes and preserve code, tables, links and images',()=>{
+  const names=['exult_intrinsics','ucc_scripting','ucc_tutorial','ucc_reference'];
+  for(const name of names) {
+    const markdown=read(name+'.md');
+    assert.doesNotMatch(markdown,/\{\{include:/);
+    assert(!fs.existsSync(path.join(output,'seventowers/docs',name+'.txt')));
+    if(name !== 'exult_intrinsics') assert.equal(markdown,expandIncludes(fs.readFileSync(path.join(root,'seventowers/usecode',name+'.md'),'utf8'),path.join(root,'seventowers/usecode')).trim()+'\n');
+    for(const [,url] of markdown.matchAll(/\]\(([^)]+)\)/g)) {
+      if(/^[a-z]+:|^\/|^#/i.test(url)) continue;
+      assert(fs.existsSync(path.resolve(output,'seventowers',url.split('#')[0])),url);
+    }
+  }
+  const combined=read('exult_intrinsics.md');
+  assert(combined.includes('| Parameter / value | Description |'));
+  assert(combined.includes('![[BG]](images/bgsm.png)'));
+  assert(combined.includes('[resurrect](reference-scriptop-resurrect.html)'));
 });
 
 test('grammar highlights code, links intrinsics, and leaves strings and comments alone',async()=>{

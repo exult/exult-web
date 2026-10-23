@@ -62,7 +62,7 @@ export async function createDocumentation(root) {
     }).join('');
   };
   const read = name => expandIncludes(fs.readFileSync(path.join(root, name + '.md'), 'utf8'), root);
-  return {read, html: source => markdown.render(source), text: source => renderText(markdown.parse(source, {})), naturalDocs: source => renderText(markdown.parse(source, {}), true), highlight, dispose: () => highlighter.dispose()};
+  return {read, html: source => markdown.render(source), naturalDocs: source => renderText(markdown.parse(source, {}), true), highlight, dispose: () => highlighter.dispose()};
 }
 
 const decode = s => s.replace(/&(?:amp|lt|gt|quot|apos|nbsp|#124);/g, c => ({'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'",'&nbsp;':' ','&#124;':'|'}[c]));

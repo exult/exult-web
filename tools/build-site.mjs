@@ -22,7 +22,7 @@ export function staticUrl(value) {
   else if(page === 'code') {
     const name = (q.get('DATAFILE') || 'exult_intrinsics.dat').replace(/\.dat$/, '');
     const output = q.get('OUTPUT');
-    target = output === 'text' || output === 'naturaldocs' ? `docs/${name}${output === 'naturaldocs' ? '.naturaldocs' : ''}.txt` : `${name}.html`;
+    target = output === 'text' ? `${name}.md` : output === 'naturaldocs' ? `docs/${name}.naturaldocs.txt` : `${name}.html`;
   } else if(page === 'ucc_ref') {
     const type = Number(q.get('TYPE') || 5);
     const category = ({3:'scriptop', 5:'intrinsics', 6:'directives', 50:'reference'})[type] || 'intrinsics';
@@ -95,7 +95,7 @@ function downloadContent(data, section, current) {
       const icon = data.icons[entry.PAGE];
       if(filename.endsWith('.md')) {
         const name = filename.slice(0,-3);
-        entries.push({url:`${name}.html`, title:entry.TITLE, icons:[icon], blurb:`Text-only version: <a href="docs/${name}.txt">view online</a>, <a href="docs/${name}.txt" download>save to disk</a>. <a href="docs/${name}.naturaldocs.txt" download>Natural Docs source</a>.`});
+        entries.push({url:`${name}.html`, title:entry.TITLE, icons:[icon], blurb:`Markdown version: <a href="${name}.md">view source</a>, <a href="${name}.md" download>save to disk</a>. <a href="docs/${name}.naturaldocs.txt" download>Natural Docs source</a>.`});
       } else {
         // Snapshot archives may be fetched before building, or already present locally.
         const directories = ['../snapshots','files'].filter(dir=>fs.existsSync(path.join(site,dir,filename)));
@@ -157,9 +157,10 @@ export async function build(output = path.join(root,'dist')) {
       }
     }
     for(const [name,source] of [['exult_intrinsics',full], ...['ucc_scripting','ucc_tutorial','ucc_reference'].map(n=>[n,docs.read(n)])]) {
-      const exports = `<p><a href="docs/${name}.txt">Plain text</a> | <a href="docs/${name}.naturaldocs.txt">Natural Docs source</a></p>`;
+      const exports = `<p><a href="${name}.md" download>Download Markdown</a> | <a href="docs/${name}.naturaldocs.txt">Natural Docs source</a></p>`;
       write(name+'.html',page(name.replaceAll('_',' '),'usecodetitle.png',exports+docs.html(source),'usecode'));
-      write(`docs/${name}.txt`,docs.text(source));
+      // Keep exports beside their HTML pages so relative links and images work in both formats.
+      write(`${name}.md`,source.trim()+'\n');
       write(`docs/${name}.naturaldocs.txt`,docs.naturalDocs(name === 'exult_intrinsics' ? docs.read('reference/naturaldocs_intrinsics')+'\n\n'+source : source));
     }
     for(const category of ['intrinsics','scriptop','directives','reference']) {
