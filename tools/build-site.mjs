@@ -52,16 +52,25 @@ function page(title, banner, content, active = '', submenu = '') {
   <link rel="icon" href="images/home.png" type="image/png">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <nav aria-label="Main"><ul class="navbar">${nav.map(([url,text,icon]) => `<li>${url === active ? `<span class="navbar" aria-current="page">` : `<a href="${url}.html">`}<img src="images/${icon}.png" alt="">&nbsp;&nbsp;${text}${url === active ? '</span>' : '</a>'}</li>`).join('')}</ul></nav>
+  <header>
   <input type="checkbox" id="readable-titles" class="font-toggle">
   <label for="readable-titles" class="font-toggle-label">Use readable titles</label>
   <script src="preferences.js"></script>
   <h1 id="top" class="page-title"><span class="title-text">${esc(banner)}</span></h1>
+  </header>
   ${submenu}
-  <main>${content}</main>
+  <main id="main-content" tabindex="-1">${content}</main>
 </body>
 </html>
-`);
+`).replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/g, (anchor, attributes, text) => {
+    if(!/\bhref="(?:https?:)?\/\//.test(attributes)) return anchor;
+    if(!/\bclass="[^"]*\boffsite\b/.test(attributes)) {
+      attributes = /\bclass="/.test(attributes) ? attributes.replace(/\bclass="/, 'class="offsite ') : attributes + ' class="offsite"';
+    }
+    return `<a${attributes}>${text.includes('images/externlink.png') ? text : text + offsiteIcon}</a>`;
+  });
 }
 
 function* files(dir) {
@@ -105,7 +114,7 @@ function downloadContent(data, section, current) {
       const url = `${entry.DIR}/${entry.NAME}.${entry.EXT}`;
       const previews = entry.ICONS.map(icon => {
         const dimensions = icon.slice(icon.lastIndexOf('-')+1);
-        return `<div class="icon-preview"><span class="icon-preview-image"><img src="images/${icon}.png" alt="${esc(entry.NAME)} ${esc(dimensions)} preview"></span><a href="images/${icon}.png" download>${esc(dimensions)}</a></div>`;
+        return `<div class="icon-preview"><span class="icon-preview-image"><img src="images/${icon}.png" alt="${esc(entry.NAME)} ${esc(dimensions)} preview"></span><a href="images/${icon}.png" download aria-label="Download ${esc(entry.NAME)} ${esc(dimensions)} PNG">${esc(dimensions)}</a></div>`;
       }).join('');
       const stat = fs.statSync(path.join(site,url));
       return `<section class="icon-download"><div class="icon-previews">${previews}</div><p><a href="${url}" download>${esc(entry.TITLE)}</a></p><p class="icon-file-info">${Math.ceil(stat.size/1024)} KiB · ${stat.mtime.toISOString().slice(0,10)}</p></section>`;
@@ -127,7 +136,7 @@ function downloadContent(data, section, current) {
       for(const dir of directories.length ? directories : ['../snapshots']) entries.push({url:dir === '../snapshots' ? `https://exult.sourceforge.io/snapshots/${filename}` : `${dir}/${filename}`,title:entry.TITLE,icons:[icon],blurb:entry.README || ''});
     }
   }
-  body += `<table class="download-links" id="download-links-${section}-${current}"><thead><tr><th scope="col">Download</th><th scope="col">Size</th><th scope="col">Last modified</th></tr></thead><tbody>`;
+  body += `<table class="download-links" aria-label="${esc(data.heads[current])} downloads" id="download-links-${section}-${current}"><thead><tr><th scope="col">Download</th><th scope="col">Size</th><th scope="col">Last modified</th></tr></thead><tbody>`;
   for(const entry of entries) {
     const local = path.join(site,entry.url);
     const stat = fs.existsSync(local) ? fs.statSync(local) : null;
@@ -159,7 +168,7 @@ export async function build(output = path.join(root,'dist')) {
     for(const [current,name] of downloadNames[section].entries()) {
       const content = section === 2 ? panels[0] : `<div class="section-tabs" role="radiogroup" aria-label="${esc(data.banner)} sections">${data.heads.map((head,i)=>{
         const id = `tab-${downloadNames[section][i]}`;
-        return `<input class="tab-option" type="radio" name="download-section" id="${id}"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt="">${esc(head)}</label><section class="tab-panel" aria-labelledby="${id}-label">${panels[i]}</section>`;
+        return `<input class="tab-option" type="radio" name="download-section" id="${id}" aria-controls="${id}-panel"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt="">${esc(head)}</label><section class="tab-panel" id="${id}-panel" aria-labelledby="${id}-label" tabindex="0">${panels[i]}</section>`;
       }).join('')}</div><script src="../shapshot_file_details.js"></script><script src="../download.js"></script>`;
       write(name+'.html',page(data.heads[current],data.banner,content,downloadNames[section][0]));
     }

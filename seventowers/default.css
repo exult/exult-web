@@ -1,6 +1,6 @@
 a {
 	padding: 0.1em;
-	text-decoration: none;
+	text-decoration: underline;
 	font-weight: bolder;
 }
 
@@ -50,8 +50,40 @@ body {
 	font-size: 1rem;
 	margin: 0;
 	padding: 10px 10px 10px calc(15em + 10px);
-	text-align: justify;
+	text-align: left;
 	line-height: 1.4em;
+}
+
+.visually-hidden,
+.skip-link:not(:focus) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	clip-path: inset(50%);
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.skip-link:focus {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 10;
+	padding: 0.5em;
+}
+
+a:focus-visible,
+[tabindex]:focus-visible,
+.font-toggle:focus-visible + .font-toggle-label,
+.tab-option:focus-visible + .tab-label {
+	outline: 2px solid #fff;
+	box-shadow: 0 0 0 4px #000;
+	outline-offset: 0;
+}
+
+[aria-current="page"] {
+	text-decoration: underline double;
 }
 
 /* Static documentation and download tables. */
@@ -204,13 +236,9 @@ main th, main td {
 	background: #3f3f3f;
 	color: #d8ac20;
 	border-color: #d8ac20;
+	text-decoration: underline double;
 	cursor: default;
 	pointer-events: none;
-}
-
-.tab-option:focus-visible + .tab-label {
-	outline: 2px solid currentColor;
-	outline-offset: 2px;
 }
 
 .tab-panel {
@@ -228,8 +256,8 @@ main th, main td {
 @media (prefers-color-scheme: dark) {
 	.section-tabs {
 		--tab-background: rgb(54, 56, 57);
-		--tab-color: rgb(20, 184, 69);
-		--tab-border: rgb(20, 184, 69);
+		--tab-color: rgb(24, 188, 72);
+		--tab-border: rgb(24, 188, 72);
 	}
 }
 
@@ -261,7 +289,7 @@ h1.page-title {
 /* Metallic face and opposing edge highlights approximate the original bevel. */
 @supports (background-clip: text) or (-webkit-background-clip: text) {
 	.title-text {
-		background-image: linear-gradient(155deg, #fff1a0 0%, #e4bd42 28%, #a4770b 46%, #f7d558 52%, #d8ac20 70%, #76510c 100%);
+		background-image: linear-gradient(155deg, #fff1a0 0%, #e4bd42 28%, #a4770b 46%, #f7d558 52%, #d8ac20 70%, #805c12 100%);
 		background-clip: text;
 		-webkit-background-clip: text;
 		color: transparent;
@@ -285,11 +313,6 @@ h1.page-title {
 	cursor: pointer;
 }
 
-.font-toggle:focus-visible + .font-toggle-label {
-	outline: 2px solid currentColor;
-	outline-offset: 2px;
-}
-
 #readable-titles:checked ~ .page-title {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -302,6 +325,13 @@ h1.page-title {
 }
 
 @media (forced-colors: active) {
+	a:focus-visible,
+	[tabindex]:focus-visible,
+	.font-toggle:focus-visible + .font-toggle-label,
+	.tab-option:focus-visible + .tab-label {
+		outline-color: Highlight;
+		box-shadow: none;
+	}
 	.title-text,
 	#readable-titles:checked ~ .page-title .title-text {
 		background: none;
@@ -524,7 +554,7 @@ code {
 	background-color: inherit;
 	color: inherit;
 	padding: inherit;
-	text-decoration: inherit;
+	text-decoration: underline;
 	border-right: inherit;
 }
 
@@ -535,7 +565,7 @@ code a:hover {
 	background-color: inherit;
 	color: inherit;
 	padding: inherit;
-	text-decoration: inherit;
+	text-decoration: underline;
 	border-right: inherit;
 }
 
@@ -887,9 +917,9 @@ ul.navbar {
 
 	a:link,
 	a:visited {
-		border-right-color: rgb(20, 184, 69);
+		border-right-color: rgb(24, 188, 72);
 		background-color: rgb(54, 56, 57);
-		color: rgb(20, 184, 69);
+		color: rgb(24, 188, 72);
 	}
 
 	a:link.offsite,
@@ -901,9 +931,9 @@ ul.navbar {
 
 	a:hover,
 	a:hover.offsite {
-		border-right-color: #AA4444;
+		border-right-color: #742323;
 		background-color: #D8AC20;
-		color: #AA4444;
+		color: #742323;
 	}
 
 	ul.box a:hover,

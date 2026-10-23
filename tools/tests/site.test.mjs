@@ -94,7 +94,7 @@ test('download sections share four panels and section URLs select the matching t
       assert.equal([...html.matchAll(/class="tab-option"/g)].length,4);
       assert.equal([...html.matchAll(/class="tab-panel"/g)].length,4);
       assert.equal([...html.matchAll(/ checked>/g)].length,1);
-      assert(html.includes(`id="tab-${name}" checked>`));
+      assert.match(html,new RegExp(`id="tab-${name}"[^>]* checked>`));
       assert.equal([...html.matchAll(/src="\.\.\/download.js"/g)].length,1);
       const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
       assert.equal(new Set(ids).size,ids.length,'Duplicate IDs in '+name);

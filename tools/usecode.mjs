@@ -74,7 +74,11 @@ export async function createDocumentation(root) {
   function highlight(code, block = true, links = true) {
     const key = JSON.stringify([code,block,links]);
     if(cache.has(key)) return cache.get(key);
-    const {tokens} = highlighter.codeToTokens(code, {lang:'usecode', themes:{light:'github-light',dark:'github-dark'}, includeExplanation:true});
+    const {tokens} = highlighter.codeToTokens(code, {
+      lang:'usecode', themes:{light:'github-light',dark:'github-dark'}, includeExplanation:true,
+      // Upstream dark-theme comments fall below 4.5:1 on both code and page backgrounds.
+      colorReplacements:{'github-dark':{'#6a737d':'#9da7b1'}}
+    });
     const content = tokens.map(line => '<span class="line">' + line.map(token => {
       let text = escapeHtml(token.content);
       // Scope checks keep words inside strings and comments from becoming links.
@@ -86,7 +90,7 @@ export async function createDocumentation(root) {
       const style = Object.entries(token.htmlStyle).map(([name,value])=>`${name}:${value}`).join(';');
       return `<span style="${style}">${text}</span>`;
     }).join('') + '</span>').join('\n');
-    const result = block ? `<pre class="usecode"><code>${content}</code></pre>\n` : `<code class="usecode">${content}</code>`;
+    const result = block ? `<pre class="usecode" tabindex="0" role="group" aria-label="Usecode example"><code>${content}</code></pre>\n` : `<code class="usecode">${content}</code>`;
     cache.set(key,result);
     return result;
   }
