@@ -54,6 +54,7 @@ function page(title, banner, content, active = '', submenu = '') {
 <body>
   <input type="checkbox" id="readable-titles" class="font-toggle">
   <label for="readable-titles" class="font-toggle-label">Use readable titles</label>
+  <script src="preferences.js"></script>
   <h1 id="top" class="page-title"><span class="title-text">${esc(banner)}</span></h1>
   <nav aria-label="Main"><ul class="navbar">${nav.map(([url,text,icon]) => `<li>${url === active ? `<span class="navbar" aria-current="page">` : `<a href="${url}.html">`}<img src="images/${icon}.png" alt="">&nbsp;&nbsp;${text}${url === active ? '</span>' : '</a>'}</li>`).join('')}</ul></nav>
   ${submenu}
@@ -87,7 +88,7 @@ function copyPublic(output) {
   const dest = path.join(output,'seventowers');
   fs.mkdirSync(dest,{recursive:true});
   for(const dir of ['images','files','docs','fonts']) fs.cpSync(path.join(site,dir),path.join(dest,dir),{recursive:true});
-  for(const name of ['default.css','favicon.ico']) fs.copyFileSync(path.join(site,name),path.join(dest,name));
+  for(const name of ['default.css','favicon.ico','preferences.js']) fs.copyFileSync(path.join(site,name),path.join(dest,name));
   fs.mkdirSync(path.join(dest,'usecode'),{recursive:true});
   for(const f of files(path.join(site,'usecode'))) if(/\.(?:uc|txt)$/.test(f)) fs.copyFileSync(f,path.join(dest,'usecode',path.basename(f)));
 }

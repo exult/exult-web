@@ -42,9 +42,13 @@ a:hover.target {
 	color: inherit;
 }
 
+html {
+	font-size: 125%;
+}
+
 body {
 	font-family: helvetica, sans-serif;
-	font-size: medium;
+	font-size: 1rem;
 	padding-left: 15em;
 	text-align: justify;
 	line-height: 1.4em;
@@ -241,7 +245,7 @@ main th, main td {
 
 h1.page-title {
 	font-family: "UnifrakturCook", "Old English Text MT", serif;
-	font-size: clamp(2.2rem, 6vw, 4rem);
+	font-size: clamp(2.2rem, 7.5vw, 4rem);
 	font-weight: 700;
 	line-height: 1.15;
 	margin: 0 0 0.25em;
@@ -311,14 +315,14 @@ h1.page-title {
 
 h2 {
 	display: block;
-	font-size: xx-large;
+	font-size: 2rem;
 	padding-left: 0.25em;
 	line-height: 1.6em;
 }
 
 h3 {
 	display: block;
-	font-size: x-large;
+	font-size: 1.5rem;
 	padding-left: 0.25em;
 	line-height: 1.4em;
 }
@@ -335,7 +339,7 @@ p.box {
 }
 
 p.boxtitle {
-	font-size: x-large;
+	font-size: 1.5rem;
 	margin: 0;
 	padding: 0.25em;
 }
@@ -478,7 +482,7 @@ table,
 td,
 tr {
 	font-family: helvetica, sans-serif;
-	font-size: medium;
+	font-size: 1rem;
 }
 
 code {

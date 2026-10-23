@@ -38,7 +38,7 @@ Generated Markdown uses HTML `<code>` elements for inline code starting with `-`
 
 Page banners use actual heading text with the self-hosted UnifrakturCook Bold font and a CSS gold gradient with edge highlights to approximate the original beveled images. The unmodified font, SIL Open Font License, and pinned upstream source URL are in `seventowers/fonts/`. Font loading requires no third-party requests. The original title PNGs remain available as visual references.
 
-The “Use readable titles” checkbox above each banner switches the heading to a plain sans-serif font without decorative effects. It uses native HTML controls and CSS, works with the keyboard, and needs no JavaScript. The setting applies to the current page; it is not stored across navigation.
+The “Use readable titles” checkbox above each banner switches the heading to a plain sans-serif font without decorative effects. Native HTML controls and CSS provide the toggle, including keyboard access. A small local script remembers the setting in browser local storage across pages and visits, restoring it before the heading is parsed. Without JavaScript or storage access, the checkbox still works for the current page. The site uses a 125% base font size, with relative heading and code sizes that follow the reader's browser font settings.
 
 The Exult Mods and Usecode C pages each combine their four sections into CSS-only tabs styled like the site's links. Native radio controls support keyboard selection, and the selected tab uses the same gold treatment as the active main navigation item. The existing section URLs open the same tabbed content with the corresponding section selected. Download metadata is refreshed for all panels, including those initially hidden.
 
