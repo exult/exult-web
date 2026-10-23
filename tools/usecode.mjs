@@ -5,14 +5,15 @@ import {createHighlighter} from 'shiki';
 
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
 
-/** Avoid previewers' diff detection for inline code beginning with a minus sign. */
-export function exportMarkdown(source) {
+/** Apply Markdown export compatibility options without changing code examples. */
+export function exportMarkdown(source, {imagesAsText = false} = {}) {
   source = source.replace(/\r\n?/g, '\n').trim() + '\n';
   const lines = source.split('\n');
   const blocks = new MarkdownIt({html:true}).parse(source, {})
     .filter(token => ['fence','code_block','html_block'].includes(token.type) && token.map)
     .map(token => token.map);
   function inline(text) {
+    const prose = value => imagesAsText ? value.replace(/!\[(\[[^\]\n]*\]|[^\]\n]*)\]\([^\)\n]*\)/g, (_, alt) => alt) : value;
     let result = '', cursor = 0;
     const ticks = /`+/g;
     let opening;
@@ -29,12 +30,12 @@ export function exportMarkdown(source) {
       let code = text.slice(start, closing.index).replace(/\n/g, ' ');
       // CommonMark strips one surrounding space when the code is not all spaces.
       if(code.startsWith(' ') && code.endsWith(' ') && /[^ ]/.test(code)) code = code.slice(1,-1);
-      result += text.slice(cursor, opening.index);
+      result += prose(text.slice(cursor, opening.index));
       result += code.startsWith('-') ? `<code>${escapeHtml(code)}</code>` : text.slice(opening.index, closingTicks.lastIndex);
       cursor = closingTicks.lastIndex;
       ticks.lastIndex = cursor;
     }
-    return result + text.slice(cursor);
+    return result + prose(text.slice(cursor));
   }
   let result = '', cursor = 0;
   for(const [start,end] of blocks) {

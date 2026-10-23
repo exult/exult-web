@@ -88,10 +88,19 @@ test('Markdown exports expand includes and preserve code, tables, links and imag
   }
   const combined=read('exult_intrinsics.md');
   assert(combined.includes('| Parameter / value | Description |'));
-  assert(combined.includes('![[BG]](images/bgsm.png)'));
+  assert(combined.includes('| [BG] | BG-specific intrinsic |'));
+  assert(combined.includes('| [Exult: SI] | Exult-specific intrinsic, available only to SI |'));
+  assert.doesNotMatch(combined,/!\[|<img\b|images\//);
+  assert(read('exult_intrinsics.html').includes('src="images/bgsm.png"'));
   assert(combined.includes('[resurrect](reference-scriptop-resurrect.html)'));
   assert(combined.includes('<code>-358</code>'));
   assert(combined.includes('<code>-&gt;</code>'));
+});
+
+test('text image indicators preserve labels and do not alter code examples',()=>{
+  const source = '![[BG, Exult]](images/bgexultsm.png) and ![Example](images/example.png).\n\n`![[SI]](images/sism.png)`\n\n```usecode\nsay("![[BG]](images/bgsm.png)");\n```\n';
+  assert.equal(exportMarkdown(source),source);
+  assert.equal(exportMarkdown(source,{imagesAsText:true}),source.replace('![[BG, Exult]](images/bgexultsm.png)','[BG, Exult]').replace('![Example](images/example.png)','Example'));
 });
 
 test('Markdown compatibility workaround preserves code text and leaves code blocks intact',()=>{
