@@ -1,4 +1,0 @@
-<?php
-text("Makes the player choose one answer from all dialog options currently being displayed.");
-make_header("Return", 0);
-text("The index (ranging from 1 to n) of the chosen dialog option.");

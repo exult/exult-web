@@ -1,2 +1,0 @@
-<?php
-code_block("UI_remove_npc_face(int face)\nUI_remove_npc_face(actor face)\nface->remove_npc_face()");

@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_get_item_quality(object obj)\nint obj->get_item_quality()");

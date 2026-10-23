@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_center_view(object obj)\nobj->center_view()", true, false, 0, false),
-	$exultimg
-);

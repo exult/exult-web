@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("object UI_get_readied(actor npc, int spot)\nobject npc->get_readied(int spot)", true, false, 0, false),
-	$siexultimg
-);

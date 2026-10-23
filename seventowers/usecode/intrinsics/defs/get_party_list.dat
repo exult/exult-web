@@ -1,2 +1,0 @@
-<?php
-code_block("actor[] UI_get_party_list()\nactor[] UI_get_party_list2()");

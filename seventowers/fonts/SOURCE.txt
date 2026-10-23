@@ -1,0 +1,3 @@
+UnifrakturCook Bold, unmodified from Google Fonts.
+https://raw.githubusercontent.com/google/fonts/fa02673f3b360ca4b9a8ba4f6d5a4aeb59eecd32/ofl/unifrakturcook/UnifrakturCook-Bold.ttf
+License: SIL Open Font License 1.1; see OFL.txt.

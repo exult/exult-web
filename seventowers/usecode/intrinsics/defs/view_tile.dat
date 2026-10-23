@@ -1,2 +1,0 @@
-<?php
-code_block("UI_view_tile(int[2] pos)");

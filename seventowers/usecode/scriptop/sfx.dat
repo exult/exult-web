@@ -1,3 +1,0 @@
-<?php
-code_block("sfx track");
-text("Plays the 'track' sound effect.");

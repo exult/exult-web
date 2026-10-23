@@ -1,3 +1,0 @@
-<?php
-code_block("cycle");
-text("This is not really a script command, but a modifier for script commands. Used with '" . inline_code("next frame") . "' and '" . inline_code("previous frame") . "' to cause frames to wrap around when the last frame available is reached.");

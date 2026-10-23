@@ -1,4 +1,0 @@
-<?php
-text("Determines if a mouse exists.");
-make_header("Return", 0);
-text("Exult always returns $true; the original games will return $true if a mouse if present, $false otherwise.");

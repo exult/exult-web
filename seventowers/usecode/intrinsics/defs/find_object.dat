@@ -1,2 +1,0 @@
-<?php
-code_block("object UI_find_object(object cont, int shape, int qual, int frame)\nobject cont->find_object(int shape, int qual, int frame)\nobject UI_find_object(int cont, int shape, int qual, int frame)\nobject UI_find_object(int cont[3], int shape, int qual, int frame)");

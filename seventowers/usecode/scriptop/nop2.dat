@@ -1,3 +1,0 @@
-<?php
-code_block("nop2;");
-text("Does nothing. Identical to '" . inline_code("wait 1;") . "' or '" . inline_code("nop;") . ".");

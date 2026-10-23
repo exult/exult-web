@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_remove_from_area(int shape, int frame, int ul[2], int lr[2])", true, false, 0, false),
-	$siexultimg
-);

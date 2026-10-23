@@ -1,2 +1,0 @@
-<?php
-code_block("object UI_find_nearest(object obj, int shape, int dist)\nobject obj->find_nearest(int shape, int dist)");

@@ -1,6 +1,7 @@
 a {
 	padding: 0.1em;
-	text-decoration: none;
+	text-decoration: underline;
+	font-weight: bolder;
 }
 
 a:link,
@@ -19,14 +20,12 @@ a:hover,
 a:hover.offsite {
 	border-right-width: 0.5em;
 	border-right-style: solid;
-	font-weight: bolder;
 }
 
 ul.box a:hover,
 ul.box a:hover.offsite {
 	border-right-width: 0.5em;
 	border-right-style: solid;
-	font-weight: bolder;
 }
 
 a.offsite img+img {
@@ -42,33 +41,310 @@ a:hover.target {
 	color: inherit;
 }
 
+html {
+	font-size: 125%;
+	--link-hover-background: #ffff80;
+	--link-hover-color: #aa0000;
+}
+
 body {
 	font-family: helvetica, sans-serif;
-	font-size: medium;
-	padding-left: 15em;
-	text-align: justify;
+	font-size: 1rem;
+	margin: 0;
+	padding: 10px 10px 10px calc(15em + 10px);
+	text-align: left;
 	line-height: 1.4em;
 }
 
-h1 {
-	display: block;
-	font-family: times, serif;
-	font-size: x-small;
+.visually-hidden,
+.skip-link:not(:focus) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	clip-path: inset(50%);
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.skip-link:focus {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 10;
+	padding: 0.5em;
+}
+
+a:focus-visible,
+[tabindex]:focus-visible,
+.font-toggle:focus-visible + .font-toggle-label,
+.tab-option:focus-visible + .tab-label {
+	outline: 2px solid #fff;
+	box-shadow: 0 0 0 4px #000;
+	outline-offset: 0;
+}
+
+.nav-label {
+	text-decoration: underline;
+}
+
+[aria-current="page"] .nav-label,
+.tab-option:checked + .tab-label .nav-label {
+	text-decoration-style: double;
+}
+
+/* Static documentation and download tables. */
+pre.usecode {
+	white-space: pre;
+	overflow-x: auto;
+	padding: 1em;
+	background: #fff;
+	color: #24292e;
+	text-align: left;
+	line-height: 1.5;
+}
+
+code.usecode {
+	font-family: monospace;
+	white-space: pre-wrap;
+}
+
+@media (prefers-color-scheme: dark) {
+	pre.usecode { background: #0d1117; color: #c9d1d9; }
+	.usecode span { color: var(--shiki-dark) !important; }
+}
+
+code.usecode a {
+	border: 0;
+	padding: 0;
+	text-decoration: underline;
+	color: inherit;
+}
+
+main table {
+	border-collapse: collapse;
+	text-align: left;
+	margin: 1em 0;
+}
+
+main th, main td {
+	border: 1px solid #888;
+	padding: 0.5em;
+	vertical-align: top;
+}
+
+.size-column, .datetime-column {
+	white-space: nowrap;
+}
+
+.download-entry {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75em;
+}
+
+.download-icons {
+	display: flex;
+	flex: 0 0 48px;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25em;
+}
+
+.download-copy {
+	min-width: 0;
+}
+
+.download-details {
+	margin-top: 0.3em;
+}
+
+.icon-gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+	gap: 1em;
+	margin: 1em 0;
+}
+
+.icon-download {
+	border: 1px solid #888;
+	padding: 1em;
+	text-align: center;
+}
+
+.icon-previews {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.75em;
+}
+
+.icon-preview {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3em;
+}
+
+.icon-preview-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+}
+
+.icon-file-info {
+	font-size: 0.85em;
+	margin-bottom: 0;
+}
+
+.section-tabs {
+	--tab-background: #dfdfdf;
+	--tab-color: #005533;
+	--tab-border: #00aa33;
+}
+
+.section-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em;
+}
+
+.tab-option {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(50%);
+	overflow: hidden;
+}
+
+.tab-label {
+	display: inline-flex;
 	font-weight: bold;
-	padding: 0.1em;
-	text-align: justify;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.2em 0.35em;
+	border-right: 0.5em solid var(--tab-border);
+	background: var(--tab-background);
+	color: var(--tab-color);
+	cursor: pointer;
+}
+
+.tab-label img {
+	width: 32px;
+	height: 32px;
+	object-fit: contain;
+}
+
+.tab-label:hover {
+	background: var(--link-hover-background);
+	color: var(--link-hover-color);
+	border-color: var(--link-hover-color);
+}
+
+.tab-option:checked + .tab-label {
+	background: #3f3f3f;
+	color: #d8ac20;
+	border-color: #d8ac20;
+	cursor: default;
+	pointer-events: none;
+}
+
+.tab-panel {
+	display: none;
+	min-width: 0;
+	overflow-x: auto;
+}
+
+/* Keep all section controls before their content in the reading and focus order. */
+.section-tabs:has(.tab-option:nth-of-type(1):checked) > .tab-panel:nth-of-type(1),
+.section-tabs:has(.tab-option:nth-of-type(2):checked) > .tab-panel:nth-of-type(2),
+.section-tabs:has(.tab-option:nth-of-type(3):checked) > .tab-panel:nth-of-type(3),
+.section-tabs:has(.tab-option:nth-of-type(4):checked) > .tab-panel:nth-of-type(4) {
+	display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+	.section-tabs {
+		--tab-background: rgb(54, 56, 57);
+		--tab-color: rgb(24, 188, 72);
+		--tab-border: rgb(24, 188, 72);
+	}
+}
+
+@font-face {
+	font-family: "UnifrakturCook";
+	src: url("fonts/UnifrakturCook-Bold.ttf") format("truetype");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+h1.page-title {
+	font-family: "UnifrakturCook", "Old English Text MT", serif;
+	font-size: clamp(2.2rem, 7.5vw, 4rem);
+	font-weight: 700;
+	line-height: 1.15;
+	margin: 0 0 0.25em;
+	padding: 0.03em 0.12em 0.12em;
+	text-align: left;
+	overflow-wrap: anywhere;
+}
+
+.title-text {
+	display: inline-block;
+	color: #d8ac20;
+	text-shadow: -1px -1px 0 #fff0a0, 1px 1px 0 #805c12;
+}
+
+/* Metallic face and opposing edge highlights approximate the original bevel. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+	.title-text {
+		background-image: linear-gradient(155deg, #fff1a0 0%, #e4bd42 28%, #a4770b 46%, #f7d558 52%, #d8ac20 70%, #805c12 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
+		text-shadow: none;
+		filter: drop-shadow(-0.5px -0.5px 0 #fff0a0) drop-shadow(1px 1px 0 #805c12);
+	}
+}
+
+.font-toggle {
+	width: 1.1em;
+	height: 1.1em;
+	vertical-align: middle;
+	accent-color: #d8ac20;
+}
+
+.font-toggle-label {
+	display: inline-block;
+	padding: 0.25em;
+	margin-bottom: 0.4em;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+#readable-titles:checked ~ .page-title {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#readable-titles:checked ~ .page-title .title-text {
+	background: none;
+	color: #d8ac20;
+	text-shadow: none;
+	filter: none;
 }
 
 h2 {
 	display: block;
-	font-size: xx-large;
+	font-size: 2rem;
 	padding-left: 0.25em;
 	line-height: 1.6em;
 }
 
 h3 {
 	display: block;
-	font-size: x-large;
+	font-size: 1.5rem;
 	padding-left: 0.25em;
 	line-height: 1.4em;
 }
@@ -85,7 +361,7 @@ p.box {
 }
 
 p.boxtitle {
-	font-size: x-large;
+	font-size: 1.5rem;
 	margin: 0;
 	padding: 0.25em;
 }
@@ -188,9 +464,12 @@ ul.navbar {
 }
 
 ul.navbar a {
-	display: block;
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
 	padding: 0.1em;
 	width: 13em;
+	text-decoration: none;
 }
 
 ul.navbar li {
@@ -202,9 +481,42 @@ span.navbar {
 	border-right-width: 0.5em;
 	border-right-style: solid;
 	vertical-align: middle;
-	display: table-cell;
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.1em;
 	font-weight: bolder;
-	width: 13.2em;
+	width: 13em;
+}
+
+@media (max-width: 900px) {
+	body { padding: 10px; text-align: left; }
+	ul.navbar {
+		position: static;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		gap: 0.4em;
+		width: auto;
+		margin-bottom: 0.75em;
+	}
+	ul.navbar li {
+		width: auto;
+		max-width: 100%;
+		margin: 0;
+	}
+	ul.navbar a,
+	ul.navbar span.navbar {
+		display: flex;
+		align-items: center;
+		box-sizing: border-box;
+		width: auto;
+		min-height: 44px;
+		height: 100%;
+		padding: 0.2em;
+	}
+	.page-title { overflow-wrap: anywhere; }
+	main { overflow-x: auto; overflow-wrap: anywhere; }
 }
 
 .codeblock {
@@ -222,7 +534,7 @@ table,
 td,
 tr {
 	font-family: helvetica, sans-serif;
-	font-size: medium;
+	font-size: 1rem;
 }
 
 code {
@@ -242,7 +554,7 @@ code {
 	background-color: inherit;
 	color: inherit;
 	padding: inherit;
-	text-decoration: inherit;
+	text-decoration: underline;
 	border-right: inherit;
 }
 
@@ -253,7 +565,7 @@ code a:hover {
 	background-color: inherit;
 	color: inherit;
 	padding: inherit;
-	text-decoration: inherit;
+	text-decoration: underline;
 	border-right: inherit;
 }
 
@@ -423,13 +735,6 @@ a:visited.offsite {
 	border-right-color: #00AAFF;
 	background-color: #DFDFDF;
 	color: #003388;
-}
-
-a:hover,
-a:hover.offsite {
-	border-right-color: #AA0000;
-	background-color: #FFFF80;
-	color: #AA0000;
 }
 
 ul.box a:hover,
@@ -605,9 +910,9 @@ ul.navbar {
 
 	a:link,
 	a:visited {
-		border-right-color: rgb(20, 184, 69);
+		border-right-color: rgb(24, 188, 72);
 		background-color: rgb(54, 56, 57);
-		color: rgb(20, 184, 69);
+		color: rgb(24, 188, 72);
 	}
 
 	a:link.offsite,
@@ -615,13 +920,6 @@ ul.navbar {
 		border-right-color: rgb(100, 172, 232);
 		background-color: rgb(54, 56, 57);
 		color: rgb(100, 172, 232);
-	}
-
-	a:hover,
-	a:hover.offsite {
-		border-right-color: #AA4444;
-		background-color: #D8AC20;
-		color: #AA4444;
 	}
 
 	ul.box a:hover,
@@ -634,6 +932,8 @@ ul.navbar {
 
 	html,
 	body {
+		--link-hover-background: #d8ac20;
+		--link-hover-color: #742323;
 		background-color: rgb(24, 26, 27);
 		color: rgb(209, 203, 199);
 	}
@@ -786,5 +1086,39 @@ ul.navbar {
 
 	.ucc .me3 {
 		color: #82AAFF;
+	}
+}
+
+/* Apply after both theme palettes so :link/:visited cannot override hover. */
+a:hover,
+a:hover.offsite {
+	border-right-color: var(--link-hover-color);
+	background-color: var(--link-hover-background);
+	color: var(--link-hover-color);
+}
+
+/* Respect the reader's high-contrast palette in both light and dark themes. */
+@media (forced-colors: active) {
+	html, body, h1, h2, h3, p.box, p.boxtitle,
+	span.navbar, span.subsections, span.quicktip, ul.box, ul.box span.quicktip,
+	.tab-label, .tab-option:checked + .tab-label, pre.usecode {
+		color: CanvasText;
+		background: Canvas;
+		border-color: CanvasText;
+	}
+	.usecode span { color: CanvasText !important; }
+	a:focus-visible,
+	[tabindex]:focus-visible,
+	.font-toggle:focus-visible + .font-toggle-label,
+	.tab-option:focus-visible + .tab-label {
+		outline-color: Highlight;
+		box-shadow: none;
+	}
+	.title-text,
+	#readable-titles:checked ~ .page-title .title-text {
+		background: none;
+		color: CanvasText;
+		text-shadow: none;
+		filter: none;
 	}
 }

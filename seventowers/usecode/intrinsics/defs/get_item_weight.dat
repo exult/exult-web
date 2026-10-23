@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("int UI_get_item_weight(object obj)\nint obj->get_item_weight()", true, false, 0, false),
-	$siexultimg
-);

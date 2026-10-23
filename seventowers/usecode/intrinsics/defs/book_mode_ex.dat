@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_book_mode_ex(bool is_scroll, int font)\nUI_book_mode_ex(bool is_scroll, int font, int gump)", true, false, 0, false),
-	$exultimg
-);

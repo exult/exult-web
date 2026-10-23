@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_usecode_fun(actor npc, function fun)\nnpc->set_usecode_fun(function fun)", true, false, 0, false),
-	$exultimg
-);

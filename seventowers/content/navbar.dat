@@ -1,8 +1,0 @@
-<?php
-add_nav_button("index.php", "Home", "home.png");
-add_nav_button("downloads.php?section=0", "Exult Mods", "exult.png");
-add_nav_button("downloads.php?section=1", "Usecode C", "usecode.png");
-add_nav_button("downloads.php?section=2", "Ultima Icons", "icons.png");
-add_nav_button("links.php", "Links", "links.png");
-add_nav_button("news.php", "News", "news.png");
-make_navbar();

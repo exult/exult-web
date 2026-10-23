@@ -1,4 +1,0 @@
-<?php
-text("Gets a list of all party members.");
-make_header("Return", 0);
-text("An array containing object references to all of the party's members, including the avatar.");

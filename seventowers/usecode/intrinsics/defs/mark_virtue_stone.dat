@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_mark_virtue_stone(object obj)\nobj->mark_virtue_stone()", true, false, 0, false),
-	$bgimg
-);

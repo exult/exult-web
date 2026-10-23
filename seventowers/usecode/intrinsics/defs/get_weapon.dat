@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("int UI_get_weapon(actor npc)\nint npc->get_weapon()", true, false, 0, false),
-	$siexultimg
-);

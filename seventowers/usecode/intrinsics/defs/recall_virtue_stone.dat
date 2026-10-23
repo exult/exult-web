@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_recall_virtue_stone(object obj, bool flag)\nobj->recall_virtue_stone(bool flag)", true, false, 0, false),
-	$bgimg
-);

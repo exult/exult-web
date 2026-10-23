@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("int UI_get_temperature_zone(object obj)\nint obj->get_temperature_zone()", true, false, 0, false),
-	$siexultimg
-);

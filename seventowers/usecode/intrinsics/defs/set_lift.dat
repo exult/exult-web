@@ -1,2 +1,0 @@
-<?php
-code_block("UI_set_lift(object obj, int lift)\nobj->set_lift(int lift)");

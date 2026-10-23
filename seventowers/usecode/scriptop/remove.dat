@@ -1,3 +1,0 @@
-<?php
-code_block("remove");
-text("Deletes the object from the game world.");

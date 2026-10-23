@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_npc_id(actor npc, int id)\nnpc->set_npc_id(int id)", true, false, 0, false),
-	$siexultimg
-);

@@ -1,7 +1,0 @@
-<?php
-text(
-	array(
-		"This file is a modified form of the Exult Intrinsic Reference, available at " . add_link("http://exult.info/seventowers/downloads.php?section=1&page=2", "http://exult.info/seventowers/downloads.php?section=1&page=2") . ". This document was generated automatically in the same manner as the aforementioned file. The latest version of this file can be obtained at <http://exult.info/seventowers/code.php?TITLE_IMAGE=usecodetitle.png&DATAFILE=exult_intrinsics.dat&TYPE=0&OUTPUT=naturaldocs>.",
-		bold("Authors:") . " Peter M Dodge (twicescorned at gmail dot com; page style, NaturalDocs skeleton for intrinsics) and Marzo Junior (marzojr at yahoo dot com; PHP-page-generation scripts and content)."
-	)
-);

@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_get_schedule_type(actor npc)\nint npc->get_schedule_type()");

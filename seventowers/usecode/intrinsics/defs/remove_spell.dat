@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("bool UI_remove_spell(object obj, int index)", true, false, 0, false),
-	$exultimg
-);

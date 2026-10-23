@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_begin_casting_mode(actor npc, int val)\nnpc->begin_casting_mode(int val)", true, false, 0, false),
-	$exultimg
-);

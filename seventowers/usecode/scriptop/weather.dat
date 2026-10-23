@@ -1,3 +1,0 @@
-<?php
-code_block("weather type");
-text("Sets weather to 'type'; if 'weather' is equal to 255, weather is cleared instead. See the " . inline_code("get_weather") . " and " . inline_code("set_weather") . " intrinsics for the weather types.");

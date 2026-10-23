@@ -1,2 +1,0 @@
-<?php
-code_block("UI_flash_mouse(int cursor)");

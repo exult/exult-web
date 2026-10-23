@@ -1,2 +1,0 @@
-<?php
-code_block("bool UI_remove_party_items(int count, int shape, int qual, int frame)\nbool UI_remove_party_items(int count, int shape, int qual, int frame, bool unk)");

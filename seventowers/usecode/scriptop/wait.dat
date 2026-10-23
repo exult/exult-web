@@ -1,4 +1,0 @@
-<?php
-code_block("wait delay\nwait delay minutes\nwait delay hours\nwait while near dist\nwait while far dist");
-text("For the first 3 variants, delays the next command of the script by 'delay' ticks, minutes or hours.");
-text("The last two variants cause the script to wait until the avatar gets within the desired range -- farther than 'dist' tiles for " . inline_code("wait while near") . ", closer than 'dist' tiles for " . inline_code("wait while far") . ".");

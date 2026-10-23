@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("int UI_get_skin_colour()", true, false, 0, false),
-	$siexultimg
-);

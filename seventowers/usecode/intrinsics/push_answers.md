@@ -1,0 +1,1 @@
+Stores the current conversation options and clears all choices. The dialog options are stored in a LIFO stack that persists until the dialog ends; before that point, the stored options can be retrieved with a call to `UI_pop_answers` intrinsic.

@@ -3,38 +3,82 @@ name: deploy-website
 on:
   push:
     branches: [ master ]
-    paths-ignore:
-      - '.git**'
+  pull_request:
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+        with:
+          path: exult-web-master
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: exult-web-master/package-lock.json
+      - name: Set up Java for HTML validation
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install build dependencies
+        working-directory: exult-web-master
+        run: npm ci
+      - name: Test and build static website
+        working-directory: exult-web-master
+        run: |
+          npm test
+          python3 -m unittest discover -s tests
+      - name: Validate generated HTML
+        working-directory: exult-web-master
+        run: npm run validate:html
+      - name: Install accessibility test browser
+        working-directory: exult-web-master
+        run: npx playwright install --with-deps chromium
+      - name: Check Seven Towers accessibility in light and dark themes
+        working-directory: exult-web-master
+        run: npm run check:a11y
+      - name: Save accessibility report and previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: exult-web-master/node_modules/.cache/accessibility/
+          if-no-files-found: ignore
+      - name: Refresh snapshot metadata
+        if: github.event_name != 'pull_request'
+        working-directory: exult-web-master
+        run: |
+          sh ./gen-snapshot-file-details.sh
+          cp shapshot_file_details.js dist/
+      - name: Save generated website
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-website
+          path: exult-web-master/dist/
+          include-hidden-files: true
       - name: Install SSH key
+        if: github.event_name != 'pull_request'
         uses: shimataro/ssh-key-action@v2
         with:
           key: "${{ secrets.SSH_PRIVATE_KEY }}"
           name: id_ed25519
           known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: Checkout website
-        uses: actions/checkout@master
-        with:
-          path: exult-web-master
       - name: Upload and update website
+        if: github.event_name != 'pull_request'
         shell: bash
         run: |
           cd $GITHUB_WORKSPACE/exult-web-master
-          sh ./gen-snapshot-file-details.sh
           for ii in $(seq 1 5); do
             rsync -az --delete \
-              --exclude=.git/ \
-              --exclude=tests/ \
-              --exclude=/seventowers/tests/ \
               --filter='P */' \
               --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \
               -e "ssh -o BatchMode=yes -o PasswordAuthentication=no -i ~/.ssh/id_ed25519" \
-              $GITHUB_WORKSPACE/exult-web-master/ \
+              $GITHUB_WORKSPACE/exult-web-master/dist/ \
               ${{ secrets.SCP_HOST }}:${{ secrets.PROJECT_HOME }}/htdocs/ \
               && exit 0 || true
           done

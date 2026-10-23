@@ -1,0 +1,487 @@
+{
+  "descriptions": [
+    {
+      "NAME": "About the Ultima Icons",
+      "TEXT": [
+        "These are my Ultima-related icons. If you have any ideas for new Ultima icons or for improving those already here, please feel free to contact me."
+      ]
+    }
+  ],
+  "notice": [
+    {
+      "TITLE": "Important Notice",
+      "TEXT": [
+        "All of these icons are licensed under the <a href=\"http://www.fsf.org/licensing/licenses/lgpl.html\" class=\"offsite\">GNU Lesser General Public License&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>. A few of the icons are derived from the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> icon or from the <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> Studio icon. There icons are licensed under the <a href=\"http://www.fsf.org/licensing/licenses/gpl.html\" class=\"offsite\">GNU General Public License&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a> instead."
+      ]
+    }
+  ],
+  "files": [
+    [
+      {
+        "NAME": "BalanceSerpent",
+        "EXT": "ico",
+        "TITLE": "BalanceSerpent.ico",
+        "ICONS": [
+          "thumbs/BalanceSerpent-16x16x32",
+          "thumbs/BalanceSerpent-32x32x32",
+          "thumbs/BalanceSerpent-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/BalanceSerpent-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/BalanceSerpent-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/BalanceSerpent-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_BlackGate",
+        "EXT": "ico",
+        "TITLE": "Exult_BlackGate.ico",
+        "ICONS": [
+          "thumbs/Exult_BlackGate-16x16x24",
+          "thumbs/Exult_BlackGate-32x32x24",
+          "thumbs/Exult_BlackGate-48x48x24",
+          "thumbs/Exult_BlackGate-16x16x32",
+          "thumbs/Exult_BlackGate-32x32x32",
+          "thumbs/Exult_BlackGate-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_BlackGate-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_BlackGate-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_BlackGate-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_BlackGate-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_BlackGate-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_BlackGate-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_BlackSword",
+        "EXT": "ico",
+        "TITLE": "Exult_BlackSword.ico",
+        "ICONS": [
+          "thumbs/Exult_BlackSword-16x16x24",
+          "thumbs/Exult_BlackSword-32x32x24",
+          "thumbs/Exult_BlackSword-48x48x24",
+          "thumbs/Exult_BlackSword-16x16x32",
+          "thumbs/Exult_BlackSword-32x32x32",
+          "thumbs/Exult_BlackSword-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_BlackSword-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_BlackSword-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_BlackSword-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_BlackSword-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_BlackSword-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_BlackSword-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_FeudalLands",
+        "EXT": "ico",
+        "TITLE": "Exult_FeudalLands.ico",
+        "ICONS": [
+          "thumbs/Exult_FeudalLands-16x16x24",
+          "thumbs/Exult_FeudalLands-32x32x24",
+          "thumbs/Exult_FeudalLands-48x48x24",
+          "thumbs/Exult_FeudalLands-16x16x32",
+          "thumbs/Exult_FeudalLands-32x32x32",
+          "thumbs/Exult_FeudalLands-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_FeudalLands-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_FeudalLands-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_FeudalLands-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_FeudalLands-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_FeudalLands-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_FeudalLands-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_Guardian",
+        "EXT": "ico",
+        "TITLE": "Exult_Guardian.ico",
+        "ICONS": [
+          "thumbs/Exult_Guardian-16x16x24",
+          "thumbs/Exult_Guardian-32x32x24",
+          "thumbs/Exult_Guardian-48x48x24",
+          "thumbs/Exult_Guardian-16x16x32",
+          "thumbs/Exult_Guardian-32x32x32",
+          "thumbs/Exult_Guardian-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_Guardian-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_Guardian-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_Guardian-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_Guardian-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_Guardian-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_Guardian-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_Keyring",
+        "EXT": "ico",
+        "TITLE": "Exult_Keyring.ico",
+        "ICONS": [
+          "thumbs/Exult_Keyring-16x16x24",
+          "thumbs/Exult_Keyring-32x32x24",
+          "thumbs/Exult_Keyring-48x48x24",
+          "thumbs/Exult_Keyring-16x16x32",
+          "thumbs/Exult_Keyring-32x32x32",
+          "thumbs/Exult_Keyring-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_Keyring-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_Keyring-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_Keyring-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_Keyring-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_Keyring-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_Keyring-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_SerpentIsle",
+        "EXT": "ico",
+        "TITLE": "Exult_SerpentIsle.ico",
+        "ICONS": [
+          "thumbs/Exult_SerpentIsle-16x16x24",
+          "thumbs/Exult_SerpentIsle-32x32x24",
+          "thumbs/Exult_SerpentIsle-48x48x24",
+          "thumbs/Exult_SerpentIsle-16x16x32",
+          "thumbs/Exult_SerpentIsle-32x32x32",
+          "thumbs/Exult_SerpentIsle-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_SerpentIsle-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_SerpentIsle-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_SerpentIsle-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_SerpentIsle-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_SerpentIsle-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_SerpentIsle-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Exult_SilverSeed",
+        "EXT": "ico",
+        "TITLE": "Exult_SilverSeed.ico",
+        "ICONS": [
+          "thumbs/Exult_SilverSeed-16x16x24",
+          "thumbs/Exult_SilverSeed-32x32x24",
+          "thumbs/Exult_SilverSeed-48x48x24",
+          "thumbs/Exult_SilverSeed-16x16x32",
+          "thumbs/Exult_SilverSeed-32x32x32",
+          "thumbs/Exult_SilverSeed-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Exult_SilverSeed-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Exult_SilverSeed-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Exult_SilverSeed-48x48x24.png\">48x48x24</a>",
+          "<a href=\"images/thumbs/Exult_SilverSeed-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Exult_SilverSeed-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Exult_SilverSeed-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Guardian",
+        "EXT": "ico",
+        "TITLE": "Guardian.ico",
+        "ICONS": [
+          "thumbs/Guardian-16x16x32",
+          "thumbs/Guardian-32x32x32",
+          "thumbs/Guardian-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Guardian-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Guardian-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Guardian-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Serpent",
+        "EXT": "ico",
+        "TITLE": "Serpent.ico",
+        "ICONS": [
+          "thumbs/Serpent-16x16x32",
+          "thumbs/Serpent-32x32x32",
+          "thumbs/Serpent-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Serpent-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/Serpent-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/Serpent-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_BlackGate",
+        "EXT": "ico",
+        "TITLE": "Studio_BlackGate.ico",
+        "ICONS": [
+          "thumbs/Studio_BlackGate-16x16x24",
+          "thumbs/Studio_BlackGate-32x32x24",
+          "thumbs/Studio_BlackGate-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_BlackGate-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_BlackGate-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_BlackGate-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_BlackSword",
+        "EXT": "ico",
+        "TITLE": "Studio_BlackSword.ico",
+        "ICONS": [
+          "thumbs/Studio_BlackSword-16x16x24",
+          "thumbs/Studio_BlackSword-32x32x24",
+          "thumbs/Studio_BlackSword-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_BlackSword-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_BlackSword-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_BlackSword-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_FeudalLands",
+        "EXT": "ico",
+        "TITLE": "Studio_FeudalLands.ico",
+        "ICONS": [
+          "thumbs/Studio_FeudalLands-16x16x24",
+          "thumbs/Studio_FeudalLands-32x32x24",
+          "thumbs/Studio_FeudalLands-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_FeudalLands-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_FeudalLands-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_FeudalLands-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_Guardian",
+        "EXT": "ico",
+        "TITLE": "Studio_Guardian.ico",
+        "ICONS": [
+          "thumbs/Studio_Guardian-16x16x24",
+          "thumbs/Studio_Guardian-32x32x24",
+          "thumbs/Studio_Guardian-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_Guardian-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_Guardian-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_Guardian-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_Keyring",
+        "EXT": "ico",
+        "TITLE": "Studio_Keyring.ico",
+        "ICONS": [
+          "thumbs/Studio_Keyring-16x16x24",
+          "thumbs/Studio_Keyring-32x32x24",
+          "thumbs/Studio_Keyring-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_Keyring-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_Keyring-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_Keyring-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_SerpentIsle",
+        "EXT": "ico",
+        "TITLE": "Studio_SerpentIsle.ico",
+        "ICONS": [
+          "thumbs/Studio_SerpentIsle-16x16x24",
+          "thumbs/Studio_SerpentIsle-32x32x24",
+          "thumbs/Studio_SerpentIsle-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_SerpentIsle-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_SerpentIsle-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_SerpentIsle-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "Studio_SilverSeed",
+        "EXT": "ico",
+        "TITLE": "Studio_SilverSeed.ico",
+        "ICONS": [
+          "thumbs/Studio_SilverSeed-16x16x24",
+          "thumbs/Studio_SilverSeed-32x32x24",
+          "thumbs/Studio_SilverSeed-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/Studio_SilverSeed-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/Studio_SilverSeed-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/Studio_SilverSeed-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U4",
+        "EXT": "ico",
+        "TITLE": "U4.ico",
+        "ICONS": [
+          "thumbs/U4-16x16x32",
+          "thumbs/U4-32x32x32",
+          "thumbs/U4-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U4-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/U4-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/U4-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U5",
+        "EXT": "ico",
+        "TITLE": "U5.ico",
+        "ICONS": [
+          "thumbs/U5-16x16x32",
+          "thumbs/U5-32x32x32",
+          "thumbs/U5-48x48x32"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U5-16x16x32.png\">16x16x32</a>",
+          "<a href=\"images/thumbs/U5-32x32x32.png\">32x32x32</a>",
+          "<a href=\"images/thumbs/U5-48x48x32.png\">48x48x32</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7BlackGate",
+        "EXT": "ico",
+        "TITLE": "U7BlackGate.ico",
+        "ICONS": [
+          "thumbs/U7BlackGate-16x16x24",
+          "thumbs/U7BlackGate-32x32x24",
+          "thumbs/U7BlackGate-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7BlackGate-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7BlackGate-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7BlackGate-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7BlackSword",
+        "EXT": "ico",
+        "TITLE": "U7BlackSword.ico",
+        "ICONS": [
+          "thumbs/U7BlackSword-16x16x24",
+          "thumbs/U7BlackSword-32x32x24",
+          "thumbs/U7BlackSword-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7BlackSword-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7BlackSword-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7BlackSword-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7FeudalLands",
+        "EXT": "ico",
+        "TITLE": "U7FeudalLands.ico",
+        "ICONS": [
+          "thumbs/U7FeudalLands-16x16x24",
+          "thumbs/U7FeudalLands-32x32x24",
+          "thumbs/U7FeudalLands-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7FeudalLands-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7FeudalLands-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7FeudalLands-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7Guardian",
+        "EXT": "ico",
+        "TITLE": "U7Guardian.ico",
+        "ICONS": [
+          "thumbs/U7Guardian-16x16x24",
+          "thumbs/U7Guardian-32x32x24",
+          "thumbs/U7Guardian-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7Guardian-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7Guardian-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7Guardian-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7Keyring",
+        "EXT": "ico",
+        "TITLE": "U7Keyring.ico",
+        "ICONS": [
+          "thumbs/U7Keyring-16x16x24",
+          "thumbs/U7Keyring-32x32x24",
+          "thumbs/U7Keyring-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7Keyring-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7Keyring-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7Keyring-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7SerpentIsle",
+        "EXT": "ico",
+        "TITLE": "U7SerpentIsle.ico",
+        "ICONS": [
+          "thumbs/U7SerpentIsle-16x16x24",
+          "thumbs/U7SerpentIsle-32x32x24",
+          "thumbs/U7SerpentIsle-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7SerpentIsle-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7SerpentIsle-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7SerpentIsle-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      },
+      {
+        "NAME": "U7SilverSeed",
+        "EXT": "ico",
+        "TITLE": "U7SilverSeed.ico",
+        "ICONS": [
+          "thumbs/U7SilverSeed-16x16x24",
+          "thumbs/U7SilverSeed-32x32x24",
+          "thumbs/U7SilverSeed-48x48x24"
+        ],
+        "BLURBNFO": [
+          "<a href=\"images/thumbs/U7SilverSeed-16x16x24.png\">16x16x24</a>",
+          "<a href=\"images/thumbs/U7SilverSeed-32x32x24.png\">32x32x24</a>",
+          "<a href=\"images/thumbs/U7SilverSeed-48x48x24.png\">48x48x24</a>"
+        ],
+        "DIR": "images"
+      }
+    ]
+  ],
+  "icons": [
+    "icons"
+  ],
+  "heads": [
+    "Ultima Icons"
+  ],
+  "banner": "Ultima Icons"
+}

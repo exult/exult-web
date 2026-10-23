@@ -1,4 +1,0 @@
-<?php
-text("Obtains the avatar's skin color.");
-make_header("Return", 0);
-text("A numeric value describing the avatar's skin color. The return values are determined by a table in 'avatar_data.txt'.");

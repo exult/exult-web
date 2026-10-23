@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("int UI_get_usecode_fun(object obj)\nint obj->get_usecode_fun()", true, false, 0, false),
-	$exultimg
-);

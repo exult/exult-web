@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("bool UI_can_avatar_reach_pos(int pos[])", true, false, 0, false),
-	$siimg
-);

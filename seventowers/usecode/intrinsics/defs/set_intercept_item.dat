@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_set_intercept_item(object obj)\nobj->set_intercept_item()\nUI_set_intercept_item(int obj[2])\nUI_set_intercept_item(int obj[3])\nUI_set_intercept_item(mixed obj[4])", true, false, 0, false),
-	$exultimg
-);

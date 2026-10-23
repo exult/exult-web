@@ -1,0 +1,437 @@
+{
+    "scopeName": "source.usecode",
+    "name": "Usecode",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numbers"
+        },
+        {
+            "include": "#directives"
+        },
+        {
+            "include": "#generic-params"
+        },
+        {
+            "include": "#labels"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#goto-type"
+        },
+        {
+            "include": "#script-commands"
+        },
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#intrinsics"
+        },
+        {
+            "include": "#idents"
+        }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.usecode",
+                    "match": "//.*$"
+                },
+                {
+                    "name": "comment.block.usecode",
+                    "begin": "/\\*",
+                    "end": "\\*/"
+                }
+            ]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.usecode",
+                    "begin": "\"",
+                    "end": "\"\\*?",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.usecode",
+                            "match": "\\\\(?:n|t|r|\\\"|'|\\\\)"
+                        },
+                        {
+                            "name": "constant.character.rune-escape.usecode",
+                            "match": "\\\\\\{(?:dot|ea|ee|ng|st|th)\\}"
+                        },
+                        {
+                            "name": "constant.character.escaped-other.usecode",
+                            "match": "\\\\."
+                        },
+                        {
+                            "match": "[^\\\\\"]+"
+                        }
+                    ]
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.hex.usecode",
+                    "match": "0x[0-9A-Fa-f]+"
+                },
+                {
+                    "name": "constant.numeric.integer.usecode",
+                    "match": "\\b[0-9]+\\b"
+                }
+            ]
+        },
+        "directives": {
+            "patterns": [
+                {
+                    "match": "^(\\s*#include)\\s+(\"[^\"]*\")(?:\\s*(//.*))?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.directive.usecode"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.usecode"
+                        },
+                        "3": {
+                            "name": "comment.line.double-slash.usecode"
+                        }
+                    }
+                },
+                {
+                    "match": "^(\\s*#game)\\s+(\"[^\"]*\")(?:\\s*(//.*))?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.directive.usecode"
+                        },
+                        "2": {
+                            "name": "string.quoted.double.usecode"
+                        },
+                        "3": {
+                            "name": "comment.line.double-slash.usecode"
+                        }
+                    }
+                },
+                {
+                    "match": "^(\\s*#line)\\s+([0-9]+)\\s+(\"[^\"]*\")(?:\\s*(//.*))?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.directive.usecode"
+                        },
+                        "2": {
+                            "name": "constant.numeric.integer.usecode"
+                        },
+                        "3": {
+                            "name": "string.quoted.double.usecode"
+                        },
+                        "4": {
+                            "name": "comment.line.double-slash.usecode"
+                        }
+                    }
+                },
+                {
+                    "match": "^(\\s*#autonumber)\\s+(0x[0-9A-Fa-f]+|[0-9]+)(?:\\s*(//.*))?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.directive.usecode"
+                        },
+                        "2": {
+                            "name": "constant.numeric.hex.usecode"
+                        },
+                        "3": {
+                            "name": "comment.line.double-slash.usecode"
+                        }
+                    }
+                },
+                {
+                    "match": "^(\\s*#strictbraces)\\s+(\"(?:true|false)\")(?:\\s*(//.*))?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.directive.usecode"
+                        },
+                        "2": {
+                            "name": "constant.language.boolean.usecode"
+                        },
+                        "3": {
+                            "name": "comment.line.double-slash.usecode"
+                        }
+                    }
+                },
+                {
+                    "match": "^(\\s*#\\w+)(?:\\s+(.*?))?(?:\\s*(//.*))?$",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.directive.usecode"
+                        },
+                        "2": {
+                            "name": "string.untyped.directive-args.usecode"
+                        },
+                        "3": {
+                            "name": "comment.line.double-slash.usecode"
+                        }
+                    }
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "variable.language.this.usecode",
+                    "match": "\\bthis\\b"
+                },
+                {
+                    "name": "variable.language.item.usecode",
+                    "match": "\\bitem\\b"
+                },
+                {
+                    "name": "keyword.other.event.usecode",
+                    "match": "\\bevent\\b"
+                },
+                {
+                    "name": "keyword.other.user_choice.usecode",
+                    "match": "\\buser_choice\\b"
+                },
+                {
+                    "match": "(\\b(?:break|continue)\\b)(?:\\s+([A-Za-z_][A-Za-z0-9_]*))?",
+                    "captures": {
+                        "1": { "name": "keyword.control.flow.usecode" },
+                        "2": { "name": "entity.name.label.usecode" }
+                    }
+                },
+                {
+                    "name": "keyword.control.flow.usecode",
+                    "match": "\\b(?:if|else|return|do|while|for|nobreak|switch|converse|case|always|default|fallthrough|try|catch|throw|abort|forever|breakable)\\b"
+                },
+                {
+                    "name": "storage.type.usecode",
+                    "match": "\\b(?:class|struct)\\b(?=\\s*<)"
+                },
+                {
+                    "name": "storage.type.declaration.usecode",
+                    "match": "\\b(?:class|struct|enum|nested)\\b(?=\\s)"
+                },
+                {
+                    "name": "keyword.declaration.variable.usecode",
+                    "match": "\\b(?:var|alias|extern|declare)\\b"
+                },
+                {
+                    "name": "storage.type.usecode",
+                    "match": "\\b(?:void|int|char|byte|long|string|const)\\b"
+                },
+                {
+                    "name": "constant.language.value.usecode",
+                    "match": "\\b(?:true|false|gflags)\\b"
+                },
+                {
+                    "name": "keyword.function-like.usecode",
+                    "match": "\\bsay\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "keyword.script.usecode",
+                    "match": "\\bsay\\b(?=\\s)"
+                },
+                {
+                    "name": "keyword.function-like.usecode",
+                    "match": "\\b(?:message|response|original|hide|remove|add|script|runscript)\\b"
+                },
+                {
+                    "name": "keyword.other.usecode",
+                    "match": "\\b(?:after|ticks|static|endconv)\\b"
+                }
+            ]
+        },
+        "goto-type": {
+            "patterns": [
+                {
+                    "name": "keyword.other.goto-type.usecode",
+                    "match": "\\b(?:goto|attend)\\b"
+                }
+            ]
+        },
+        "labels": {
+            "patterns": [
+                {
+                    "match": "(\\b(?:goto|attend)\\b)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+                    "captures": {
+                        "1": { "name": "keyword.other.goto-type.usecode" },
+                        "2": { "name": "entity.name.label.usecode" }
+                    }
+                },
+                {
+                    "match": "(?:^|[\\{\\}\\;]|:)\\s*((?!(?:always|default)\\b)[A-Za-z_][A-Za-z0-9_]*)\\s*(:)(?!:)",
+                    "captures": {
+                        "1": { "name": "entity.name.label.usecode" },
+                        "2": { "name": "keyword.operator.usecode" }
+                    }
+                }
+            ]
+        },
+        "script-commands": {
+            "patterns": [
+                {
+                    "name": "keyword.script.usecode",
+                    "match": "\\b(?:raw|nop|nop2|nohalt|next|finish|resurrect|reset|repeat|wait|rise|descent|frame|hatch|setegg|previous|cycle|step|music|call|speech|sfx|face|weather|hit|attack|actor)\\b"
+                },
+                {
+                    "name": "constant.language.value.usecode",
+                    "match": "\\b(?:near|far|north|south|east|west|nw|ne|sw|se|standing|step_right|step_left|ready|raise_1h|reach_1h|strike_1h|raise_2h|reach_2h|strike_2h|sitting|bowing|kneeling|sleeping|cast_up|cast_out|cached_in|party_near|avatar_near|avatar_far|avatar_footpad|party_footpad|something_on|external_criteria|normal_damage|fire_damage|magic_damage|lightning_damage|poison_damage|starvation_damage|freezing_damage|ethereal_damage|sonic_damage)\\b"
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "name": "storage.type.usecode",
+                    "match": "\\b(?:void|int|char|byte|long|string)\\b"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "match": "\\b(object|id|shape)(#)(?=\\s*\\()",
+                    "captures": {
+                        "1": { "name": "keyword.operator.usecode" },
+                        "2": { "name": "punctuation.section.parens" }
+                    }
+                },
+                {
+                    "name": "keyword.operator.usecode",
+                    "match": "(?:<<|\\+=|-=|\\*=|/=|%=|&=|&&|\\|\\||==|!=|<=|>=|->|::)"
+                },
+                {
+                    "name": "keyword.operator.usecode",
+                    "match": "(?:!|&|\\-|\\+|\\*|/|%|=|\\.|,|;|:|@|<|>)"
+                },
+                {
+                    "name": "punctuation.section.parens.begin.bracket.round.usecode",
+                    "match": "\\("
+                },
+                {
+                    "name": "punctuation.section.parens.end.bracket.round.usecode",
+                    "match": "\\)"
+                },
+                {
+                    "name": "punctuation.section.block.begin.bracket.square.usecode",
+                    "match": "\\["
+                },
+                {
+                    "name": "punctuation.section.block.end.bracket.square.usecode",
+                    "match": "\\]"
+                },
+                {
+                    "name": "punctuation.section.block.begin.bracket.curly.usecode",
+                    "match": "\\{"
+                },
+                {
+                    "name": "punctuation.section.block.end.bracket.curly.usecode",
+                    "match": "\\}"
+                },
+                {
+                    "name": "keyword.operator.usecode",
+                    "match": "\\b(?:in)\\b"
+                }
+            ]
+        },
+        "intrinsics": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:get_random|execute_usecode_array|delayed_execute_usecode_array|show_npc_face|remove_npc_face|show_npc_face0|show_npc_face1|remove_npc_face0|remove_npc_face1|add_answer|remove_answer|push_answers|pop_answers|clear_answers|select_from_menu|select_from_menu2|input_numeric_value|set_item_shape|find_nearest|play_sound_effect|die_roll)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:get_item_shape|get_item_weight|get_item_frame|set_item_frame|get_item_quality|set_item_quality|get_item_quantity|set_item_quantity|get_object_position|get_distance|find_direction|get_npc_object|get_schedule_type|set_schedule_type|add_to_party|remove_from_party|get_npc_prop|set_npc_prop|get_avatar_ref|get_party_list|get_party_list2)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:create_new_object|create_new_object2|set_last_created|update_last_created|get_npc_name|count_objects|find_object|get_cont_items|remove_party_items|add_party_items|add_cont_items|remove_cont_items|get_music_track|play_music)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:npc_nearby|npc_nearby2|find_nearby_avatar|is_npc|display_runes|click_on_item|error_message|find_nearby|give_last_created|is_dead|game_hour|game_minute|get_npc_number|part_of_day|get_alignment|set_alignment)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:move_object|remove_npc|item_say|clear_item_say|set_to_attack|get_lift|set_lift|get_weather|set_weather|sit_down|summon|display_map|si_display_map|kill_npc|roll_to_win|set_attack_mode|get_attack_mode|set_oppressor|get_oppressor|clone|display_area|wizard_eye)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:resurrect|resurrect_npc|add_spell|remove_all_spells|sprite_effect|attack_object|book_mode|book_mode_ex|stop_time|cause_light|get_barge|create_barge_object|earthquake|is_pc_female|armageddon|halt_scheduled|lightning|get_array_size)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:mark_virtue_stone|recall_virtue_stone|apply_damage|is_pc_inside|set_orrery|get_timer|set_timer|wearing_fellowship|mouse_exists|get_speech_track|flash_mouse|get_item_frame_rot|set_item_frame_rot|on_barge|get_container|remove_item|reduce_health|is_readied|restart_game|start_speech|run_endgame|fire_projectile|nap_time|advance_time)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:in_usecode|in_usecode_path|call_guards|obj_sprite_effect|attack_avatar|path_run_usecode|si_path_run_usecode|close_gumps|close_gumps2|close_gump|close_gump2|in_gump_mode|set_light|set_time_palette|is_not_blocked|play_sound_effect2|direction_from|get_item_flag|set_item_flag|clear_item_flag)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:set_path_failure|fade_palette|fade_palette_sleep|in_combat|start_blocking_speech|is_water|reset_conv_face|set_camera|get_dead_party|view_tile|telekenesis|a_or_an|get_item_weight|get_temperature|set_temperature|get_temperature_zone|get_npc_warmth|has_spell|remove_spell|get_skin_colour|change_npc_face0|change_npc_face1)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode|init_conversation|end_conversation)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\bUI_UNKNOWN_[0-9A-Fa-f]{2}\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "invalid.illegal.intrinsic.usecode",
+                    "match": "\\bUI_[A-Za-z_][A-Za-z0-9_]*\\b"
+                }
+            ]
+        },
+        "generic-params": {
+            "name": "meta.generic-parameters.usecode",
+            "begin": "(\\b(?:class|struct)\\b)(\\s*)(<)",
+            "beginCaptures": {
+                "1": { "name": "storage.type.usecode" },
+                "3": { "name": "punctuation.section.angle-brackets.begin.template.definition.usecode" }
+            },
+            "end": ">",
+            "endCaptures": {
+                "0": { "name": "punctuation.section.angle-brackets.end.template.definition.usecode" }
+            },
+            "patterns": [
+                {
+                    "name": "entity.name.type.generic.usecode",
+                    "match": "\\s*([A-Za-z_][A-Za-z0-9_]*)\\s*"
+                },
+                { "include": "#comments" }
+            ]
+        },
+        "idents": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.usecode",
+                    "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()"
+                },
+                {
+                    "name": "entity.name.type.usecode",
+                    "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=::)"
+                },
+                {
+                    "name": "variable.other.usecode",
+                    "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+                }
+            ]
+        }
+    },
+    "scope": "source.usecode"
+}

@@ -1,2 +1,0 @@
-<?php
-code_block("UI_set_item_frame(object obj, int frame)\nobj->set_item_frame(int frame)");

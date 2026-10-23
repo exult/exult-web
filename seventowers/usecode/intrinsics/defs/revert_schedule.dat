@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_revert_schedule(actor npc)\nnpc->revert_schedule()", true, false, 0, false),
-	$siexultimg
-);

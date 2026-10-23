@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_save_pos(object obj)\nobj->save_pos()", true, false, 0, false),
-	$siexultimg
-);

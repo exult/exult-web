@@ -1,2 +1,0 @@
-<?php
-code_block("UI_show_npc_face(int face, int frnum)\nUI_show_npc_face(actor face, int frnum)\nface->show_npc_face(int frnum)");

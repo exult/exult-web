@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_get_body_npc(object obj)\nobj->get_body_npc()", true, false, 0, false),
-	$siexultimg
-);

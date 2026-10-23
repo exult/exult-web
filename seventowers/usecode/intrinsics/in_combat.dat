@@ -1,4 +1,0 @@
-<?php
-text("Checks if the avatar is in combat.");
-make_header("Return", 0);
-text("$true if the avatar is in combat mode, $false otherwise.");

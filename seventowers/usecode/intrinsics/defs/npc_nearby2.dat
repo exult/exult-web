@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("bool UI_npc_nearby2(object obj)\nbool obj->npc_nearby2()", true, false, 0, false),
-	$siimg
-);

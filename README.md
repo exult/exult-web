@@ -1,29 +1,82 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/exult/exult-web/badge)](https://www.codefactor.io/repository/github/exult/exult-web)
 
-Quick and dirty guide to our Web-Git
-----
+The Exult website is published from a generated `dist/` directory. Seven Towers uses Markdown documentation, JSON catalogs, and HTML content fragments; neither building nor serving the site requires PHP.
 
-- checkout this repository
+## Build and preview
 
-- change/add stuff there
+Install Node.js 22 or newer (CI uses Node.js 24), then run these commands from the repository root:
 
-- commit changes to Git
+```sh
+npm ci
+npm run build
+python3 -m http.server 8000 --directory dist
+```
 
-- in a terminal shell, regenerate the snapshot download metadata:
-    ```
-    sh ./gen-snapshot-file-details.sh
-    ```
+Open <http://localhost:8000/seventowers/>. The build works offline after dependencies have been installed. `dist/` is disposable and is recreated on every build. Serve this directory, rather than the repository root.
 
-- sync the checked out website to Exult web space with
-    ```
-    rsync -az --delete \
-      --exclude=.git/ \
-      --filter='P */' \
-      --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \
-      -e "ssh -o BatchMode=yes -o PasswordAuthentication=no -i ~/.ssh/id_ed25519" \
-      ./ USER@web.sourceforge.net:/home/project-web/exult/htdocs/
-    ```
+Run `npm test` to build and check documentation coverage, generated links and assets, syntax highlighting, exports, legacy route mappings, and publication contents. Run `python3 -m unittest discover -s tests` in a POSIX environment to test the snapshot metadata generator; on Windows, use MSYS2's `/usr/bin/python3` and put `/usr/bin` on its PATH.
 
-This updates `/home/project-web/exult/htdocs` with the latest Git version, deletes removed files while preserving destination-only subdirectories, and sets the correct permissions during upload.
+After building, run `npm run validate:html` to check all published HTML with the pinned Nu HTML Checker. CI runs this before deployment and fails on errors; warnings are advisory. The checker needs Java 17 or newer (CI supplies Java 21); the npm package can download a local runtime if none is available. To review warnings locally, run `npm exec -- vnu --skip-non-html dist`. Validation runs locally without uploading the generated pages to a public service. Imported main-site documentation sometimes declares its encoding twice; the build removes the redundant legacy declaration from the published copies.
 
-# **Please do not edit the webspace directly.**
+Review CSS periodically with the [W3C CSS validator](https://jigsaw.w3.org/css-validator/) using a suitable modern profile, or run `npm exec -- vnu --css default.css seventowers/default.css` locally. Review diagnostics for modern features and vendor-prefixed fallbacks individually. CSS validation is not a CI gate, and neither validator replaces browser, keyboard, or accessibility testing.
+
+After building, run `npx playwright install chromium` once, then `npm run check:a11y` for browser-based accessibility checks with axe. This covers each page template and section in light and dark themes, desktop and 320px/390px viewports, hover and focus states, keyboard navigation, title-preference persistence, and forced colors. Use `npm run check:a11y -- --all` to scan every Seven Towers HTML page in both themes. To use an installed Edge or Chrome instead of downloading Chromium, set `A11Y_BROWSER=msedge` or `A11Y_BROWSER=chrome` (PowerShell: `$env:A11Y_BROWSER='msedge'`). The test serves `dist/` on loopback and blocks external requests. Detailed results and screenshots, including protanopia, deuteranopia, tritanopia, and grayscale simulations, are saved under `node_modules/.cache/accessibility/`. CI runs the template checks before deployment.
+
+Automated checks and simulated color vision are useful regression checks, but do not establish full WCAG conformance or replace testing with screen-reader users. Periodically review reading order, link names, radio-section announcements and switching, zoom/reflow, and keyboard scrolling with NVDA/Firefox and VoiceOver/Safari. The site provides underlined links, external-link icons, double-underlined current navigation/sections, a keyboard-visible skip link and focus indicators, named page landmarks, and a readable-title preference; these cues do not require distinguishing colors.
+
+## Editing Seven Towers
+
+- `seventowers/usecode/intrinsics/*.md` contains one intrinsic description per file; `intrinsics/defs/*.md` contains its signatures and game indicators.
+- `seventowers/usecode/scriptop/*.md` and `directives/*.md` contain individual command and directive descriptions.
+- `seventowers/usecode/reference/*.md` contains shared definitions. Insert `{{include:reference/intrinsic_params}}`, on its own line, to reuse another document. Includes are relative to `seventowers/usecode/`, omit `.md`, and fail on missing files or cycles.
+- `seventowers/usecode/intrinsic-groups.json` supplies the group titles, descriptions, ordering, and related intrinsic links. `script-relations.json` supplies related script commands. Intrinsics absent from the grouping catalog still appear in the full reference.
+- `seventowers/usecode/ucc_*.md` contains the standalone tutorials and language reference. Fenced `usecode` blocks and inline code are highlighted during the build.
+- `seventowers/content/*.html` contains the home page, links, news, and error-page content. The corresponding JSON files supply page titles and visible banner text. The shared page shell and navigation are generated in `tools/build-site.mjs`.
+- `seventowers/content/downloads-*.json` contains the download descriptions, notices, categories, archive names, and icon entries. Archive entries are advertised even when the separately hosted snapshot files are absent from the checkout; local `seventowers/files/` archives are also supported.
+
+Keep Markdown paragraphs on one source line. Use Markdown links, lists, tables, blockquotes for notes, and fenced code blocks. Trusted inline HTML can supply anchors and abbreviation tooltips. Use explicit `.html` destinations for new links.
+
+The build produces individual reference pages, a reference index, combined documentation pages, assembled Markdown downloads at `seventowers/NAME.md`, and Natural Docs comment sources at `seventowers/docs/NAME.naturaldocs.txt`. All formats come from the same Markdown sources. Markdown downloads expand shared includes and preserve headings, tables, fenced code, links, and images. They sit beside the corresponding HTML pages so relative links and images resolve in either format. Existing `.uc` examples, downloadable files, images, icon thumbnails, and other documentation are copied into the published site.
+
+Generated Markdown uses HTML `<code>` elements for inline code starting with `-`, avoiding diff detection in affected previewers. This compatibility conversion preserves the code text and leaves fenced and indented code blocks unchanged; source Markdown continues to use ordinary backticks. The Markdown intrinsic reference replaces images with their text labels, such as `[BG]` and `[Exult: SI]`, so its availability indicators do not depend on accompanying image files. The HTML reference retains its images.
+
+Page banners use actual heading text with the self-hosted UnifrakturCook Bold font and a CSS gold gradient with edge highlights to approximate the original beveled images. The unmodified font, SIL Open Font License, and pinned upstream source URL are in `seventowers/fonts/`. Font loading requires no third-party requests. The original title PNGs remain available as visual references.
+
+The “Use readable titles” checkbox above each banner switches the heading to a plain sans-serif font without decorative effects. Native HTML controls and CSS provide the toggle, including keyboard access. A small local script remembers the setting in browser local storage across pages and visits, restoring it before the heading is parsed. Without JavaScript or storage access, the checkbox still works for the current page. The site uses a 125% base font size, with relative heading and code sizes that follow the reader's browser font settings.
+
+The Exult Mods and Usecode C pages each combine their four sections into CSS-only tabs styled like the site's links. Native radio controls support keyboard selection, and all four choices precede their panels in the reading order. CSS `:has()` selectors display the selected panel. The selected tab uses the same gold treatment and double underline as the active main navigation item. The existing section URLs open the same tabbed content with the corresponding section selected. Download metadata is refreshed for all panels, including those initially hidden.
+
+Syntax highlighting uses Shiki and the vendored `seventowers/usecode.tmLanguage.json`, copied from [Exult's VS Code extension](https://github.com/exult/vscode-usecode-syntax) version 0.1.7. Its GPL-2.0-or-later license is in `seventowers/GRAMMAR-LICENSE`. To refresh the grammar, copy `syntaxes/usecode.tmLanguage.json` from that repository, update this version note, and run `npm test`. Highlighted intrinsic names link to their reference pages; strings and comments are excluded. Light and dark colors follow the site's existing system-theme preference.
+
+## Download metadata
+
+Seven Towers uses the same table classes, `download.js`, GitHub snapshot lookup, HTTP HEAD requests, and `shapshot_file_details.js` fallback as the main Exult download page. Download links work without JavaScript; the script refreshes metadata and can select the matching GitHub snapshot asset.
+
+After building, refresh the static fallback with:
+
+```sh
+sh ./gen-snapshot-file-details.sh
+cp shapshot_file_details.js dist/
+```
+
+This contacts SourceForge for links in `download.html` and the generated Seven Towers pages. The script also accepts explicit HTML filenames as arguments. This network step is optional for local previews and runs automatically before deployment.
+
+## Deployment
+
+The GitHub Actions workflow installs locked dependencies, builds and tests the site, and saves `dist/` as a `static-website` artifact. Pull requests build without deployment credentials. Pushes to `master` and manual workflow runs also refresh metadata and sync the generated directory to SourceForge.
+
+For a manual upload after building and refreshing metadata:
+
+```sh
+rsync -az --delete \
+  --filter='P */' \
+  --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rwX,Fg=rX,Fo=rX \
+  -e "ssh -o BatchMode=yes -o PasswordAuthentication=no -i ~/.ssh/id_ed25519" \
+  dist/ USER@web.sourceforge.net:/home/project-web/exult/htdocs/
+```
+
+The directory protection filter preserves destination-only directories such as separately uploaded snapshots. Build tools, source data, tests, dependencies, and PHP files are excluded by the staging file selection.
+
+The generated `seventowers/.htaccess` supplies Apache redirects for old PHP query-string bookmarks and selects the static 404 page. These redirects require Apache `mod_rewrite` and permission to use `.htaccess`; plain static servers can serve every new page directly, but need equivalent host redirect rules to preserve old bookmarks. A static `404.shtml` is also generated for hosts still configured to use that error-document filename.
+
+**Please do not edit the webspace directly.** Edit sources in Git and rebuild.

@@ -1,4 +1,0 @@
-<?php
-text("Determines if the avatar is wearing a fellowship amulet.");
-make_header("Return", 0);
-text("Returns '$true' if the avatar is wearing a fellowship amulet (shape 955, frame 1), '$false' otherwise.");

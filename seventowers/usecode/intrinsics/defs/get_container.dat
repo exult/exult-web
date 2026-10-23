@@ -1,2 +1,0 @@
-<?php
-code_block("object UI_get_container(object obj)\nobject obj->get_container()");

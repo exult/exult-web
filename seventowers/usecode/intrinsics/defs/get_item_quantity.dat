@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_get_item_quantity(object obj)\nint obj->get_item_quantity()\nint UI_get_item_quantity(object obj, int unk)\nint obj->get_item_quantity(int unk)");

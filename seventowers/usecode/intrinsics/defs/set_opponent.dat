@@ -1,2 +1,0 @@
-<?php
-code_block("UI_set_opponent(actor npc, object obj)\nnpc->set_opponent(object obj)");

@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("bool UI_is_on_keyring(int qual)", true, false, 0, false),
-	$siimg
-);

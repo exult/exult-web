@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_set_to_attack(actor attacker, object target, int weapon)\nint attacker->set_to_attack(object target, int weapon)\nint UI_set_to_attack(actor attacker, mixed[4] target, int weapon)\nint attacker->set_to_attack(mixed[4] target, int weapon)");

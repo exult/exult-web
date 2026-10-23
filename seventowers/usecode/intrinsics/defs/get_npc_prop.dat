@@ -1,2 +1,0 @@
-<?php
-code_block("int UI_get_npc_prop(object obj, int prop)\nint UI_get_npc_prop(object obj, string prop)\nint obj->get_npc_prop(int prop)\nint obj->get_npc_prop(string prop)");

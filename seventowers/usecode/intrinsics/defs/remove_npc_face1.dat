@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_remove_npc_face1()", true, false, 0, false),
-	$siexultimg
-);

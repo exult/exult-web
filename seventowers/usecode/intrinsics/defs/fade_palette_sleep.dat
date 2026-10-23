@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_fade_palette_sleep(int length, int unk, bool type)", true, false, 0, false),
-	$siexultimg
-);

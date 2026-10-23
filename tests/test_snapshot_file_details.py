@@ -12,10 +12,14 @@ GENERATOR = Path(__file__).resolve().parents[1] / 'gen-snapshot-file-details.sh'
 
 
 class SnapshotFileDetailsTests(unittest.TestCase):
-    def generate(self, url, headers):
+    def generate(self, url, headers, extra_html=None):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             (root / 'download.html').write_text('<a href="' + url + '">Download</a>')
+            if extra_html is not None:
+                pages = root / 'dist' / 'seventowers'
+                pages.mkdir(parents=True)
+                (pages / 'keyring.html').write_text(extra_html)
             # Mock curl so the test never contacts the network.
             curl = root / 'curl'
             curl.write_text('#!/bin/sh\nprintf "%s" "$TEST_HEADERS"\n')
@@ -56,6 +60,13 @@ class SnapshotFileDetailsTests(unittest.TestCase):
     def test_missing_headers(self):
         url = 'https://exult.sourceforge.io/snapshots/Exult.exe'
         self.assertEqual(self.generate(url, 'HTTP/2 404\r\n'), {url: {}})
+
+    def test_generated_seven_towers_pages_are_included_and_urls_deduplicated(self):
+        main = 'https://exult.sourceforge.io/snapshots/Exult.exe'
+        mod = 'https://exult.sourceforge.io/snapshots/Keyring.zip'
+        html = '<a href="' + main + '">Exult</a><a href="' + mod + '">Keyring</a>'
+        result = self.generate(main, 'Content-Length: 42\r\n', html)
+        self.assertEqual(result, {main: {'content-length': '42'}, mod: {'content-length': '42'}})
 
 
 if __name__ == '__main__':

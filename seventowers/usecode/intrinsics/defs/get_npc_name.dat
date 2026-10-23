@@ -1,2 +1,0 @@
-<?php
-code_block("string UI_get_npc_name(object obj)\nstring obj->get_npc_name()\nstring[] UI_get_npc_name(object obj[])");

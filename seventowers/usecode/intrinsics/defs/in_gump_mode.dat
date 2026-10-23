@@ -1,2 +1,0 @@
-<?php
-code_block("bool UI_in_gump_mode()");

@@ -1,2 +1,0 @@
-<?php
-code_block("UI_remove_item(object obj)\nobj->remove_item()");

@@ -1,4 +1,0 @@
-<?php
-text("Gets the game day.");
-make_header("Return", 0);
-text("The current game day, starting with day 0.");

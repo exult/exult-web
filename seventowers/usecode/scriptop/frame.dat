@@ -1,3 +1,0 @@
-<?php
-code_block("frame frnum");
-text("Changes the actor's frame to 'frnum'. Compare with '" . inline_code("actor frame") . "' command.");

@@ -1,4 +1,0 @@
-<?php
-text("Determines if the avatar has a roof over his head.");
-make_header("Return", 0);
-text("Returns $true if there is a roof above the avatar's head, $false otherwise.");

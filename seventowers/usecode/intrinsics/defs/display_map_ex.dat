@@ -1,5 +1,0 @@
-<?php
-right_align(
-	code_block("UI_display_map_ex(int mapshp, bool show_loc)", true, false, 0, false),
-	$exultimg
-);

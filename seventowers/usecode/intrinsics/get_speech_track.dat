@@ -1,4 +1,0 @@
-<?php
-text("Determines the currently playing speech track.");
-make_header("Return", 0);
-text("A number indicating what voice track is being played.");
