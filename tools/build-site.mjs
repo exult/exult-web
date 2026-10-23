@@ -37,7 +37,7 @@ export function staticUrl(value) {
 
 export const rewriteLinks = html => html.replace(/\b(href|src)="([^"]*)"/g, (_, attr, url) => `${attr}="${staticUrl(url)}"`);
 
-function page(title, image, content, active = '', submenu = '') {
+function page(title, banner, content, active = '', submenu = '') {
   const nav = [['index','Home','home'],['exultmods','Exult Mods','exult'],['usecode','Usecode C','usecode'],['ultimaicons','Ultima Icons','icons'],['links','Links','links'],['news','News','news']];
   return rewriteLinks(`<!DOCTYPE html>
 <html lang="en">
@@ -46,10 +46,11 @@ function page(title, image, content, active = '', submenu = '') {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seven Towers: ${esc(title)}</title>
   <link href="default.css" rel="stylesheet">
+  <link rel="preload" href="fonts/UnifrakturCook-Bold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="icon" href="images/home.png" type="image/png">
 </head>
 <body>
-  <h1 id="top"><img src="images/${esc(image)}" alt="Seven Towers: ${esc(title)}"></h1>
+  <h1 id="top" class="page-title"><span class="title-text">${esc(banner)}</span></h1>
   <nav aria-label="Main"><ul class="navbar">${nav.map(([url,text,icon]) => `<li>${url === active ? `<span class="navbar" aria-current="page">` : `<a href="${url}.html">`}<img src="images/${icon}.png" alt="">&nbsp;&nbsp;${text}${url === active ? '</span>' : '</a>'}</li>`).join('')}</ul></nav>
   ${submenu}
   <main>${content}</main>
@@ -73,7 +74,7 @@ function copyPublic(output) {
   for(const dir of ['images','.well-known','snapshots']) if(fs.existsSync(path.join(root,dir))) fs.cpSync(path.join(root,dir),path.join(output,dir),{recursive:true});
   const dest = path.join(output,'seventowers');
   fs.mkdirSync(dest,{recursive:true});
-  for(const dir of ['images','files','docs']) fs.cpSync(path.join(site,dir),path.join(dest,dir),{recursive:true});
+  for(const dir of ['images','files','docs','fonts']) fs.cpSync(path.join(site,dir),path.join(dest,dir),{recursive:true});
   for(const name of ['default.css','favicon.ico']) fs.copyFileSync(path.join(site,name),path.join(dest,name));
   fs.mkdirSync(path.join(dest,'usecode'),{recursive:true});
   for(const f of files(path.join(site,'usecode'))) if(/\.(?:uc|txt)$/.test(f)) fs.copyFileSync(f,path.join(dest,'usecode',path.basename(f)));
@@ -126,7 +127,7 @@ export async function build(output = path.join(root,'dist')) {
   write('.htaccess',legacyRedirects(references));
   for(const name of ['index','links','news','news-archive','404']) {
     const info = json(`content/${name}.json`);
-    const html = page(info.headline,info.image,read(`content/${name}.html`),name);
+    const html = page(info.headline,info.banner,read(`content/${name}.html`),name);
     write(`${name}.html`,html);
     if(name === '404') write('404.shtml',html.replace('<head>','<head>\n  <base href="/seventowers/">'));
   }
@@ -134,7 +135,7 @@ export async function build(output = path.join(root,'dist')) {
     const data = json(`content/downloads-${section}.json`);
     for(const [current,name] of downloadNames[section].entries()) {
       const submenu = `<nav aria-label="Section" class="subsections">${data.heads.map((head,i)=>`<a href="${downloadNames[section][i]}.html"${i===current ? ' aria-current="page"' : ''}>${head}</a>`).join(' | ')}</nav>`;
-      write(name+'.html',page(data.heads[current],data.image,downloadContent(data,section,current),downloadNames[section][0],submenu));
+      write(name+'.html',page(data.heads[current],data.banner,downloadContent(data,section,current),downloadNames[section][0],submenu));
     }
   }
   const docs = await createDocumentation(path.join(site,'usecode'));
@@ -158,7 +159,7 @@ export async function build(output = path.join(root,'dist')) {
     }
     for(const [name,source] of [['exult_intrinsics',full], ...['ucc_scripting','ucc_tutorial','ucc_reference'].map(n=>[n,docs.read(n)])]) {
       const exports = `<p><a href="${name}.md" download>Download Markdown</a> | <a href="docs/${name}.naturaldocs.txt">Natural Docs source</a></p>`;
-      write(name+'.html',page(name.replaceAll('_',' '),'usecodetitle.png',exports+docs.html(source),'usecode'));
+      write(name+'.html',page(name.replaceAll('_',' '),'Usecode C',exports+docs.html(source),'usecode'));
       // Keep exports beside their HTML pages so relative links and images work in both formats.
       write(`${name}.md`,exportMarkdown(source,{imagesAsText:name === 'exult_intrinsics'}));
       write(`docs/${name}.naturaldocs.txt`,docs.naturalDocs(name === 'exult_intrinsics' ? docs.read('reference/naturaldocs_intrinsics')+'\n\n'+source : source));
@@ -172,10 +173,10 @@ export async function build(output = path.join(root,'dist')) {
         const aliases = {'actor frame':'actor','next frame':'next','previous frame':'previous'};
         const relatedHtml = names.filter(n=>n!==name).map(n=>`<li><a href="reference-${category}-${aliases[n] || n}.html">${esc(n)}</a></li>`).join('');
         const source = category === 'intrinsics' ? intrinsic(name) : docs.read(`${category}/${name}`);
-        write(`reference-${category}-${name}.html`,page(name,'uccreftitle.png',`<h2>${esc(category === 'intrinsics' ? 'UI_'+name : name)}</h2>`+docs.html(source)+(relatedHtml ? `<h3>Related ${category === 'intrinsics' ? 'intrinsics' : 'script commands'}</h3><ul>${relatedHtml}</ul>` : '')+'<p><a href="exult_intrinsics.html">Full intrinsic reference</a> | <a href="reference-reference-intrinsic_reference.html">Reference definitions</a></p>','usecode'));
+        write(`reference-${category}-${name}.html`,page(name,'UCC Reference',`<h2>${esc(category === 'intrinsics' ? 'UI_'+name : name)}</h2>`+docs.html(source)+(relatedHtml ? `<h3>Related ${category === 'intrinsics' ? 'intrinsics' : 'script commands'}</h3><ul>${relatedHtml}</ul>` : '')+'<p><a href="exult_intrinsics.html">Full intrinsic reference</a> | <a href="reference-reference-intrinsic_reference.html">Reference definitions</a></p>','usecode'));
       }
     }
-    write('reference-index.html',page('Reference','uccreftitle.png','<h2>Usecode C reference</h2>'+['intrinsics','scriptop','directives'].map(category=>`<h3>${category}</h3><ul>${fs.readdirSync(path.join(site,'usecode',category)).filter(f=>f.endsWith('.md')).map(f=>`<li><a href="reference-${category}-${f.slice(0,-3)}.html">${esc(f.slice(0,-3))}</a></li>`).join('')}</ul>`).join(''),'usecode'));
+    write('reference-index.html',page('Reference','UCC Reference','<h2>Usecode C reference</h2>'+['intrinsics','scriptop','directives'].map(category=>`<h3>${category}</h3><ul>${fs.readdirSync(path.join(site,'usecode',category)).filter(f=>f.endsWith('.md')).map(f=>`<li><a href="reference-${category}-${f.slice(0,-3)}.html">${esc(f.slice(0,-3))}</a></li>`).join('')}</ul>`).join(''),'usecode'));
   } finally { docs.dispose(); }
   // Rewrite old Seven Towers URLs in the main site as well.
   for(const file of files(output)) if(file.endsWith('.html')) {

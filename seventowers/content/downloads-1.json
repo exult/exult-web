@@ -1,5 +1,4 @@
 {
-  "image": "usecodetitle.png",
   "descriptions": [
     {
       "NAME": "About Usecode C",
@@ -72,5 +71,6 @@
     "Tutorials",
     "Reference",
     "Syntax Highlighters"
-  ]
+  ],
+  "banner": "Usecode C"
 }

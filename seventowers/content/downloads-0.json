@@ -1,5 +1,4 @@
 {
-  "image": "exultmodstitle.png",
   "descriptions": [
     {
       "NAME": "About <a href=\"http://exult.info/\" class=\"offsite\">Exult&nbsp;<img width=\"23\" height=\"16\" alt=\"Extern link\" src=\"images/externlink.png\"/></a>",
@@ -97,5 +96,6 @@
     "Black Gate Keyring",
     "Serpent Isle Fixes",
     "Avatar Pack"
-  ]
+  ],
+  "banner": "Exult Mods"
 }

@@ -1,5 +1,4 @@
 {
-  "image": "ultimaicons.png",
   "descriptions": [
     {
       "NAME": "About the Ultima Icons",
@@ -485,5 +484,6 @@
   ],
   "heads": [
     "Ultima Icons"
-  ]
+  ],
+  "banner": "Ultima Icons"
 }

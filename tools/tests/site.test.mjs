@@ -48,6 +48,19 @@ test('publication contains no PHP, data sources, tests or build dependencies',()
   }
 });
 
+test('page titles use text with a bundled font instead of title images',()=>{
+  assert(read('index.html').includes('<span class="title-text">Seven Towers</span>'));
+  assert(read('keyring.html').includes('<span class="title-text">Exult Mods</span>'));
+  assert(read('reference-intrinsics-apply_damage.html').includes('<span class="title-text">UCC Reference</span>'));
+  for(const f of walk(path.join(output,'seventowers'))) if(f.endsWith('.html')) {
+    const heading=fs.readFileSync(f,'utf8').match(/<h1\b[^>]*>[\s\S]*?<\/h1>/)?.[0];
+    assert(heading,path.basename(f));
+    assert.doesNotMatch(heading,/<img\b|undefined/);
+  }
+  assert(fs.existsSync(path.join(output,'seventowers/fonts/UnifrakturCook-Bold.ttf')));
+  assert(fs.readFileSync(path.join(output,'seventowers/fonts/OFL.txt'),'utf8').includes('SIL OPEN FONT LICENSE'));
+});
+
 test('all intrinsic pages and prototypes contribute to the combined exports',()=>{
   const source=path.join(root,'seventowers/usecode/intrinsics');
   const html=read('exult_intrinsics.html');
