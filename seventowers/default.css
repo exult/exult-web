@@ -192,12 +192,15 @@ main th, main td {
 }
 
 .section-tabs {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.4em;
 	--tab-background: #dfdfdf;
 	--tab-color: #005533;
 	--tab-border: #00aa33;
+}
+
+.section-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em;
 }
 
 .tab-option {
@@ -243,13 +246,15 @@ main th, main td {
 
 .tab-panel {
 	display: none;
-	order: 1;
-	flex-basis: 100%;
 	min-width: 0;
 	overflow-x: auto;
 }
 
-.tab-option:checked + .tab-label + .tab-panel {
+/* Keep all section controls before their content in the reading and focus order. */
+.section-tabs:has(.tab-option:nth-of-type(1):checked) > .tab-panel:nth-of-type(1),
+.section-tabs:has(.tab-option:nth-of-type(2):checked) > .tab-panel:nth-of-type(2),
+.section-tabs:has(.tab-option:nth-of-type(3):checked) > .tab-panel:nth-of-type(3),
+.section-tabs:has(.tab-option:nth-of-type(4):checked) > .tab-panel:nth-of-type(4) {
 	display: block;
 }
 
@@ -322,23 +327,6 @@ h1.page-title {
 	color: #d8ac20;
 	text-shadow: none;
 	filter: none;
-}
-
-@media (forced-colors: active) {
-	a:focus-visible,
-	[tabindex]:focus-visible,
-	.font-toggle:focus-visible + .font-toggle-label,
-	.tab-option:focus-visible + .tab-label {
-		outline-color: Highlight;
-		box-shadow: none;
-	}
-	.title-text,
-	#readable-titles:checked ~ .page-title .title-text {
-		background: none;
-		color: CanvasText;
-		text-shadow: none;
-		filter: none;
-	}
 }
 
 h2 {
@@ -1098,5 +1086,31 @@ ul.navbar {
 
 	.ucc .me3 {
 		color: #82AAFF;
+	}
+}
+
+/* Respect the reader's high-contrast palette in both light and dark themes. */
+@media (forced-colors: active) {
+	html, body, h1, h2, h3, p.box, p.boxtitle,
+	span.navbar, span.subsections, span.quicktip, ul.box, ul.box span.quicktip,
+	.tab-label, .tab-option:checked + .tab-label, pre.usecode {
+		color: CanvasText;
+		background: Canvas;
+		border-color: CanvasText;
+	}
+	.usecode span { color: CanvasText !important; }
+	a:focus-visible,
+	[tabindex]:focus-visible,
+	.font-toggle:focus-visible + .font-toggle-label,
+	.tab-option:focus-visible + .tab-label {
+		outline-color: Highlight;
+		box-shadow: none;
+	}
+	.title-text,
+	#readable-titles:checked ~ .page-title .title-text {
+		background: none;
+		color: CanvasText;
+		text-shadow: none;
+		filter: none;
 	}
 }

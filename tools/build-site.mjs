@@ -166,9 +166,12 @@ export async function build(output = path.join(root,'dist')) {
     const data = json(`content/downloads-${section}.json`);
     const panels = data.heads.map((_,i)=>downloadContent(data,section,i));
     for(const [current,name] of downloadNames[section].entries()) {
-      const content = section === 2 ? panels[0] : `<div class="section-tabs" role="radiogroup" aria-label="${esc(data.banner)} sections">${data.heads.map((head,i)=>{
+      const content = section === 2 ? panels[0] : `<div class="section-tabs"><div class="section-options" role="radiogroup" aria-label="${esc(data.banner)} sections">${data.heads.map((head,i)=>{
         const id = `tab-${downloadNames[section][i]}`;
-        return `<input class="tab-option" type="radio" name="download-section" id="${id}" aria-controls="${id}-panel"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt="">${esc(head)}</label><section class="tab-panel" id="${id}-panel" aria-labelledby="${id}-label" tabindex="0">${panels[i]}</section>`;
+        return `<input class="tab-option" type="radio" name="download-section" id="${id}" aria-controls="${id}-panel"${i===current ? ' checked' : ''}><label class="tab-label" id="${id}-label" for="${id}"><img src="images/${esc(data.icons[i])}.png" alt="">${esc(head)}</label>`;
+      }).join('')}</div>${panels.map((panel,i)=>{
+        const id = `tab-${downloadNames[section][i]}`;
+        return `<section class="tab-panel" id="${id}-panel" aria-labelledby="${id}-label" tabindex="0">${panel}</section>`;
       }).join('')}</div><script src="../shapshot_file_details.js"></script><script src="../download.js"></script>`;
       write(name+'.html',page(data.heads[current],data.banner,content,downloadNames[section][0]));
     }
