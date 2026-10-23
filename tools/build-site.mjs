@@ -96,7 +96,12 @@ function copyPublic(output) {
   for(const dir of ['images','.well-known','snapshots']) if(fs.existsSync(path.join(root,dir))) fs.cpSync(path.join(root,dir),path.join(output,dir),{recursive:true});
   const dest = path.join(output,'seventowers');
   fs.mkdirSync(dest,{recursive:true});
-  for(const dir of ['images','files','docs','fonts']) fs.cpSync(path.join(site,dir),path.join(dest,dir),{recursive:true});
+  for(const dir of ['images','files','docs','fonts']) {
+    const source = path.join(site,dir);
+    // Local archives are optional; Git does not preserve an empty files directory.
+    if(dir === 'files' && !fs.existsSync(source)) continue;
+    fs.cpSync(source,path.join(dest,dir),{recursive:true});
+  }
   for(const name of ['default.css','favicon.ico','preferences.js']) fs.copyFileSync(path.join(site,name),path.join(dest,name));
   fs.mkdirSync(path.join(dest,'usecode'),{recursive:true});
   for(const f of files(path.join(site,'usecode'))) if(/\.(?:uc|txt)$/.test(f)) fs.copyFileSync(f,path.join(dest,'usecode',path.basename(f)));
