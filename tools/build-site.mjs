@@ -73,7 +73,15 @@ function* files(dir) {
 function copyPublic(output) {
   // Build from a deliberate public-file set; never upload source, dependencies or credentials.
   for(const e of fs.readdirSync(root,{withFileTypes:true})) {
-    if(e.isFile() && (/\.(?:html|css|js|txt|png|ico|svg)$/.test(e.name) || ['ChangeLog','README.1ST'].includes(e.name))) fs.copyFileSync(path.join(root,e.name),path.join(output,e.name));
+    if(e.isFile() && (/\.(?:html|css|js|txt|png|ico|svg)$/.test(e.name) || ['ChangeLog','README.1ST'].includes(e.name))) {
+      const target = path.join(output,e.name);
+      fs.copyFileSync(path.join(root,e.name),target);
+      // Imported generated docs declare charset twice; keep the HTML5 declaration.
+      if(e.name.endsWith('.html')) {
+        const html = fs.readFileSync(target,'utf8');
+        if(/<meta\s+charset=/i.test(html)) fs.writeFileSync(target,html.replace(/<meta\s+http-equiv="Content-Type"[^>]*>\r?\n/gi,''));
+      }
+    }
   }
   for(const dir of ['images','.well-known','snapshots']) if(fs.existsSync(path.join(root,dir))) fs.cpSync(path.join(root,dir),path.join(output,dir),{recursive:true});
   const dest = path.join(output,'seventowers');
@@ -190,7 +198,9 @@ export async function build(output = path.join(root,'dist')) {
         const aliases = {'actor frame':'actor','next frame':'next','previous frame':'previous'};
         const relatedHtml = names.filter(n=>n!==name).map(n=>`<li><a href="reference-${category}-${aliases[n] || n}.html">${esc(n)}</a></li>`).join('');
         const source = category === 'intrinsics' ? intrinsic(name) : docs.read(`${category}/${name}`);
-        write(`reference-${category}-${name}.html`,page(name,'UCC Reference',`<h2>${esc(category === 'intrinsics' ? 'UI_'+name : name)}</h2>`+docs.html(source)+(relatedHtml ? `<h3>Related ${category === 'intrinsics' ? 'intrinsics' : 'script commands'}</h3><ul>${relatedHtml}</ul>` : '')+'<p><a href="exult_intrinsics.html">Full intrinsic reference</a> | <a href="reference-reference-intrinsic_reference.html">Reference definitions</a></p>','usecode'));
+        // Individual pages omit the group/entry headings used by the combined reference.
+        const description = docs.html(source).replace(/<(\/?)h4>/g,'<$1h3>');
+        write(`reference-${category}-${name}.html`,page(name,'UCC Reference',`<h2>${esc(category === 'intrinsics' ? 'UI_'+name : name)}</h2>`+description+(relatedHtml ? `<h3>Related ${category === 'intrinsics' ? 'intrinsics' : 'script commands'}</h3><ul>${relatedHtml}</ul>` : '')+'<p><a href="exult_intrinsics.html">Full intrinsic reference</a> | <a href="reference-reference-intrinsic_reference.html">Reference definitions</a></p>','usecode'));
       }
     }
     write('reference-index.html',page('Reference','UCC Reference','<h2>Usecode C reference</h2>'+['intrinsics','scriptop','directives'].map(category=>`<h3>${category}</h3><ul>${fs.readdirSync(path.join(site,'usecode',category)).filter(f=>f.endsWith('.md')).map(f=>`<li><a href="reference-${category}-${f.slice(0,-3)}.html">${esc(f.slice(0,-3))}</a></li>`).join('')}</ul>`).join(''),'usecode'));

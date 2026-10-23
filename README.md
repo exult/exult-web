@@ -16,6 +16,10 @@ Open <http://localhost:8000/seventowers/>. The build works offline after depende
 
 Run `npm test` to build and check documentation coverage, generated links and assets, syntax highlighting, exports, legacy route mappings, and publication contents. Run `python3 -m unittest discover -s tests` in a POSIX environment to test the snapshot metadata generator; on Windows, use MSYS2's `/usr/bin/python3` and put `/usr/bin` on its PATH.
 
+After building, run `npm run validate:html` to check all published HTML with the pinned Nu HTML Checker. CI runs this before deployment and fails on errors; warnings are advisory. The checker needs Java 17 or newer (CI supplies Java 21); the npm package can download a local runtime if none is available. To review warnings locally, run `npm exec -- vnu --skip-non-html dist`. Validation runs locally without uploading the generated pages to a public service. Imported main-site documentation sometimes declares its encoding twice; the build removes the redundant legacy declaration from the published copies.
+
+Review CSS periodically with the [W3C CSS validator](https://jigsaw.w3.org/css-validator/) using a suitable modern profile, or run `npm exec -- vnu --css default.css seventowers/default.css` locally. Review diagnostics for modern features and vendor-prefixed fallbacks individually. CSS validation is not a CI gate, and neither validator replaces browser, keyboard, or accessibility testing.
+
 ## Editing Seven Towers
 
 - `seventowers/usecode/intrinsics/*.md` contains one intrinsic description per file; `intrinsics/defs/*.md` contains its signatures and game indicators.

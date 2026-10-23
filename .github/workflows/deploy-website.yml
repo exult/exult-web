@@ -20,6 +20,11 @@ jobs:
           node-version: '24'
           cache: npm
           cache-dependency-path: exult-web-master/package-lock.json
+      - name: Set up Java for HTML validation
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
       - name: Install build dependencies
         working-directory: exult-web-master
         run: npm ci
@@ -28,6 +33,9 @@ jobs:
         run: |
           npm test
           python3 -m unittest discover -s tests
+      - name: Validate generated HTML
+        working-directory: exult-web-master
+        run: npm run validate:html
       - name: Refresh snapshot metadata
         if: github.event_name != 'pull_request'
         working-directory: exult-web-master
