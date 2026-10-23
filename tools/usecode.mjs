@@ -5,6 +5,47 @@ import {createHighlighter} from 'shiki';
 
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
 
+/** Avoid previewers' diff detection for inline code beginning with a minus sign. */
+export function exportMarkdown(source) {
+  source = source.replace(/\r\n?/g, '\n').trim() + '\n';
+  const lines = source.split('\n');
+  const blocks = new MarkdownIt({html:true}).parse(source, {})
+    .filter(token => ['fence','code_block','html_block'].includes(token.type) && token.map)
+    .map(token => token.map);
+  function inline(text) {
+    let result = '', cursor = 0;
+    const ticks = /`+/g;
+    let opening;
+    while((opening = ticks.exec(text))) {
+      // Escaped backticks are prose, not code delimiters.
+      const slashes = text.slice(0, opening.index).match(/\\+$/)?.[0].length || 0;
+      if(slashes % 2) continue;
+      const start = ticks.lastIndex;
+      const closingTicks = /`+/g;
+      closingTicks.lastIndex = start;
+      let closing;
+      while((closing = closingTicks.exec(text)) && closing[0].length !== opening[0].length) {}
+      if(!closing) continue;
+      let code = text.slice(start, closing.index).replace(/\n/g, ' ');
+      // CommonMark strips one surrounding space when the code is not all spaces.
+      if(code.startsWith(' ') && code.endsWith(' ') && /[^ ]/.test(code)) code = code.slice(1,-1);
+      result += text.slice(cursor, opening.index);
+      result += code.startsWith('-') ? `<code>${escapeHtml(code)}</code>` : text.slice(opening.index, closingTicks.lastIndex);
+      cursor = closingTicks.lastIndex;
+      ticks.lastIndex = cursor;
+    }
+    return result + text.slice(cursor);
+  }
+  let result = '', cursor = 0;
+  for(const [start,end] of blocks) {
+    result += inline(lines.slice(cursor,start).join('\n'));
+    if(start > cursor) result += '\n';
+    result += lines.slice(start,end).join('\n') + '\n';
+    cursor = end;
+  }
+  return result + inline(lines.slice(cursor).join('\n'));
+}
+
 export function expandIncludes(source, root, stack = []) {
   return source.replace(/\{\{include:([\w/-]+)\}\}/g, (_, name) => {
     if (stack.includes(name)) throw new Error(`Circular documentation include: ${[...stack, name].join(' -> ')}`);

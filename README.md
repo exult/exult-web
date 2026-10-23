@@ -30,6 +30,8 @@ Keep Markdown paragraphs on one source line. Use Markdown links, lists, tables, 
 
 The build produces individual reference pages, a reference index, combined documentation pages, assembled Markdown downloads at `seventowers/NAME.md`, and Natural Docs comment sources at `seventowers/docs/NAME.naturaldocs.txt`. All formats come from the same Markdown sources. Markdown downloads expand shared includes and preserve headings, tables, fenced code, links, and images. They sit beside the corresponding HTML pages so relative links and images resolve in either format. Existing `.uc` examples, downloadable files, images, icon thumbnails, and other documentation are copied into the published site.
 
+Generated Markdown uses HTML `<code>` elements for inline code starting with `-`, avoiding diff detection in affected previewers. This compatibility conversion preserves the code text and leaves fenced and indented code blocks unchanged; source Markdown continues to use ordinary backticks.
+
 Syntax highlighting uses Shiki and the vendored `seventowers/usecode.tmLanguage.json`, copied from [Exult's VS Code extension](https://github.com/exult/vscode-usecode-syntax) version 0.1.7. Its GPL-2.0-or-later license is in `seventowers/GRAMMAR-LICENSE`. To refresh the grammar, copy `syntaxes/usecode.tmLanguage.json` from that repository, update this version note, and run `npm test`. Highlighted intrinsic names link to their reference pages; strings and comments are excluded. Light and dark colors follow the site's existing system-theme preference.
 
 ## Download metadata

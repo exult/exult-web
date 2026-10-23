@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import {build, root, staticUrl} from '../build-site.mjs';
-import {createDocumentation, expandIncludes} from '../usecode.mjs';
+import {createDocumentation, expandIncludes, exportMarkdown} from '../usecode.mjs';
 
 before(async()=>{await build();});
 const output = path.join(root,'dist');
@@ -80,7 +80,7 @@ test('Markdown exports expand includes and preserve code, tables, links and imag
     const markdown=read(name+'.md');
     assert.doesNotMatch(markdown,/\{\{include:/);
     assert(!fs.existsSync(path.join(output,'seventowers/docs',name+'.txt')));
-    if(name !== 'exult_intrinsics') assert.equal(markdown,expandIncludes(fs.readFileSync(path.join(root,'seventowers/usecode',name+'.md'),'utf8'),path.join(root,'seventowers/usecode')).trim()+'\n');
+    if(name !== 'exult_intrinsics') assert.equal(markdown,exportMarkdown(expandIncludes(fs.readFileSync(path.join(root,'seventowers/usecode',name+'.md'),'utf8'),path.join(root,'seventowers/usecode'))));
     for(const [,url] of markdown.matchAll(/\]\(([^)]+)\)/g)) {
       if(/^[a-z]+:|^\/|^#/i.test(url)) continue;
       assert(fs.existsSync(path.resolve(output,'seventowers',url.split('#')[0])),url);
@@ -90,6 +90,20 @@ test('Markdown exports expand includes and preserve code, tables, links and imag
   assert(combined.includes('| Parameter / value | Description |'));
   assert(combined.includes('![[BG]](images/bgsm.png)'));
   assert(combined.includes('[resurrect](reference-scriptop-resurrect.html)'));
+  assert(combined.includes('<code>-358</code>'));
+  assert(combined.includes('<code>-&gt;</code>'));
+});
+
+test('Markdown compatibility workaround preserves code text and leaves code blocks intact',()=>{
+  const source = 'Inline `-1`, ``-a ` b < c & d``, ` -2 `, and `x - 1`. Escaped \\`-3\\`.\n\n```usecode\n-1; say("`-2`");\n```\n\n~~~diff\n- `-4`\n~~~\n\n    `-5`\n';
+  const expected = source.replace('`-1`','<code>-1</code>').replace('``-a ` b < c & d``','<code>-a ` b &lt; c &amp; d</code>').replace('` -2 `','<code>-2</code>');
+  const result = exportMarkdown(source);
+  assert.equal(result,expected);
+  assert(result.includes('Inline <code>-1</code>, <code>-a ` b &lt; c &amp; d</code>, <code>-2</code>, and `x - 1`.'));
+  assert(result.includes('Escaped \\`-3\\`.'));
+  assert(result.includes('```usecode\n-1; say("`-2`");\n```'));
+  assert(result.includes('~~~diff\n- `-4`\n~~~'));
+  assert(result.includes('    `-5`'));
 });
 
 test('grammar highlights code, links intrinsics, and leaves strings and comments alone',async()=>{

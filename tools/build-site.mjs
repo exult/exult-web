@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {createDocumentation, escapeHtml as esc} from './usecode.mjs';
+import {createDocumentation, escapeHtml as esc, exportMarkdown} from './usecode.mjs';
 import {legacyRedirects} from './legacy-redirects.mjs';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -160,7 +160,7 @@ export async function build(output = path.join(root,'dist')) {
       const exports = `<p><a href="${name}.md" download>Download Markdown</a> | <a href="docs/${name}.naturaldocs.txt">Natural Docs source</a></p>`;
       write(name+'.html',page(name.replaceAll('_',' '),'usecodetitle.png',exports+docs.html(source),'usecode'));
       // Keep exports beside their HTML pages so relative links and images work in both formats.
-      write(`${name}.md`,source.trim()+'\n');
+      write(`${name}.md`,exportMarkdown(source));
       write(`docs/${name}.naturaldocs.txt`,docs.naturalDocs(name === 'exult_intrinsics' ? docs.read('reference/naturaldocs_intrinsics')+'\n\n'+source : source));
     }
     for(const category of ['intrinsics','scriptop','directives','reference']) {
