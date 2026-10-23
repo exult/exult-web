@@ -459,10 +459,34 @@ span.navbar {
 	width: 13.2em;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 	body { padding: 10px; text-align: left; }
-	ul.navbar { position: static; width: auto; }
-	main { overflow-x: auto; }
+	ul.navbar {
+		position: static;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		gap: 0.4em;
+		width: auto;
+		margin-bottom: 0.75em;
+	}
+	ul.navbar li {
+		width: auto;
+		max-width: 100%;
+		margin: 0;
+	}
+	ul.navbar a,
+	ul.navbar span.navbar {
+		display: flex;
+		align-items: center;
+		box-sizing: border-box;
+		width: auto;
+		min-height: 44px;
+		height: 100%;
+		padding: 0.2em;
+	}
+	.page-title { overflow-wrap: anywhere; }
+	main { overflow-x: auto; overflow-wrap: anywhere; }
 }
 
 .codeblock {
