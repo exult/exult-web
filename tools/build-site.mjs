@@ -48,7 +48,7 @@ function page(title, banner, content, active = '', submenu = '') {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seven Towers: ${esc(title)}</title>
   <link href="default.css" rel="stylesheet">
-  <link rel="preload" href="fonts/UnifrakturCook-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="fonts/ManufacturingConsent-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="icon" href="images/home.png" type="image/png">
 </head>
 <body>

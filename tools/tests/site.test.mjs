@@ -57,7 +57,7 @@ test('page titles use text with a bundled font instead of title images',()=>{
     assert(heading,path.basename(f));
     assert.doesNotMatch(heading,/<img\b|undefined/);
   }
-  assert(fs.existsSync(path.join(output,'seventowers/fonts/UnifrakturCook-Bold.ttf')));
+  assert(fs.existsSync(path.join(output,'seventowers/fonts/ManufacturingConsent-Regular.ttf')));
   assert(fs.readFileSync(path.join(output,'seventowers/fonts/OFL.txt'),'utf8').includes('SIL OPEN FONT LICENSE'));
 });
 
