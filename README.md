@@ -4,15 +4,41 @@ The Exult website is published from a generated `dist/` directory. Seven Towers 
 
 ## Build and preview
 
-Install Node.js 22 or newer (CI uses Node.js 24), then run these commands from the repository root:
+To build the website manually, install Node.js 22 or newer with npm (CI uses Node.js 24). Python 3 is needed only for the local preview server shown below. Run all commands from the repository root, where `package.json` is located; a separate Exult engine checkout is not required.
+
+Install the locked build dependencies once after checking out the repository, and again whenever `package-lock.json` changes:
 
 ```sh
 npm ci
+```
+
+Generate the complete static website:
+
+```sh
 npm run build
+```
+
+The output is written to `dist/`, including the main Exult website, Seven Towers pages, and generated documentation downloads. The build works offline after dependencies have been installed. `dist/` is disposable and is recreated on every build; edit the source files and rerun `npm run build` after each change. There is no automatic rebuild or browser refresh.
+
+To preview the result on Linux, macOS, or MSYS2, start a local HTTP server:
+
+```sh
 python3 -m http.server 8000 --directory dist
 ```
 
-Open <http://localhost:8000/seventowers/>. The build works offline after dependencies have been installed. `dist/` is disposable and is recreated on every build. Serve this directory, rather than the repository root.
+On Windows in PowerShell, the equivalent sequence is:
+
+```powershell
+npm.cmd ci
+npm.cmd run build
+python -m http.server 8000 --directory dist
+```
+
+Use the command that launches Python 3 on your installation (`python`, `python3`, or `py -3`). The explicit `npm.cmd` command works in PowerShell without requiring changes to its script execution policy.
+
+With the server running, open <http://localhost:8000/> for the main website or <http://localhost:8000/seventowers/> for Seven Towers. Refresh the browser after rebuilding. Press Ctrl+C in the server terminal to stop it. Serve `dist/`, rather than the repository root. Local builds and previews do not upload or deploy anything, and do not require SourceForge credentials or the optional snapshot metadata refresh described below.
+
+## Local checks
 
 Run `npm test` to build and check documentation coverage, generated links and assets, syntax highlighting, exports, legacy route mappings, and publication contents. Run `python3 -m unittest discover -s tests` in a POSIX environment to test the snapshot metadata generator; on Windows, use MSYS2's `/usr/bin/python3` and put `/usr/bin` on its PATH.
 
