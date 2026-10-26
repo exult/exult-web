@@ -8,6 +8,6 @@ Gets the name of one or more objects. Despite the name, this intrinsic can be ca
 
 #### Return
 
-If the input is an array of objects, the return is an array with the names of these objects. The output array places the object names in the same order as the objects are in the input array.
+If the input is an array of objects, the return is an array with the names of these objects. Valid names retain their input order, but invalid objects are omitted, so the output array may be shorter than the input.
 
-Otherwise, the return is the name of the given object.
+Otherwise, the return is the name of the given object, or `"??name??"` for an invalid object.

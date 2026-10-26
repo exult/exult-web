@@ -8,4 +8,4 @@ Gets the current shape of the desired object.
 
 #### Return
 
-The shape in 'SHAPES.VGA' of the object in question.
+The shape in 'SHAPES.VGA' of the object in question, or zero for an invalid object. For an NPC, this is the real shape, rather than the shape currently displayed by polymorph effects.

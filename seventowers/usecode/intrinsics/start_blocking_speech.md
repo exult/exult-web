@@ -2,7 +2,7 @@ Plays the specified speech track. Blocks until the speech finishes.
 
 > **SI SPECIFIC**
 >
-> In SI, speech also displays a full-screen face from 'FACES.VGA'.
+> In SI, tracks 0-20 show the Balance Serpent's portrait (solid when wearing the serpent ring, translucent otherwise), tracks 21-22 show the Guardian, tracks 23-24 show Arcadion, and tracks 25-26 show the Chaos and Order Serpents respectively. These portraits wait for a click before being removed; other tracks do not select a portrait here.
 
 #### Parameters
 
@@ -12,4 +12,4 @@ Plays the specified speech track. Blocks until the speech finishes.
 
 #### Return
 
-Returns `false` if failed to play the requested speech track (for example, if speech is disabled), `true` otherwise.
+Returns `true` for a non-negative track number and `false` for a negative track number. This does not report whether audio was actually available or played. The requested number is stored for `UI_get_speech_track`; a negative number also reinitializes the conversation.

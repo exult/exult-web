@@ -1,6 +1,4 @@
-Creates a monster with shape 'shape'. The created monster has equipment as defined in its equipment record, and has a 'GOOD' alignment. If the creation is successful, the return value is a reference to the monster; otherwise, the return is '0'. In the originals, there was an additional '`bool`' parameter, but it is unimplemented in Exult.
-
-Creates a monster of the supplied shape. This monster has equipment as defined in its equipment record, starts with an `IN_COMBAT` schedule, and will have the same alignment as `item`; for the cases in which `item` is not an NPC, the summoned monster's alignment will be `GOOD` instead. The monster will be placed within five tiles of the avatar.
+Creates a monster of the supplied shape. This monster has equipment as defined in its equipment record, starts with an `IN_COMBAT` schedule, and inherits `item`'s effective alignment when `item` is an NPC outside the party. If `item` is a party member or is not an NPC, the summoned monster's alignment is `GOOD`. The monster will be placed within five tiles of the avatar.
 
 #### Parameters
 

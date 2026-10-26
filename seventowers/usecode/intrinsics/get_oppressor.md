@@ -8,4 +8,4 @@ Gets whoever is attacking the supplied NPC. This oppressor can be set through us
 
 #### Return
 
-Returns the NPC number of the supplied NPC's oppressor, or zero if no valid NPC was supplied. The return value has the opposite sign from what you get from a `get_npc_number` intrinsic call.
+Returns the NPC number of the supplied NPC's oppressor, or zero if no valid NPC was supplied. Ordinary NPC numbers are positive here, unlike `UI_get_npc_number`. The avatar is represented by zero, rather than -356.

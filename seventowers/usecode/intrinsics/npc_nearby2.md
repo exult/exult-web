@@ -1,4 +1,4 @@
-Finds out if the desired object is nearby. In this context, 'nearby' means within 40 tiles of the avatar. Note that, despite the name, this intrinsic is valid for all objects, not just NPCs.
+Finds out if the desired object is nearby. In this context, 'nearby' means fewer than 40 tiles from the avatar. Note that, despite the name, this intrinsic is valid for all objects, not just NPCs.
 
 #### Parameters
 
@@ -8,4 +8,4 @@ Finds out if the desired object is nearby. In this context, 'nearby' means withi
 
 #### Return
 
-`true` if the object is within 40 tiles of the avatar, `false` otherwise.
+`true` if the object is valid and fewer than 40 tiles from the avatar, `false` otherwise. Sleeping, paralysis, or death do not affect this test.

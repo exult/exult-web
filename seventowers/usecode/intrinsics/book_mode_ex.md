@@ -6,7 +6,7 @@ Displays a book or scroll on screen. Text in the book or scroll is supplied thro
 | --- | --- |
 | `is_scroll` | Flag determining whether to display a scroll (`true`) or a book gump (`false`). This determines the area occupied by the text, and will determine what shape from 'GUMPS.VGA' to display if none is specified. |
 | `font` | Integer that determines what shape from 'FONTS.VGA' will be used to render the text. |
-| `gump` | Numerical value determining what shape from 'GUMPS.VGA' will be used. The text area is not affected by this parameter. |
+| `gump` | Numerical value determining what shape from 'GUMPS.VGA' will be used. The text area is not affected by this parameter. Pass `-1` to use the standard book or scroll shape; the current dispatcher supplies zero when this argument is omitted, bypassing the implementation's `-1` fallback. |
 
 > **IMPORTANT NOTES**
 >

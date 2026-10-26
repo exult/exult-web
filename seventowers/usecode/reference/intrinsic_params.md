@@ -2,11 +2,10 @@ The intrinsic prototypes below are in Usecode C-esque form. It is actually more 
 
 | Parameter / value | Description |
 | --- | --- |
-| Keyword | Description |
 | `int` | This means any integer, positive or negative. |
 | `object` | Any object or NPC. It can be an object reference, '`item`' or a number (that **must** be negative, which Exult will convert to an NPC if it is in the correct range). |
 | `actor` | Any NPC. It is evaluated the same way as '`object`' is, but Exult will reject anything that can't be converted to an NPC. Monsters are also accepted. |
-| `bool` | A '`true`'/'`false`' parameter. Can be a number (nonzero/zero), an array (non-empty/empty) or a comparison expression (e.g., '`a == b`'. |
+| `bool` | A '`true`'/'`false`' parameter. Can be a number (nonzero/zero), an array (non-empty/empty) or a comparison expression (e.g., `a == b`). |
 | `string` | A string (text). Strings in usecode are any set of characters surrounded by double-quotes; for example, `"This is a string."`. If you need a double-quote inside a string you can 'escape' it by prefixing them with a backslash: `"\""`; alternatively, Exult converts '`@`' into a double-quote. |
 | `function` | A usecode function, which **must** be declared with either, the `shape#` *or* the `object#` specifiers. In Usecode C, this can be the function name or its usecode number. For example: '`extern Bolt shape#(0x2D3) ();`' can be passed as '`Bolt`' (the function name), '`0x2D3`' (its function number since '`shape#(shnum) == shnum`' if `shnum < 0x400`) or as '`&Bolt`' (using the 'address of' operator '`&`' to get the function number). |
 
@@ -29,3 +28,5 @@ int obj->execute_usecode_array(int script[]);
 The first parameter and the '`->`' can both be omitted if '`obj`' is '`item`', and if you omit either of them you **must** omit both or the Usecode will fail to compile. For stylistic purposes, the 'calle' form should be used only when the first parameter is an object or NPC (or '`item`'). For all intrinsics with 'appropriate' parameter types, I have listed both forms in the list below.
 
 Also, you may have noticed that I did not include the parameter type of '`obj`' when I gave the 'calle' form of execute_usecode_array; since I will only give the 'calle' form when the parameter type is '`object`' or '`actor`', I feel that it is unneeded.
+
+Usecode arrays are one-based: the first element is `array[1]`. Array sizes in signatures describe the number of elements, not the last zero-based index. Flat coordinate lists such as `[x1, y1, x2, y2]` are single arrays, not arrays of arrays.
