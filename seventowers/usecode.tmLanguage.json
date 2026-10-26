@@ -236,7 +236,7 @@
                 },
                 {
                     "name": "keyword.function-like.usecode",
-                    "match": "\\bsay\\b(?=\\s*\\()"
+                    "match": "\\bsay\\b(?=\\s*[(@])"
                 },
                 {
                     "name": "keyword.script.usecode",
@@ -244,7 +244,7 @@
                 },
                 {
                     "name": "keyword.function-like.usecode",
-                    "match": "\\b(?:message|response|original|hide|remove|add|script|runscript)\\b"
+                    "match": "\\b(?:message|response|original|show|hide|remove|add|script|runscript|assume_script)\\b"
                 },
                 {
                     "name": "keyword.other.usecode",
@@ -361,7 +361,7 @@
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
-                    "match": "\\b(?:UI_)?(?:npc_nearby|npc_nearby2|find_nearby_avatar|is_npc|display_runes|click_on_item|error_message|find_nearby|give_last_created|is_dead|game_hour|game_minute|get_npc_number|part_of_day|get_alignment|set_alignment)\\b(?=\\s*\\()"
+                    "match": "\\b(?:UI_)?(?:npc_nearby|npc_nearby2|find_nearby_avatar|is_npc|display_runes|click_on_item|error_message|find_nearby|give_last_created|is_dead|game_hour|game_minute|get_npc_number|get_npc_id|set_npc_id|part_of_day|get_alignment|set_alignment)\\b(?=\\s*\\()"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
@@ -386,6 +386,10 @@
                 {
                     "name": "entity.name.function.intrinsic.usecode",
                     "match": "\\b(?:UI_)?(?:set_conversation_slot|set_npc_name|set_usecode_fun|get_usecode_fun|get_map_num|save_pos|teleport_to_saved_pos|set_polymorph|set_intercept_item|printf|remove_from_keyring|is_on_keyring|add_to_keyring|remove_from_area|set_new_schedules|set_opponent|set_barge_dir|modify_schedule|revert_schedule|run_schedule|begin_casting_mode|init_conversation|end_conversation)\\b(?=\\s*\\()"
+                },
+                {
+                    "name": "entity.name.function.intrinsic.usecode",
+                    "match": "\\b(?:UI_)?(?:ambient_light|approach_avatar|can_avatar_reach_pos|center_view|create_new_egg|display_map_ex|game_day|get_body_npc|get_item_gump_position|get_readied|get_shape_flag|get_slider_value|get_weapon|infravision|init_reset_conv_face|is_dest_reachable|play_scene|set_gump_shape|set_gump_text|set_gump_text_font|set_item_gump_position|set_slider_value|stop_arresting)\\b(?=\\s*\\()"
                 },
                 {
                     "name": "entity.name.function.intrinsic.usecode",
