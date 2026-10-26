@@ -33,4 +33,4 @@ The damage is calculated from a series of generated random numbers. It proceeds 
 
 #### Return
 
-Returns `true` if any damage is caused on a valid target, `false` otherwise.
+Returns `true` if `obj` resolves to a valid target and the damage routine is called, `false` otherwise. A `true` result does not guarantee that hit points were lost: armor or immunity may prevent damage.

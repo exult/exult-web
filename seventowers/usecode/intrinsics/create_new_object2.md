@@ -6,7 +6,7 @@ Creates a new object with the specified shape and places it in the game world at
 | --- | --- |
 | `shape` | The shape in 'SHAPES.VGA' of the new object. If this is a monster shape, the object is created with all equipment specified by the shape's equipment entry. |
 | `pos` | The location where the new object is to be placed. |
-| `frame` | Optional. The frame number for the object. If omitted, uses the shape's default frame.<br> |
+| `frame` | The frame number for the object. A negative value preserves the frame selected during creation. Pass it explicitly when a particular frame or the creation default is needed. |
 
 The location can be specified by arrays ranging from 1 to 4 components. The meaning of these components is as follows:
 
@@ -18,3 +18,5 @@ The location can be specified by arrays ranging from 1 to 4 components. The mean
 #### Return
 
 An object reference to the newly created object. This object is placed in the game world exactly as if `UI_update_last_created(pos)` had been called, and hence will **not** be in the 'last created' stack.
+
+The current intrinsic dispatcher pads omitted arguments with zero, so omitting `frame` selects frame 0; pass `-1` to preserve the frame chosen during creation.

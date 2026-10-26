@@ -15,3 +15,5 @@ Returns 1 on success, 0 on failure (e.g. if the gump is not found or the field d
 #### Notes
 
 The value is clamped to the slider's configured minimum and maximum range.
+
+Exult first looks for an open gump belonging to `item`, then tries its immediate owner's gump. It uses the first slider widget whose field ID matches; an invalid item, missing gump, or missing slider returns `0`.

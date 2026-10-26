@@ -35,7 +35,7 @@ The flag parameter is a numeric value describing a (usually boolean) bit of info
 | OKAY_TO_LAND       = 21 | Set in usecode for flying carpet, TRUE if you can land currently. |
 | BG_DONT_MOVE       = 22 | BG: BG's version of DONT_MOVE. |
 | SI_DONT_RENDER     = 22 | SI: SI's version of DONT_RENDER. |
-| IN_DUNGEON         = 23 | If set on PC or an NPC, they won't trigger the stealing usecode if they take food objects. |
+| IN_DUNGEON         = 23 | Reports whether the avatar is in a dungeon. This intrinsic returns `false` for other objects. |
 | IS_SOLID           = 24 | Used by gangplank usecode to determine if an object is solid. |
 | CONFUSED           = 25 | This will be set if the avatar failed copyright protection questions in SI. Only really meaningful used on the avatar. |
 | ACTIVE_BARGE       = 26 | Object is a barge object moving, or on a barge object that is moving. Set in usecode, and mostly used for the SI 'NPC' ships such as the turtle. |
@@ -53,6 +53,8 @@ The flag parameter is a numeric value describing a (usually boolean) bit of info
 
 #### Return
 
-For most flags, `true` if the flag is set (that is, in effect), `false` otherwise. There is one exception, however: The 'ACTIVE_SAILOR' and 'ACTIVE_BARGE' flags have a peculiar behavior in that they actually returns an object reference to the last object to have that flag set, or zero if no object has been set, or if the flag has been cleared with '`clear_item_flag`' intrinsic for the given flag.
+For most flags, returns `true` if the flag is in effect, `false` otherwise. `ACTIVE_SAILOR` returns the current captain's object reference, regardless of which valid object is queried, or zero if no captain is set. `ACTIVE_BARGE`, `ON_MOVING_BARGE`, and SI's `SI_ON_MOVING_BARGE` return a boolean indicating whether the queried object is on, or part of, the currently moving barge. An invalid object returns `false` for every flag.
 
 With the exception of the OKAY_TO_TAKE, TEMPORARY and INVISIBLE flags, these flags are valid for NPCs only. You can get, set or clear any of those values and Exult will not complain; however, it will also not save the values of the flags except for the three mentioned before. Moreover, the INVISIBLE flag will not be saved for objects unless they are of 'quality flags' class.
+
+`IMMUNITIES` and `CANT_DIE` inspect powers granted by monster shape data or worn equipment. `IS_SOLID` tests the object's shape information. `OKAY_TO_LAND` checks whether the object's barge can land; these are computed queries rather than ordinary stored flags.

@@ -51,6 +51,8 @@ Tests one of Exult's shape information flags for an object, shape number, or map
 
 When `target` is a tile position, Exult checks the flat at that tile and also checks object shapes occupying the tile. For `[x, y, z]` targets, the `z` value is used when matching object footprints; flat tile checks use the `x` and `y` coordinates.
 
-A four-element array first tries the object in element 0. If that is not a valid item, Exult falls back to elements 1, 2, and 3 as `x`, `y`, and `z` and performs the same flat-tile and object-footprint checks.
+A four-element array first tries the object in element 1 (`target[1]`). If that is not a valid item, Exult falls back to elements 2, 3, and 4 as `x`, `y`, and `z` and performs the same flat-tile and object-footprint checks.
 
 This lets scripts test semantic shape flags such as `on fire`, `water`, `solid`, or `contact effect` at a map coordinate without maintaining hard-coded shape number lists.
+
+Usecode arrays are one-based. A negative integer target is resolved as an NPC reference; a non-negative integer is treated as a shape number. Two-element coordinate targets use `z = 0`.

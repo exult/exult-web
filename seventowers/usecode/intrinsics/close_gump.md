@@ -8,4 +8,4 @@ Closes an object's gump.
 
 > **IMPORTANT NOTES**
 >
-> This intrinsic does nothing if called when `event == READIED` or `event == UNREADIED`. See '`UI_close_gump2`' if you need it to work in these cases.
+> This intrinsic does nothing while the player is dragging an object. This often matters during `READIED` and `UNREADIED` events, but the check is the dragging state rather than the event ID. Use `UI_close_gump2` to close gumps even while dragging.

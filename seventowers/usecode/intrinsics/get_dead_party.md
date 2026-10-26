@@ -8,4 +8,4 @@ Gets a list of all dead party members near a given object.
 
 #### Return
 
-An array containing object references to the bodies of all dead party members within 50 tiles of the given object, or zero if no party members were found.
+An array with one element per recorded dead party member. Each element contains the body reference if the body exists and is fewer than 50 tiles from `obj`; otherwise, that element remains zero. The result is an empty array when there are no recorded dead party members. An invalid `obj` produces no meaningful return value.

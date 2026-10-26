@@ -15,3 +15,5 @@ Returns 1 on success, 0 on failure (e.g. if the gump is not found or the field d
 #### Notes
 
 The gump is located by searching for the gump associated with `item`, with a fallback to `item`'s owner. Returns 0 if the text string is null.
+
+The text passes through Exult's usecode text translation before the first matching dynamic text field is updated.
