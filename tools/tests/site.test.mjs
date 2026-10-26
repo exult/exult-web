@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import MarkdownIt from 'markdown-it';
 import {build, root, staticUrl} from '../build-site.mjs';
 import {createDocumentation, expandIncludes, exportMarkdown} from '../usecode.mjs';
 
@@ -121,9 +122,36 @@ test('Markdown exports expand includes and preserve code, tables, links and imag
   assert(combined.includes('| [Exult: SI] | Exult-specific intrinsic, available only to SI |'));
   assert.doesNotMatch(combined,/!\[|<img\b|images\//);
   assert(read('exult_intrinsics.html').includes('src="images/bgsm.png"'));
-  assert(combined.includes('[resurrect](reference-scriptop-resurrect.html)'));
+  assert(combined.includes('[resurrect](#scriptop-resurrect)'));
   assert(combined.includes('<code>-358</code>'));
   assert(combined.includes('<code>-&gt;</code>'));
+});
+
+test('intrinsic Markdown is self-contained with a title and valid internal links',()=>{
+  const source=read('exult_intrinsics.md');
+  assert(source.startsWith('# Usecode Intrinsic Reference\n\n'));
+  const ids=[...source.matchAll(/<a id="([^"]+)"><\/a>/g)].map(match=>match[1]);
+  assert.equal(new Set(ids).size,ids.length,'Duplicate Markdown anchors');
+  const anchors=new Set(ids);
+  const links=new MarkdownIt({html:true}).parse(source,{})
+    .flatMap(token=>token.children || []).filter(token=>token.type === 'link_open')
+    .map(token=>token.attrGet('href'));
+  assert(links.length >= 226,'The intrinsic ID table must link to its entries');
+  for(const href of links) {
+    assert(href.startsWith('#'),'Nonlocal Markdown link: '+href);
+    assert(anchors.has(href.slice(1)),'Missing Markdown anchor: '+href);
+  }
+  assert(source.includes('[`UI_get_random`](#get_random)'));
+  assert(source.includes('### resurrect\n\n```usecode\nresurrect\n```'));
+  assert(read('exult_intrinsics.html').includes('href="reference-intrinsics-get_random.html"'));
+  assert(read('reference-intrinsics-resurrect.html').includes('href="reference-scriptop-resurrect.html"'));
+});
+
+test('Markdown link localization preserves code examples and inline code labels',()=>{
+  const url='reference-intrinsics-get_random.html';
+  const source=`[\`UI_get_random\`](${url}) and [random](${url}).\n\n\`[random](${url})\`\n\n\`\`\`usecode\nsay("[random](${url})");\n\`\`\`\n`;
+  const result=exportMarkdown(source,{linkTargets:{[url]:'#get_random'}});
+  assert.equal(result,source.replace(`[\`UI_get_random\`](${url}) and [random](${url})`,'[`UI_get_random`](#get_random) and [random](#get_random)'));
 });
 
 test('text image indicators preserve labels and do not alter code examples',()=>{

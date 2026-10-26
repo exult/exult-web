@@ -6,14 +6,17 @@ import {createHighlighter} from 'shiki';
 export const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
 
 /** Apply Markdown export compatibility options without changing code examples. */
-export function exportMarkdown(source, {imagesAsText = false} = {}) {
+export function exportMarkdown(source, {imagesAsText = false, linkTargets = {}} = {}) {
   source = source.replace(/\r\n?/g, '\n').trim() + '\n';
   const lines = source.split('\n');
   const blocks = new MarkdownIt({html:true}).parse(source, {})
     .filter(token => ['fence','code_block','html_block'].includes(token.type) && token.map)
     .map(token => token.map);
   function inline(text) {
-    const prose = value => imagesAsText ? value.replace(/!\[(\[[^\]\n]*\]|[^\]\n]*)\]\([^\)\n]*\)/g, (_, alt) => alt) : value;
+    const prose = value => {
+      if(imagesAsText) value = value.replace(/!\[(\[[^\]\n]*\]|[^\]\n]*)\]\([^\)\n]*\)/g, (_, alt) => alt);
+      return value.replace(/\]\(([^)\n]+)\)/g, (match, url) => Object.hasOwn(linkTargets,url) ? `](${linkTargets[url]})` : match);
+    };
     let result = '', cursor = 0;
     const ticks = /`+/g;
     let opening;

@@ -200,11 +200,22 @@ export async function build(output = path.join(root,'dist')) {
         full += `<a id="${name}"></a>\n\n### UI_${name}\n\n${intrinsic(name)}\n\n`;
       }
     }
+    const intrinsicLinkTargets = Object.fromEntries([...grouped, ...ungrouped.map(file=>file.slice(0,-3))].map(name=>[`reference-intrinsics-${name}.html`, `#${name}`]));
+    let intrinsicMarkdown = '# Usecode Intrinsic Reference\n\n' + full;
+    // Include referenced script commands so the Markdown download works on its own.
+    const scriptReferences = new Set([...full.matchAll(/\]\(reference-scriptop-([\w-]+)\.html\)/g)].map(match=>match[1]));
+    if(scriptReferences.size) {
+      intrinsicMarkdown += '## Related script commands\n\n';
+      for(const name of scriptReferences) {
+        intrinsicLinkTargets[`reference-scriptop-${name}.html`] = `#scriptop-${name}`;
+        intrinsicMarkdown += `<a id="scriptop-${name}"></a>\n\n### ${name}\n\n${docs.read(`scriptop/${name}`)}\n\n`;
+      }
+    }
     for(const [name,source] of [['exult_intrinsics',full], ...['ucc_scripting','ucc_tutorial','ucc_reference'].map(n=>[n,docs.read(n)])]) {
       const exports = `<p><a href="${name}.md" download>Download Markdown</a> | <a href="docs/${name}.naturaldocs.txt">Natural Docs source</a></p>`;
       write(name+'.html',page(name.replaceAll('_',' '),'Usecode C',exports+docs.html(source),'usecode'));
-      // Keep exports beside their HTML pages so relative links and images work in both formats.
-      write(`${name}.md`,exportMarkdown(source,{imagesAsText:name === 'exult_intrinsics'}));
+      // Other exports stay beside their HTML pages so relative links and images resolve.
+      write(`${name}.md`,name === 'exult_intrinsics' ? exportMarkdown(intrinsicMarkdown,{imagesAsText:true,linkTargets:intrinsicLinkTargets}) : exportMarkdown(source));
       write(`docs/${name}.naturaldocs.txt`,docs.naturalDocs(name === 'exult_intrinsics' ? docs.read('reference/naturaldocs_intrinsics')+'\n\n'+source : source));
     }
     for(const category of ['intrinsics','scriptop','directives','reference']) {

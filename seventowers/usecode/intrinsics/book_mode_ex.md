@@ -10,4 +10,4 @@ Displays a book or scroll on screen. Text in the book or scroll is supplied thro
 
 > **IMPORTANT NOTES**
 >
-> Unlike the '`UI_book_mode`' intrinsic, this intrinsic performs **no** translation of any kind if the avatar's 'READ' flag is set. This is an intentional design feature -- for example, text written in Gargish and being displayed in a Gargish font should be translated by more than a mere font substitution. Also, the gump shapes should be 'compatible' with the standard book/scroll shapes as [Exult](http://exult.info/) will write the text in the same region of the screen as it does for standard books/scrolls.
+> Unlike the '`UI_book_mode`' intrinsic, this intrinsic performs **no** translation of any kind if the avatar's 'READ' flag is set. This is an intentional design feature -- for example, text written in Gargish and being displayed in a Gargish font should be translated by more than a mere font substitution. Also, the gump shapes should be 'compatible' with the standard book/scroll shapes as Exult will write the text in the same region of the screen as it does for standard books/scrolls.
