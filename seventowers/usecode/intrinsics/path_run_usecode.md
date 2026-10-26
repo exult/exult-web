@@ -4,9 +4,7 @@ The avatar can be prevented from reaching his/her destination simply by moving a
 
 The other party members will follow the avatar towards the destination.
 
-> **SI SPECIFIC**
->
-> In SI, path_run_usecode finds a free spot within 3 tiles of the position specified by 'pos'; it also allows a rise/drop of 3 in the z direction.
+When `simode` is true, Exult looks for a free spot within 3 tiles of `pos` and allows a rise/drop of 3 in the z direction. If no spot is found, it tries again at the NPC's current height.
 
 #### Parameters
 
@@ -16,8 +14,10 @@ The other party members will follow the avatar towards the destination.
 | `fun` | The usecode function to be called if the destination is reached. |
 | `obj` | The object that should be used as `item` if the usecode function is called. If this parameter is zero, usecode will **not be called** at all. |
 | `event` | The `event` that should be used if the usecode function is called. |
-| `simode` | This optional parameter can be used to control whether or not to use the SI-specific behavior described above. It defaults to `true` in SI and to `false` in BG. |
+| `simode` | This optional parameter can be used to control whether or not to use the SI-specific behavior described above. Defaults to `true` in SI (including SI beta) and `false` in BG. Pass an explicit value to choose the behavior in either game. |
 
 #### Return
 
 If no path can be found to the destination, returns `false`; otherwise, returns `true`.
+
+A successful return means a path has been started, not that the destination has been reached. Use the arrival or failure callback to detect the outcome. `UI_sib_path_run_usecode` is a separate SI beta variant that takes an explicit NPC before `pos`.

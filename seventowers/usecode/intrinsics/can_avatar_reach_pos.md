@@ -9,3 +9,5 @@ Checks if the avatar can walk from its present location to a specified position.
 #### Return
 
 `false` if the supplied position is invalid or if the avatar cannot reach the supplied destination, `true` otherwise.
+
+A negative `z` or a position with fewer than two elements returns `false`. The path test accepts reaching within one tile of the destination, rather than requiring the exact tile.
