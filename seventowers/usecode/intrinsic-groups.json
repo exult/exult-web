@@ -126,32 +126,40 @@
       "path_run_usecode": [
         "path_run_usecode",
         "si_path_run_usecode",
+        "sib_path_run_usecode",
         "set_path_failure",
         "is_dest_reachable",
+        "sib_is_dest_reachable",
         "can_avatar_reach_pos",
         "in_usecode_path"
       ],
       "si_path_run_usecode": [
         "path_run_usecode",
         "si_path_run_usecode",
+        "sib_path_run_usecode",
         "set_path_failure",
         "is_dest_reachable",
+        "sib_is_dest_reachable",
         "can_avatar_reach_pos",
         "in_usecode_path"
       ],
       "set_path_failure": [
         "path_run_usecode",
         "si_path_run_usecode",
+        "sib_path_run_usecode",
         "set_path_failure",
         "is_dest_reachable",
+        "sib_is_dest_reachable",
         "can_avatar_reach_pos",
         "in_usecode_path"
       ],
       "in_usecode_path": [
         "path_run_usecode",
         "si_path_run_usecode",
+        "sib_path_run_usecode",
         "set_path_failure",
         "is_dest_reachable",
+        "sib_is_dest_reachable",
         "can_avatar_reach_pos",
         "in_usecode_path"
       ],
@@ -162,6 +170,16 @@
         "begin_casting_mode",
         "set_to_attack",
         "telekenesis"
+      ],
+      "sib_path_run_usecode": [
+        "si_path_run_usecode",
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "set_path_failure",
+        "is_dest_reachable",
+        "sib_is_dest_reachable",
+        "can_avatar_reach_pos",
+        "in_usecode_path"
       ]
     },
     "DIALOG": {
@@ -425,6 +443,7 @@
     "PLACEMENT": {
       "is_not_blocked": [
         "is_dest_reachable",
+        "sib_is_dest_reachable",
         "can_avatar_reach_pos"
       ],
       "add_party_items": [
@@ -1483,6 +1502,7 @@
       "is_dest_reachable": [
         "path_run_usecode",
         "si_path_run_usecode",
+        "sib_path_run_usecode",
         "set_path_failure",
         "is_not_blocked",
         "can_avatar_reach_pos"
@@ -1490,6 +1510,16 @@
       "can_avatar_reach_pos": [
         "path_run_usecode",
         "si_path_run_usecode",
+        "sib_path_run_usecode",
+        "set_path_failure",
+        "is_not_blocked",
+        "can_avatar_reach_pos"
+      ],
+      "sib_is_dest_reachable": [
+        "is_dest_reachable",
+        "path_run_usecode",
+        "si_path_run_usecode",
+        "sib_path_run_usecode",
         "set_path_failure",
         "is_not_blocked",
         "can_avatar_reach_pos"

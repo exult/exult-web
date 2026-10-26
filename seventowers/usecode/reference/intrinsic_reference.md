@@ -5,3 +5,5 @@ Unlike Usecode C-defined functions, intrinsics do not have a 'prototype'; you ca
 {{include:reference/intrinsic_legend}}
 
 {{include:reference/intrinsic_params}}
+
+{{include:reference/intrinsic_ids}}
