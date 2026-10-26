@@ -11,4 +11,6 @@ If '`face`' is an integer, the shape to be displayed is the absolute value of th
 
 If '`face`' is an NPC, the Exult Studio-set face for that NPC is displayed; the "default" face is equal to the NPC's number.
 
-For the cases when '`frnum` is zero, you should use Usecode C's '`npc.say()`' to display the NPC's face and display any text within the parenthesis (or set with '`message`') too.
+Use Usecode C's `face.show(frnum)` statement in place of this intrinsic. The frame argument is optional: `face.show()` is equivalent to `face.show(0)`. The receiver may be either a face number or an NPC.
+
+When `frnum` is zero, `npc.say("@Text.@")` displays the NPC's face and the supplied text. Use `npc.say()` to display text previously set with `message`.
