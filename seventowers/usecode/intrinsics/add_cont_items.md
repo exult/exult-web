@@ -9,7 +9,7 @@ Create a number of objects inside a container.
 | `shape` | The shape in 'SHAPES.VGA' that should be used for the created objects. |
 | `qual` | The quality of the objects being created. Can be `QUALITY_ANY = -359` to create items of any quality. |
 | `frame` | What frame will be used for the created objects. Can be `FRAME_ANY = -359` to create items of any frame. |
-| `temp` | Flag indicating whether the created items are temporary or not. |
+| `temp` | Optional flag, default `false`, indicating whether the created items are temporary or not. |
 
 #### Return
 

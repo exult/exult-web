@@ -2,5 +2,6 @@
 
 
 ```usecode
+UI_create_barge_object(int width, int height)
 UI_create_barge_object(int width, int height, int dir)
 ```
