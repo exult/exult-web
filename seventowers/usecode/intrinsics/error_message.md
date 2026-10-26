@@ -2,4 +2,4 @@ Prints the input variables to 'stdout'.
 
 #### Parameters
 
-One to twelve parameters of any type, whether or not they are arrays. Please note that the original games only one parameter was accepted.
+Accepts values to print consecutively, followed by a newline. Integers, object references, strings, and arrays of those values are supported; nested array elements are skipped. The original games accepted only one parameter.

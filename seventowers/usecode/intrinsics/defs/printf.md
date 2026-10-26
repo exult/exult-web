@@ -2,5 +2,5 @@
 
 
 ```usecode
-string UI_printf(string out[])
+string UI_printf(mixed out[])
 ```

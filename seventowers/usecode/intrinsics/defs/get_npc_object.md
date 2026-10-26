@@ -1,5 +1,5 @@
 ```usecode
-int UI_get_npc_object(int npc)
-int npc->get_npc_object()
-int[] UI_get_npc_object(int npc[])
+object UI_get_npc_object(int npc)
+object npc->get_npc_object()
+object[] UI_get_npc_object(int npc[])
 ```

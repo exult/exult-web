@@ -1,3 +1,3 @@
 ```usecode
-UI_init_reset_conv_face()
+UI_reset_conv_face()
 ```

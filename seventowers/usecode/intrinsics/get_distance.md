@@ -10,3 +10,5 @@ Gets the distance between two objects.
 #### Return
 
 The distance between the two objects, or zero if one or both of the parameters is not a valid object.
+
+Objects in containers are measured from their outermost containers.

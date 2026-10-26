@@ -1,1 +1,1 @@
-
+Alias of `UI_find_direction`. It accepts the same object or coordinate arguments and returns a compass direction from the first position to the second. See [UI_find_direction](reference-intrinsics-find_direction.html) for the argument formats and direction values.

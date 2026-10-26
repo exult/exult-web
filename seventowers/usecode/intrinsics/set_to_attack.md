@@ -12,4 +12,4 @@ If the NPC is targeting a tile, the attack will only be meaningful if the weapon
 
 #### Return
 
-`true` if attacking a valid target with a valid weapon, `false` otherwise.
+`true` if the attacker, weapon, and object or tile target were accepted and stored, `false` otherwise. This does not mean that an attack has already occurred or hit the target.

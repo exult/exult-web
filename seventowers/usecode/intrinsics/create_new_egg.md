@@ -33,7 +33,3 @@ All seven arguments are required by this intrinsic. The `data` array uses one-ba
 | Path (9): [path_num] | `data[1]` = path egg quality number |
 | Button (10): [distance] | `data[1]` = distance (triggers nearby external_criteria eggs) |
 | Intermap (11): [dest_x, dest_y, dest_z, mapnum] | `data[1]` = X, `data[2]` = Y, `data[3]` = Z (lift), `data[4]` = map number |
-
-> **CURRENT SOURCE LIMITATION**
->
-> The implementation in `usecode/intrinsics.cc` requires exactly seven arguments. The current `Usecode_internal::call_intrinsic` dispatcher in `usecode/ucinternal.cc` pads every call to at least 13 arguments before passing it to the implementation. As a result, calls from usecode fail the argument-count check and return a null object reference in this source revision. The parameter descriptions above describe the creation code after that check.

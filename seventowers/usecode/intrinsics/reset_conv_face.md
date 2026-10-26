@@ -1,1 +1,1 @@
-Changes the active conversation slot to the top slot and sets its current frame to 0.
+Resets the portrait frame in conversation slot 0 to frame 0 after displaying any pending text. This does not change the active conversation slot; use `UI_set_conversation_slot(0)` to select that slot for subsequent speech.
